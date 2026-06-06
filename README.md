@@ -30,31 +30,31 @@ xmlns:controls="clr-namespace:SevexLabs.Ui.Maui.Controls;assembly=SevexLabs.Ui.M
 
 FastBorder examples covering borders, rounded cards, shadows and clipped content.
 
-![FastBorder examples](docs/images/controls-gallery-fastborder.png)
+![FastBorder examples](https://raw.githubusercontent.com/SeveX-Labs/SevexLabs.Ui.Maui.Controls/main/docs/images/controls-gallery-fastborder.png)
 
 ### Inputs and forms
 
 Material input controls for text, multiline notes, read-only values, numeric values and pickers.
 
-![Material input controls](docs/images/controls-gallery-inputs.png)
+![Material input controls](https://raw.githubusercontent.com/SeveX-Labs/SevexLabs.Ui.Maui.Controls/main/docs/images/controls-gallery-inputs.png)
 
 ### Buttons and selection
 
 Buttons with icon/loading states, chips and segmented selection controls.
 
-![Buttons and selection controls](docs/images/controls-gallery-buttons-selection.png)
+![Buttons and selection controls](https://raw.githubusercontent.com/SeveX-Labs/SevexLabs.Ui.Maui.Controls/main/docs/images/controls-gallery-buttons-selection.png)
 
 ### Text and navigation helpers
 
 HTML-formatted text and slide-based step content.
 
-![HTML label and slide steps](docs/images/controls-gallery-html-steps.png)
+![HTML label and slide steps](https://raw.githubusercontent.com/SeveX-Labs/SevexLabs.Ui.Maui.Controls/main/docs/images/controls-gallery-html-steps.png)
 
 ### Loading and progress
 
 Loading placeholders, countdown controls and media progress.
 
-![Loading and progress controls](docs/images/controls-gallery-loading-progress.png)
+![Loading and progress controls](https://raw.githubusercontent.com/SeveX-Labs/SevexLabs.Ui.Maui.Controls/main/docs/images/controls-gallery-loading-progress.png)
 
 ## FastBorder API
 
