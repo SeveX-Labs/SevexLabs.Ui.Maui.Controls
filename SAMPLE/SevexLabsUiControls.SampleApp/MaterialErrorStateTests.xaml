@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SevexLabsUiControls.SampleApp.MaterialErrorStateTests"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SevexLabs.Ui.Maui.Controls;assembly=SevexLabs.Ui.Maui.Controls"
+    BackgroundColor="#FFFFFF"
+    Title="MaterialErrorState Tests">
+
+    <ContentPage.Resources>
+        <Color x:Key="ErrorStateDynamicBorderColor">#2563EB</Color>
+    </ContentPage.Resources>
+
+    <Grid
+        Padding="16"
+        RowDefinitions="Auto,*,Auto"
+        RowSpacing="12">
+
+        <VerticalStackLayout Spacing="4">
+            <Label
+                FontAttributes="Bold"
+                FontSize="26"
+                Text="Material error states"
+                TextColor="Black" />
+            <Label
+                FontSize="13"
+                Text="Verifica overlay errore senza sovrascrivere BorderColor e BorderThickness pubblici."
+                TextColor="#707070" />
+        </VerticalStackLayout>
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Spacing="16">
+
+                <controls:FastBorder BackgroundColor="#F8FAFC" BorderColor="#E5E7EB" BorderThickness="1" CornerRadius="20" Padding="14">
+                    <VerticalStackLayout Spacing="10">
+                        <Label FontAttributes="Bold" FontSize="17" Text="MaterialEntry" TextColor="Black" />
+                        <controls:MaterialEntry x:Name="StyledEntry" Style="{StaticResource DefaultEntry}" Placeholder="Entry style" Text="Valore da style" ErrorBorderThickness="3" />
+                        <controls:MaterialEntry x:Name="InlineEntry" HeightRequest="56" BorderColor="#D1D5DB" BorderThickness="1" CornerRadius="20" Padding="14,0" Placeholder="Entry inline" Text="Valore inline" ErrorColor="#DC2626" ErrorBorderThickness="4" />
+                        <controls:MaterialEntry x:Name="DynamicEntry" HeightRequest="56" BorderColor="{DynamicResource ErrorStateDynamicBorderColor}" BorderThickness="1" CornerRadius="20" Padding="14,0" Placeholder="Entry dynamic" Text="Valore dynamic" ErrorColor="#DC2626" ErrorBorderThickness="3" />
+                        <Grid ColumnDefinitions="*,Auto,Auto" ColumnSpacing="12"><Label Text="Style HasError / Enabled" VerticalOptions="Center" /><Switch StyleId="StyledEntry" Toggled="OnHasErrorToggled" /><Switch IsToggled="True" StyleId="StyledEntry" Toggled="OnEnabledToggled" /></Grid>
+                        <Grid ColumnDefinitions="*,Auto,Auto" ColumnSpacing="12"><Label Text="Inline HasError / Enabled" VerticalOptions="Center" /><Switch StyleId="InlineEntry" Toggled="OnHasErrorToggled" /><Switch IsToggled="True" StyleId="InlineEntry" Toggled="OnEnabledToggled" /></Grid>
+                        <Grid ColumnDefinitions="*,Auto,Auto" ColumnSpacing="12"><Label Text="Dynamic HasError / Enabled" VerticalOptions="Center" /><Switch StyleId="DynamicEntry" Toggled="OnHasErrorToggled" /><Switch IsToggled="True" StyleId="DynamicEntry" Toggled="OnEnabledToggled" /></Grid>
+                        <HorizontalStackLayout Spacing="10">
+                            <controls:MaterialButton Style="{StaticResource SecondaryButton}" Text="Cambia inline Entry" StyleId="InlineEntry" Clicked="OnChangeInlineBorderClicked" />
+                            <controls:MaterialButton Style="{StaticResource SecondaryButton}" Text="Cambia DynamicResource" Clicked="OnChangeDynamicResourceClicked" />
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+                </controls:FastBorder>
+
+                <controls:FastBorder BackgroundColor="#F8FAFC" BorderColor="#E5E7EB" BorderThickness="1" CornerRadius="20" Padding="14">
+                    <VerticalStackLayout Spacing="10">
+                        <Label FontAttributes="Bold" FontSize="17" Text="MaterialEditor" TextColor="Black" />
+                        <controls:MaterialEditor x:Name="StyledEditor" Style="{StaticResource DefaultEditor}" Placeholder="Editor style" Text="Valore da style" ErrorBorderThickness="3" />
+                        <controls:MaterialEditor x:Name="InlineEditor" HeightRequest="96" BorderColor="#D1D5DB" BorderThickness="1" CornerRadius="20" Padding="14,8" Placeholder="Editor inline" Text="Valore inline" ErrorColor="#DC2626" ErrorBorderThickness="4" />
+                        <controls:MaterialEditor x:Name="DynamicEditor" HeightRequest="96" BorderColor="{DynamicResource ErrorStateDynamicBorderColor}" BorderThickness="1" CornerRadius="20" Padding="14,8" Placeholder="Editor dynamic" Text="Valore dynamic" ErrorColor="#DC2626" ErrorBorderThickness="3" />
+                        <Grid ColumnDefinitions="*,Auto,Auto" ColumnSpacing="12"><Label Text="Style HasError / Enabled" VerticalOptions="Center" /><Switch StyleId="StyledEditor" Toggled="OnHasErrorToggled" /><Switch IsToggled="True" StyleId="StyledEditor" Toggled="OnEnabledToggled" /></Grid>
+                        <Grid ColumnDefinitions="*,Auto,Auto" ColumnSpacing="12"><Label Text="Inline HasError / Enabled" VerticalOptions="Center" /><Switch StyleId="InlineEditor" Toggled="OnHasErrorToggled" /><Switch IsToggled="True" StyleId="InlineEditor" Toggled="OnEnabledToggled" /></Grid>
+                        <Grid ColumnDefinitions="*,Auto,Auto" ColumnSpacing="12"><Label Text="Dynamic HasError / Enabled" VerticalOptions="Center" /><Switch StyleId="DynamicEditor" Toggled="OnHasErrorToggled" /><Switch IsToggled="True" StyleId="DynamicEditor" Toggled="OnEnabledToggled" /></Grid>
+                        <HorizontalStackLayout Spacing="10">
+                            <controls:MaterialButton Style="{StaticResource SecondaryButton}" Text="Cambia inline Editor" StyleId="InlineEditor" Clicked="OnChangeInlineBorderClicked" />
+                            <controls:MaterialButton Style="{StaticResource SecondaryButton}" Text="Cambia DynamicResource" Clicked="OnChangeDynamicResourceClicked" />
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+                </controls:FastBorder>
+
+                <controls:FastBorder BackgroundColor="#F8FAFC" BorderColor="#E5E7EB" BorderThickness="1" CornerRadius="20" Padding="14">
+                    <VerticalStackLayout Spacing="10">
+                        <Label FontAttributes="Bold" FontSize="17" Text="MaterialDisplayField" TextColor="Black" />
+                        <controls:MaterialDisplayField x:Name="StyledDisplay" Style="{StaticResource DefaultDisplayField}" Placeholder="Display style" Text="Valore da style" ErrorBorderThickness="3" />
+                        <controls:MaterialDisplayField x:Name="InlineDisplay" HeightRequest="56" BorderColor="#D1D5DB" BorderThickness="1" CornerRadius="20" Padding="14,0" Placeholder="Display inline" Text="Valore inline" ErrorColor="#DC2626" ErrorBorderThickness="4" />
+                        <controls:MaterialDisplayField x:Name="DynamicDisplay" HeightRequest="56" BorderColor="{DynamicResource ErrorStateDynamicBorderColor}" BorderThickness="1" CornerRadius="20" Padding="14,0" Placeholder="Display dynamic" Text="Valore dynamic" ErrorColor="#DC2626" ErrorBorderThickness="3" />
+                        <Grid ColumnDefinitions="*,Auto,Auto" ColumnSpacing="12"><Label Text="Style HasError / Enabled" VerticalOptions="Center" /><Switch StyleId="StyledDisplay" Toggled="OnHasErrorToggled" /><Switch IsToggled="True" StyleId="StyledDisplay" Toggled="OnEnabledToggled" /></Grid>
+                        <Grid ColumnDefinitions="*,Auto,Auto" ColumnSpacing="12"><Label Text="Inline HasError / Enabled" VerticalOptions="Center" /><Switch StyleId="InlineDisplay" Toggled="OnHasErrorToggled" /><Switch IsToggled="True" StyleId="InlineDisplay" Toggled="OnEnabledToggled" /></Grid>
+                        <Grid ColumnDefinitions="*,Auto,Auto" ColumnSpacing="12"><Label Text="Dynamic HasError / Enabled" VerticalOptions="Center" /><Switch StyleId="DynamicDisplay" Toggled="OnHasErrorToggled" /><Switch IsToggled="True" StyleId="DynamicDisplay" Toggled="OnEnabledToggled" /></Grid>
+                        <HorizontalStackLayout Spacing="10">
+                            <controls:MaterialButton Style="{StaticResource SecondaryButton}" Text="Cambia inline Display" StyleId="InlineDisplay" Clicked="OnChangeInlineBorderClicked" />
+                            <controls:MaterialButton Style="{StaticResource SecondaryButton}" Text="Cambia DynamicResource" Clicked="OnChangeDynamicResourceClicked" />
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+                </controls:FastBorder>
+
+                <controls:FastBorder BackgroundColor="#F8FAFC" BorderColor="#E5E7EB" BorderThickness="1" CornerRadius="20" Padding="14">
+                    <VerticalStackLayout Spacing="10">
+                        <Label FontAttributes="Bold" FontSize="17" Text="MaterialNumericEntry" TextColor="Black" />
+                        <controls:MaterialNumericEntry x:Name="StyledNumeric" Style="{StaticResource DefaultNumericEntry}" Placeholder="Numeric style" Value="12" ErrorBorderThickness="3" />
+                        <controls:MaterialNumericEntry x:Name="InlineNumeric" HeightRequest="56" BorderColor="#D1D5DB" BorderThickness="1" CornerRadius="20" Padding="0" Placeholder="Numeric inline" Value="24" ErrorColor="#DC2626" ErrorBorderThickness="4" />
+                        <controls:MaterialNumericEntry x:Name="DynamicNumeric" HeightRequest="56" BorderColor="{DynamicResource ErrorStateDynamicBorderColor}" BorderThickness="1" CornerRadius="20" Padding="0" Placeholder="Numeric dynamic" Value="36" ErrorColor="#DC2626" ErrorBorderThickness="3" />
+                        <Grid ColumnDefinitions="*,Auto,Auto" ColumnSpacing="12"><Label Text="Style HasError / Enabled" VerticalOptions="Center" /><Switch StyleId="StyledNumeric" Toggled="OnHasErrorToggled" /><Switch IsToggled="True" StyleId="StyledNumeric" Toggled="OnEnabledToggled" /></Grid>
+                        <Grid ColumnDefinitions="*,Auto,Auto" ColumnSpacing="12"><Label Text="Inline HasError / Enabled" VerticalOptions="Center" /><Switch StyleId="InlineNumeric" Toggled="OnHasErrorToggled" /><Switch IsToggled="True" StyleId="InlineNumeric" Toggled="OnEnabledToggled" /></Grid>
+                        <Grid ColumnDefinitions="*,Auto,Auto" ColumnSpacing="12"><Label Text="Dynamic HasError / Enabled" VerticalOptions="Center" /><Switch StyleId="DynamicNumeric" Toggled="OnHasErrorToggled" /><Switch IsToggled="True" StyleId="DynamicNumeric" Toggled="OnEnabledToggled" /></Grid>
+                        <HorizontalStackLayout Spacing="10">
+                            <controls:MaterialButton Style="{StaticResource SecondaryButton}" Text="Cambia inline Numeric" StyleId="InlineNumeric" Clicked="OnChangeInlineBorderClicked" />
+                            <controls:MaterialButton Style="{StaticResource SecondaryButton}" Text="Cambia DynamicResource" Clicked="OnChangeDynamicResourceClicked" />
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+                </controls:FastBorder>
+
+                <controls:FastBorder BackgroundColor="#F8FAFC" BorderColor="#E5E7EB" BorderThickness="1" CornerRadius="20" Padding="14">
+                    <VerticalStackLayout Spacing="12">
+                        <Label FontAttributes="Bold" FontSize="17" Text="Extreme overlay alignment" TextColor="Black" />
+                        <Label FontSize="12" Text="Tutti i casi partono in HasError=true per verificare che il bordo errore copra il bordo normale e non appaia interno." TextColor="#707070" />
+
+                        <Label FontAttributes="Bold" FontSize="14" Text="MaterialEntry" TextColor="#374151" />
+                        <controls:MaterialEntry HeightRequest="56" BorderColor="#D1D5DB" BorderThickness="1" CornerRadius="20" Padding="14,0" Placeholder="Entry 1 / 2" Text="Border 1, error 2" ErrorColor="#DC2626" ErrorBorderThickness="2" HasError="True" />
+                        <controls:MaterialEntry HeightRequest="56" BorderColor="#D1D5DB" BorderThickness="2" CornerRadius="20" Padding="14,0" Placeholder="Entry 2 / 3" Text="Border 2, error 3" ErrorColor="#DC2626" ErrorBorderThickness="3" HasError="True" />
+                        <controls:MaterialEntry HeightRequest="64" BorderColor="#D1D5DB" BorderThickness="4" CornerRadius="20" Padding="14,0" Placeholder="Entry 4 / 6" Text="Border 4, error 6" ErrorColor="#DC2626" ErrorBorderThickness="6" HasError="True" />
+                        <controls:MaterialEntry HeightRequest="72" BorderColor="#D1D5DB" BorderThickness="6" CornerRadius="20" Padding="14,0" Placeholder="Entry 6 / 8" Text="Border 6, error 8" ErrorColor="#DC2626" ErrorBorderThickness="8" HasError="True" />
+
+                        <Label FontAttributes="Bold" FontSize="14" Text="MaterialEditor" TextColor="#374151" />
+                        <controls:MaterialEditor HeightRequest="88" BorderColor="#D1D5DB" BorderThickness="1" CornerRadius="20" Padding="14,8" Placeholder="Editor 1 / 2" Text="Border 1, error 2" ErrorColor="#DC2626" ErrorBorderThickness="2" HasError="True" />
+                        <controls:MaterialEditor HeightRequest="88" BorderColor="#D1D5DB" BorderThickness="2" CornerRadius="20" Padding="14,8" Placeholder="Editor 2 / 3" Text="Border 2, error 3" ErrorColor="#DC2626" ErrorBorderThickness="3" HasError="True" />
+                        <controls:MaterialEditor HeightRequest="96" BorderColor="#D1D5DB" BorderThickness="4" CornerRadius="20" Padding="14,8" Placeholder="Editor 4 / 6" Text="Border 4, error 6" ErrorColor="#DC2626" ErrorBorderThickness="6" HasError="True" />
+                        <controls:MaterialEditor HeightRequest="104" BorderColor="#D1D5DB" BorderThickness="6" CornerRadius="20" Padding="14,8" Placeholder="Editor 6 / 8" Text="Border 6, error 8" ErrorColor="#DC2626" ErrorBorderThickness="8" HasError="True" />
+
+                        <Label FontAttributes="Bold" FontSize="14" Text="MaterialDisplayField" TextColor="#374151" />
+                        <controls:MaterialDisplayField HeightRequest="56" BorderColor="#D1D5DB" BorderThickness="1" CornerRadius="20" Padding="14,0" Placeholder="Display 1 / 2" Text="Border 1, error 2" ErrorColor="#DC2626" ErrorBorderThickness="2" HasError="True" />
+                        <controls:MaterialDisplayField HeightRequest="56" BorderColor="#D1D5DB" BorderThickness="2" CornerRadius="20" Padding="14,0" Placeholder="Display 2 / 3" Text="Border 2, error 3" ErrorColor="#DC2626" ErrorBorderThickness="3" HasError="True" />
+                        <controls:MaterialDisplayField HeightRequest="64" BorderColor="#D1D5DB" BorderThickness="4" CornerRadius="20" Padding="14,0" Placeholder="Display 4 / 6" Text="Border 4, error 6" ErrorColor="#DC2626" ErrorBorderThickness="6" HasError="True" />
+                        <controls:MaterialDisplayField HeightRequest="72" BorderColor="#D1D5DB" BorderThickness="6" CornerRadius="20" Padding="14,0" Placeholder="Display 6 / 8" Text="Border 6, error 8" ErrorColor="#DC2626" ErrorBorderThickness="8" HasError="True" />
+
+                        <Label FontAttributes="Bold" FontSize="14" Text="MaterialNumericEntry" TextColor="#374151" />
+                        <controls:MaterialNumericEntry HeightRequest="56" BorderColor="#D1D5DB" BorderThickness="1" CornerRadius="20" Padding="0" Placeholder="Numeric 1 / 2" Value="12" ErrorColor="#DC2626" ErrorBorderThickness="2" HasError="True" />
+                        <controls:MaterialNumericEntry HeightRequest="56" BorderColor="#D1D5DB" BorderThickness="2" CornerRadius="20" Padding="0" Placeholder="Numeric 2 / 3" Value="24" ErrorColor="#DC2626" ErrorBorderThickness="3" HasError="True" />
+                        <controls:MaterialNumericEntry HeightRequest="64" BorderColor="#D1D5DB" BorderThickness="4" CornerRadius="20" Padding="0" Placeholder="Numeric 4 / 6" Value="36" ErrorColor="#DC2626" ErrorBorderThickness="6" HasError="True" />
+                        <controls:MaterialNumericEntry HeightRequest="72" BorderColor="#D1D5DB" BorderThickness="6" CornerRadius="20" Padding="0" Placeholder="Numeric 6 / 8" Value="48" ErrorColor="#DC2626" ErrorBorderThickness="8" HasError="True" />
+                    </VerticalStackLayout>
+                </controls:FastBorder>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <controls:FastBorder
+            Grid.Row="2"
+            BackgroundColor="#111827"
+            BorderColor="#111827"
+            BorderThickness="1"
+            CornerRadius="14"
+            Padding="12">
+            <Label
+                x:Name="LogLabel"
+                FontFamily="monospace"
+                FontSize="11"
+                LineBreakMode="TailTruncation"
+                MaxLines="20"
+                Text="Log valori"
+                TextColor="#F9FAFB" />
+        </controls:FastBorder>
+    </Grid>
+</ContentPage>

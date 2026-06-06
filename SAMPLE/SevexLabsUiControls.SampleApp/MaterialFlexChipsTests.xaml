@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SevexLabsUiControls.SampleApp.MaterialFlexChipsTests"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SevexLabs.Ui.Maui.Controls;assembly=SevexLabs.Ui.Maui.Controls"
+    BackgroundColor="#FFFFFF"
+    Title="MaterialFlexChips Tests">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="16"
+            Spacing="22">
+
+            <!-- Header -->
+            <Label
+                FontAttributes="Bold"
+                FontSize="26"
+                Text="MaterialFlexChips Tests"
+                TextColor="Black" />
+
+            <Label
+                FontSize="14"
+                Text="Pagina di test per verificare MaterialFlexChips, MaterialFlexChip, single/multiple selection, spacing, style, command, selezione programmatica e FastBorder."
+                TextColor="#707070" />
+
+            <!-- ===================================================== -->
+            <!-- DEFAULT STYLE -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="DefaultFlexChip style"
+                TextColor="Black" />
+
+            <Label
+                FontSize="13"
+                Text="Questo controllo usa il ChipStyle di default, se esiste una risorsa DefaultFlexChip nello Styles.xaml."
+                TextColor="#707070" />
+
+            <controls:MaterialFlexChips
+                x:Name="DefaultFlexChips"
+                ItemsSource="{Binding StatusChips}"
+                SelectedItems="{Binding SelectedStatusChips}"
+                SelectionMode="Single"
+                SelectionChanged="OnChipSelectionChanged" />
+
+            <!-- ===================================================== -->
+            <!-- SINGLE SELECTION -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="SelectionMode Single"
+                TextColor="Black" />
+
+            <controls:MaterialFlexChips
+                x:Name="SingleFlexChips"
+                ItemsSource="{Binding TimeRangeChips}"
+                SelectedItems="{Binding SelectedTimeRangeChips}"
+                SelectionMode="Single"
+                ChipStyle="{StaticResource TestFlexChipPrimaryStyle}"
+                Spacing="0,0,10,10"
+                SelectionChanged="OnChipSelectionChanged" />
+
+            <!-- ===================================================== -->
+            <!-- MULTIPLE SELECTION -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="SelectionMode Multiple"
+                TextColor="Black" />
+
+            <controls:MaterialFlexChips
+                x:Name="MultipleFlexChips"
+                ItemsSource="{Binding CategoryChips}"
+                SelectedItems="{Binding SelectedCategoryChips}"
+                SelectionMode="Multiple"
+                ChipStyle="{StaticResource TestFlexChipDarkStyle}"
+                Spacing="0,0,10,10"
+                SelectionChanged="OnChipSelectionChanged" />
+
+            <!-- ===================================================== -->
+            <!-- NONE SELECTION -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="SelectionMode None"
+                TextColor="Black" />
+
+            <controls:MaterialFlexChips
+                x:Name="NoneFlexChips"
+                ItemsSource="{Binding DisabledChips}"
+                SelectedItems="{Binding SelectedDisabledChips}"
+                SelectionMode="None"
+                ChipStyle="{StaticResource TestFlexChipPrimaryStyle}"
+                Spacing="0,0,10,10"
+                SelectionChanged="OnChipSelectionChanged" />
+
+            <!-- ===================================================== -->
+            <!-- CORNER RADIUS PER CHIP -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="ChipRadius per angolo"
+                TextColor="Black" />
+
+            <controls:MaterialFlexChips
+                x:Name="RoundedFlexChips"
+                ItemsSource="{Binding ShapeChips}"
+                SelectedItems="{Binding SelectedShapeChips}"
+                SelectionMode="Single"
+                ChipStyle="{StaticResource TestFlexChipRoundedStyle}"
+                Spacing="0,0,12,12"
+                SelectionChanged="OnChipSelectionChanged" />
+
+            <!-- ===================================================== -->
+            <!-- SPACING -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Spacing"
+                TextColor="Black" />
+
+            <controls:MaterialFlexChips
+                x:Name="CompactFlexChips"
+                ItemsSource="{Binding CompactChips}"
+                SelectedItems="{Binding SelectedCompactChips}"
+                SelectionMode="Multiple"
+                ChipStyle="{StaticResource TestFlexChipPrimaryStyle}"
+                Spacing="0,0,4,4"
+                SelectionChanged="OnChipSelectionChanged" />
+
+            <controls:MaterialFlexChips
+                x:Name="LargeSpacingFlexChips"
+                ItemsSource="{Binding CompactChips}"
+                SelectedItems="{Binding SelectedLargeSpacingChips}"
+                SelectionMode="Multiple"
+                ChipStyle="{StaticResource TestFlexChipPrimaryStyle}"
+                Spacing="0,0,18,18"
+                SelectionChanged="OnChipSelectionChanged" />
+
+            <!-- ===================================================== -->
+            <!-- PROGRAMMATIC SELECTION -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Selezione programmatica"
+                TextColor="Black" />
+
+            <controls:MaterialFlexChips
+                x:Name="ProgrammaticFlexChips"
+                ItemsSource="{Binding PriorityChips}"
+                SelectedItems="{Binding SelectedPriorityChips}"
+                SelectionMode="Single"
+                ChipStyle="{StaticResource TestFlexChipPrimaryStyle}"
+                Spacing="0,0,10,10"
+                SelectionChanged="OnChipSelectionChanged" />
+
+            <Grid
+                ColumnDefinitions="*,*,*"
+                ColumnSpacing="10">
+
+                <controls:MaterialButton
+                    Grid.Column="0"
+                    Style="{StaticResource SecondaryButton}"
+                    Text="Low"
+                    Clicked="OnSelectLowClicked" />
+
+                <controls:MaterialButton
+                    Grid.Column="1"
+                    Style="{StaticResource SecondaryButton}"
+                    Text="Medium"
+                    Clicked="OnSelectMediumClicked" />
+
+                <controls:MaterialButton
+                    Grid.Column="2"
+                    Style="{StaticResource PrimaryButton}"
+                    Text="High"
+                    Clicked="OnSelectHighClicked" />
+
+            </Grid>
+
+            <controls:MaterialButton
+                Style="{StaticResource SecondaryButton}"
+                Text="Deselect all"
+                Clicked="OnDeselectPriorityClicked" />
+
+            <!-- ===================================================== -->
+            <!-- MULTIPLE PROGRAMMATIC SELECTION -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Selezione multipla programmatica"
+                TextColor="Black" />
+
+            <controls:MaterialFlexChips
+                x:Name="ProgrammaticMultipleFlexChips"
+                ItemsSource="{Binding SkillChips}"
+                SelectedItems="{Binding SelectedSkillChips}"
+                SelectionMode="Multiple"
+                ChipStyle="{StaticResource TestFlexChipDarkStyle}"
+                Spacing="0,0,10,10"
+                SelectionChanged="OnChipSelectionChanged" />
+
+            <Grid
+                ColumnDefinitions="*,*"
+                ColumnSpacing="10">
+
+                <controls:MaterialButton
+                    Grid.Column="0"
+                    Style="{StaticResource SecondaryButton}"
+                    Text="Select C# + MAUI"
+                    Clicked="OnSelectCSharpMauiClicked" />
+
+                <controls:MaterialButton
+                    Grid.Column="1"
+                    Style="{StaticResource PrimaryButton}"
+                    Text="Clear"
+                    Clicked="OnClearSkillsClicked" />
+
+            </Grid>
+
+            <!-- ===================================================== -->
+            <!-- COMMAND TEST -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="SelectionChangedCommand"
+                TextColor="Black" />
+
+            <controls:MaterialFlexChips
+                x:Name="CommandFlexChips"
+                ItemsSource="{Binding CommandChips}"
+                SelectedItems="{Binding SelectedCommandChips}"
+                SelectionMode="Multiple"
+                ChipStyle="{StaticResource TestFlexChipPrimaryStyle}"
+                Spacing="0,0,10,10"
+                SelectionChangedCommand="{Binding ChipsSelectedCommand}" />
+
+            <!-- ===================================================== -->
+            <!-- STRING ITEMSOURCE -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="ItemsSource string"
+                TextColor="Black" />
+
+            <controls:MaterialFlexChips
+                x:Name="StringFlexChips"
+                ItemsSource="{Binding StringChips}"
+                SelectedItems="{Binding SelectedStringChips}"
+                SelectionMode="Multiple"
+                ChipStyle="{StaticResource TestFlexChipRoundedStyle}"
+                Spacing="0,0,10,10"
+                SelectionChanged="OnChipSelectionChanged" />
+
+            <!-- ===================================================== -->
+            <!-- INSIDE FASTBORDER CARD -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Dentro FastBorder/Card"
+                TextColor="Black" />
+
+            <controls:FastBorder
+                BackgroundColor="#F3F4F6"
+                BorderColor="#E5E7EB"
+                BorderThickness="1"
+                CornerRadius="28"
+                Padding="18"
+                HorizontalOptions="Fill">
+                <controls:FastBorder.Shadow>
+                    <Shadow
+                        Brush="Black"
+                        Offset="2,4"
+                        Opacity="0.15"
+                        Radius="12" />
+                </controls:FastBorder.Shadow>
+
+                <VerticalStackLayout Spacing="14">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        Text="Card con FlexChips"
+                        TextColor="Black" />
+
+                    <Label
+                        FontSize="13"
+                        Text="Test per verificare MaterialFlexChips dentro un contenitore FastBorder con corner radius e shadow."
+                        TextColor="#707070" />
+
+                    <controls:MaterialFlexChips
+                        ItemsSource="{Binding CategoryChips}"
+                        SelectedItems="{Binding SelectedCategoryCardChips}"
+                        SelectionMode="Multiple"
+                        ChipStyle="{StaticResource TestFlexChipDarkStyle}"
+                        Spacing="0,0,10,10"
+                        SelectionChanged="OnChipSelectionChanged" />
+
+                    <controls:MaterialFlexChips
+                        ItemsSource="{Binding VisitTypeChips}"
+                        SelectedItems="{Binding SelectedVisitTypeChips}"
+                        SelectionMode="Single"
+                        ChipStyle="{StaticResource TestFlexChipPrimaryStyle}"
+                        Spacing="0,0,10,10"
+                        SelectionChanged="OnChipSelectionChanged" />
+
+                </VerticalStackLayout>
+            </controls:FastBorder>
+
+            <!-- ===================================================== -->
+            <!-- RESULT -->
+            <!-- ===================================================== -->
+
+            <controls:FastBorder
+                BackgroundColor="#EEF2FF"
+                BorderColor="#C7D2FE"
+                BorderThickness="1"
+                CornerRadius="18"
+                Padding="14"
+                HorizontalOptions="Fill">
+                <Label
+                    x:Name="ResultLabel"
+                    Text="Nessuna selezione ancora."
+                    TextColor="#1E1B4B"
+                    FontSize="14" />
+            </controls:FastBorder>
+
+            <BoxView HeightRequest="30" Opacity="0" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SevexLabsUiControls.SampleApp.HtmlFormsLabelTests"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SevexLabs.Ui.Maui.Controls;assembly=SevexLabs.Ui.Maui.Controls"
+    BackgroundColor="#FFFFFF"
+    Title="HtmlFormsLabel Tests">
+
+    <ContentPage.Resources>
+        <Style
+            x:Key="HtmlLinkSpanStyle"
+            TargetType="Span">
+            <Setter Property="TextColor" Value="#C2410C" />
+            <Setter Property="TextDecorations" Value="Underline" />
+        </Style>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="16"
+            Spacing="22">
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="26"
+                Text="HtmlFormsLabel Tests"
+                TextColor="Black" />
+
+            <Label
+                FontSize="14"
+                Text="Pagina di test per verificare testo semplice, subset HTML supportato, link tappabili, LinkColor, LinkStyle, font e contenuti non supportati."
+                TextColor="#707070" />
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Plain text"
+                TextColor="Black" />
+
+            <controls:HtmlFormsLabel
+                FontSize="16"
+                HtmlFontFamily="{StaticResource MontserratRegular}"
+                HtmlText="Testo semplice senza tag HTML."
+                TextColor="Black" />
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Tag supportati"
+                TextColor="Black" />
+
+            <controls:HtmlFormsLabel
+                FontSize="16"
+                HtmlFontFamily="{StaticResource MontserratRegular}"
+                HtmlFontBoldFamily="{StaticResource MontserratBold}"
+                HtmlFontItalicFamily="{StaticResource MontserratItalic}"
+                HtmlText="Test con &lt;b&gt;b&lt;/b&gt;, &lt;strong&gt;strong&lt;/strong&gt;, &lt;i&gt;i&lt;/i&gt;, &lt;em&gt;em&lt;/em&gt;, &lt;u&gt;underline&lt;/u&gt; e &lt;br&gt;una seconda riga."
+                LineBreakMode="WordWrap"
+                TextColor="Black" />
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Testo lungo multilinea"
+                TextColor="Black" />
+
+            <controls:HtmlFormsLabel
+                FontSize="15"
+                HtmlFontFamily="{StaticResource MontserratRegular}"
+                HtmlFontBoldFamily="{StaticResource MontserratBold}"
+                HtmlText="Questo testo contiene una frase lunga per verificare wrapping e rendering multilinea del controllo. &lt;br&gt;La seconda riga include &lt;strong&gt;testo bold&lt;/strong&gt; e altro contenuto normale per controllare la continuita della formattazione."
+                LineBreakMode="WordWrap"
+                TextColor="#111827" />
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="LinkColor"
+                TextColor="Black" />
+
+            <controls:HtmlFormsLabel
+                x:Name="LinkColorLabel"
+                FontSize="16"
+                HtmlFontFamily="{StaticResource MontserratRegular}"
+                HtmlText="Apri &lt;a href='action://patient/42'&gt;scheda paziente&lt;/a&gt; con callback locale."
+                LinkColor="#2563EB"
+                TextColor="Black" />
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="LinkStyle"
+                TextColor="Black" />
+
+            <controls:HtmlFormsLabel
+                x:Name="LinkStyleLabel"
+                FontSize="16"
+                HtmlFontFamily="{StaticResource MontserratRegular}"
+                HtmlText="Esegui &lt;a href='action://report/latest'&gt;azione report&lt;/a&gt; usando LinkStyle."
+                LinkStyle="{StaticResource HtmlLinkSpanStyle}"
+                TextColor="Black" />
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Contenuto non supportato / HTML parziale"
+                TextColor="Black" />
+
+            <controls:HtmlFormsLabel
+                FontSize="15"
+                HtmlFontFamily="{StaticResource MontserratRegular}"
+                HtmlText="Tag non supportato: &lt;span style='color:red'&gt;span rosso&lt;/span&gt;. HTML parziale: &lt;b&gt;bold senza chiusura e &lt;script&gt;ignored&lt;/script&gt;."
+                LineBreakMode="WordWrap"
+                TextColor="#111827" />
+
+            <controls:FastBorder
+                BackgroundColor="#F8FAFC"
+                BorderColor="#E5E7EB"
+                BorderThickness="1"
+                CornerRadius="22"
+                Padding="14"
+                HorizontalOptions="Fill">
+
+                <VerticalStackLayout Spacing="8">
+
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="14"
+                        Text="Log"
+                        TextColor="Black" />
+
+                    <Label
+                        x:Name="ResultLabel"
+                        FontSize="13"
+                        LineBreakMode="WordWrap"
+                        Text="Tocca un link per verificare Configure(Func&lt;string, Task&gt;) senza aprire il browser."
+                        TextColor="#374151" />
+
+                </VerticalStackLayout>
+            </controls:FastBorder>
+
+            <BoxView
+                HeightRequest="30"
+                Opacity="0" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

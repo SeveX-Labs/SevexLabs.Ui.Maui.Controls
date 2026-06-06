@@ -1,0 +1,850 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SevexLabsUiControls.SampleApp.MaterialEntryTests"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SevexLabs.Ui.Maui.Controls;assembly=SevexLabs.Ui.Maui.Controls"
+    BackgroundColor="#FFFFFF"
+    Title="MaterialEntry Tests">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="16"
+            Spacing="22">
+
+            <!-- Header -->
+            <Label
+                FontAttributes="Bold"
+                FontSize="26"
+                Text="MaterialEntry Tests"
+                TextColor="Black" />
+
+            <Label
+                FontSize="14"
+                Text="Pagina di test per verificare MaterialEntry, FastBorder, placeholder floating, input, password eye, read only, HasError, padding, alignment e style DefaultEntry."
+                TextColor="#707070" />
+
+            <!-- ===================================================== -->
+            <!-- DEFAULT STYLE -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="DefaultEntry style"
+                TextColor="Black" />
+
+            <Label
+                FontSize="13"
+                Text="Test dei MaterialEntry che usano direttamente lo style DefaultEntry definito in Styles.xaml."
+                TextColor="#707070" />
+
+            <controls:MaterialEntry
+                Style="{StaticResource DefaultEntry}"
+                Placeholder="Nome"
+                Text="Mario Rossi"
+                TextChanged="OnEntryTextChanged"
+                EntryFocused="OnEntryFocused" />
+
+            <controls:MaterialEntry
+                Style="{StaticResource DefaultEntry}"
+                Placeholder="Codice paziente"
+                Text="PZ-000123"
+                TextChanged="OnEntryTextChanged"
+                EntryFocused="OnEntryFocused" />
+
+            <controls:MaterialEntry
+                Style="{StaticResource DefaultEntry}"
+                Placeholder="Campo vuoto"
+                TextChanged="OnEntryTextChanged"
+                EntryFocused="OnEntryFocused" />
+
+            <controls:MaterialEntry
+                Style="{StaticResource DefaultEntry}"
+                Placeholder="Con errore"
+                Text="Valore non valido"
+                HasError="True"
+                ErrorBorderThickness="2"
+                TextChanged="OnEntryTextChanged"
+                EntryFocused="OnEntryFocused" />
+
+            <Grid
+                ColumnDefinitions="*,*"
+                ColumnSpacing="12">
+
+                <controls:MaterialEntry
+                    Grid.Column="0"
+                    Style="{StaticResource DefaultEntry}"
+                    Placeholder="Normale"
+                    Text="OK"
+                    TextChanged="OnEntryTextChanged"
+                    EntryFocused="OnEntryFocused" />
+
+                <controls:MaterialEntry
+                    Grid.Column="1"
+                    Style="{StaticResource DefaultEntry}"
+                    Placeholder="Errore"
+                    Text="KO"
+                    HasError="True"
+                    ErrorBorderThickness="2"
+                    TextChanged="OnEntryTextChanged"
+                    EntryFocused="OnEntryFocused" />
+            </Grid>
+
+            <controls:MaterialEntry
+                x:Name="StyledToggleErrorEntry"
+                Style="{StaticResource DefaultEntry}"
+                Placeholder="Tap read only per errore"
+                Text="Toccami per alternare HasError"
+                IsReadOnly="True"
+                RaiseTapWhenReadOnly="True"
+                ErrorBorderThickness="2"
+                ReadOnlyTapped="OnStyledToggleErrorEntryTapped" />
+
+            <controls:MaterialEntry
+                Style="{StaticResource DefaultEntry}"
+                Placeholder="Disabled"
+                Text="Entry disabilitata"
+                IsEnabled="False" />
+
+            <!-- ===================================================== -->
+            <!-- BASE INLINE -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Base inline"
+                TextColor="Black" />
+
+            <controls:MaterialEntry
+                HeightRequest="56"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="14,0"
+                Placeholder="Nome"
+                Text="MaterialEntry base inline"
+                UseFloatingPlaceholder="True"
+                PlaceholderUpY="-10"
+                PlaceholderScale="0.9"
+                EntryDownY="10"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#6B7280"
+                TextChanged="OnEntryTextChanged"
+                EntryFocused="OnEntryFocused" />
+
+            <controls:MaterialEntry
+                HeightRequest="56"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="14,0"
+                Placeholder="Entry vuota"
+                UseFloatingPlaceholder="True"
+                PlaceholderUpY="-10"
+                PlaceholderScale="0.9"
+                EntryDownY="10"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#6B7280"
+                TextChanged="OnEntryTextChanged"
+                EntryFocused="OnEntryFocused" />
+
+            <!-- ===================================================== -->
+            <!-- HAS ERROR -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="HasError"
+                TextColor="Black" />
+
+            <controls:MaterialEntry
+                HeightRequest="56"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="14,0"
+                Placeholder="Errore standard"
+                Text="Questo campo ha HasError=True"
+                UseFloatingPlaceholder="True"
+                PlaceholderUpY="-10"
+                PlaceholderScale="0.9"
+                EntryDownY="10"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#6B7280"
+                HasError="True"
+                ErrorColor="#DC2626"
+                ErrorBorderThickness="2"
+                TextChanged="OnEntryTextChanged"
+                EntryFocused="OnEntryFocused" />
+
+            <controls:MaterialEntry
+                HeightRequest="56"
+                BackgroundColor="#FEF2F2"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="14,0"
+                Placeholder="Errore evidente"
+                Text="Email non valida"
+                UseFloatingPlaceholder="True"
+                PlaceholderUpY="-10"
+                PlaceholderScale="0.9"
+                EntryDownY="10"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#991B1B"
+                HasError="True"
+                ErrorColor="#EF4444"
+                ErrorBorderThickness="3"
+                TextChanged="OnEntryTextChanged"
+                EntryFocused="OnEntryFocused" />
+
+            <controls:MaterialEntry
+                x:Name="ToggleErrorEntry"
+                HeightRequest="56"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#2563EB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="14,0"
+                Placeholder="ReadOnly tap per alternare errore"
+                Text="Toccami per alternare HasError"
+                UseFloatingPlaceholder="True"
+                PlaceholderUpY="-10"
+                PlaceholderScale="0.9"
+                EntryDownY="10"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#2563EB"
+                ErrorColor="#DC2626"
+                ErrorBorderThickness="3"
+                IsReadOnly="True"
+                RaiseTapWhenReadOnly="True"
+                ReadOnlyTapped="OnToggleErrorEntryTapped" />
+            
+            
+            <!-- ===================================================== -->
+            <!-- HAS ERROR TOGGLE WITH BUTTON -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="HasError toggle con bottone"
+                TextColor="Black" />
+
+            <controls:FastBorder
+                BackgroundColor="#F8FAFC"
+                BorderColor="#E5E7EB"
+                BorderThickness="1"
+                CornerRadius="22"
+                Padding="14"
+                HorizontalOptions="Fill">
+
+                <VerticalStackLayout Spacing="12">
+
+                    <controls:MaterialEntry
+                        x:Name="ButtonToggleErrorEntry"
+                        Style="{StaticResource DefaultEntry}"
+                        Placeholder="Entry controllata da bottone"
+                        Text="Valore valido"
+                        ErrorBorderThickness="2"
+                        TextChanged="OnEntryTextChanged"
+                        EntryFocused="OnEntryFocused" />
+
+                    <Grid
+                        ColumnDefinitions="*,*"
+                        ColumnSpacing="12">
+
+                        <controls:MaterialButton
+                            Grid.Column="0"
+                            Style="{StaticResource SecondaryButton}"
+                            Text="Toggle HasError"
+                            Clicked="OnToggleEntryErrorButtonClicked" />
+
+                        <controls:MaterialButton
+                            Grid.Column="1"
+                            Style="{StaticResource PrimaryButton}"
+                            Text="Reset"
+                            Clicked="OnResetEntryErrorButtonClicked" />
+
+                    </Grid>
+
+                </VerticalStackLayout>
+            </controls:FastBorder>
+            
+
+            <!-- ===================================================== -->
+            <!-- PASSWORD -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Password / eye"
+                TextColor="Black" />
+
+            <controls:MaterialEntry
+                HeightRequest="56"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="20"
+                Padding="14,0"
+                Placeholder="Password senza occhio"
+                Text="password123"
+                UseFloatingPlaceholder="True"
+                PlaceholderUpY="-10"
+                PlaceholderScale="0.9"
+                EntryDownY="10"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#6B7280"
+                IsPassword="True"
+                ShowEye="False"
+                TextChanged="OnEntryTextChanged"
+                EntryFocused="OnEntryFocused" />
+
+            <controls:MaterialEntry
+                HeightRequest="56"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="20"
+                Padding="14,0"
+                Placeholder="Password con occhio"
+                Text="password123"
+                UseFloatingPlaceholder="True"
+                PlaceholderUpY="-10"
+                PlaceholderScale="0.9"
+                EntryDownY="10"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#6B7280"
+                IsPassword="True"
+                ShowEye="True"
+                TextChanged="OnEntryTextChanged"
+                EntryFocused="OnEntryFocused" />
+
+            <controls:MaterialEntry
+                HeightRequest="56"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="28,4,28,4"
+                Padding="14,0"
+                Placeholder="Password con CornerRadius diverso"
+                Text="password123"
+                UseFloatingPlaceholder="True"
+                PlaceholderUpY="-10"
+                PlaceholderScale="0.9"
+                EntryDownY="10"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#6B7280"
+                IsPassword="True"
+                ShowEye="True"
+                TextChanged="OnEntryTextChanged"
+                EntryFocused="OnEntryFocused" />
+
+            <!-- ===================================================== -->
+            <!-- READ ONLY -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="ReadOnly"
+                TextColor="Black" />
+
+            <controls:MaterialEntry
+                HeightRequest="56"
+                BackgroundColor="#F9FAFB"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="14,0"
+                Placeholder="ReadOnly semplice"
+                Text="Questo campo è read only"
+                UseFloatingPlaceholder="True"
+                PlaceholderUpY="-10"
+                PlaceholderScale="0.9"
+                EntryDownY="10"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#6B7280"
+                IsReadOnly="True" />
+
+            <controls:MaterialEntry
+                HeightRequest="56"
+                BackgroundColor="#EEF2FF"
+                BorderColor="#6366F1"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="14,0"
+                Placeholder="ReadOnly tappabile"
+                Text="Questo campo solleva ReadOnlyTapped"
+                UseFloatingPlaceholder="True"
+                PlaceholderUpY="-10"
+                PlaceholderScale="0.9"
+                EntryDownY="10"
+                FontSize="16"
+                TextColor="#1E1B4B"
+                PlaceholderColor="#6366F1"
+                IsReadOnly="True"
+                RaiseTapWhenReadOnly="True"
+                ReadOnlyTapped="OnReadOnlyEntryTapped" />
+
+            <!-- ===================================================== -->
+            <!-- KEYBOARD -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Keyboard"
+                TextColor="Black" />
+
+            <controls:MaterialEntry
+                HeightRequest="56"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="14,0"
+                Placeholder="Keyboard plain"
+                Text="Plain"
+                UseFloatingPlaceholder="True"
+                PlaceholderUpY="-10"
+                PlaceholderScale="0.9"
+                EntryDownY="10"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#6B7280"
+                Keyboard="Plain"
+                TextChanged="OnEntryTextChanged"
+                EntryFocused="OnEntryFocused" />
+
+            <controls:MaterialEntry
+                HeightRequest="56"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="14,0"
+                Placeholder="Keyboard Email"
+                Text="test@email.com"
+                UseFloatingPlaceholder="True"
+                PlaceholderUpY="-10"
+                PlaceholderScale="0.9"
+                EntryDownY="10"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#6B7280"
+                Keyboard="Email"
+                TextChanged="OnEntryTextChanged"
+                EntryFocused="OnEntryFocused" />
+
+            <controls:MaterialEntry
+                HeightRequest="56"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="14,0"
+                Placeholder="Keyboard numeric"
+                Text="123"
+                UseFloatingPlaceholder="True"
+                PlaceholderUpY="-10"
+                PlaceholderScale="0.9"
+                EntryDownY="10"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#6B7280"
+                Keyboard="Numeric"
+                TextChanged="OnEntryTextChanged"
+                EntryFocused="OnEntryFocused" />
+
+            <!-- ===================================================== -->
+            <!-- MAX LENGTH -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="MaxLength"
+                TextColor="Black" />
+
+            <controls:MaterialEntry
+                HeightRequest="56"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="14,0"
+                Placeholder="MaxLength 5"
+                Text=""
+                MaxLength="5"
+                UseFloatingPlaceholder="True"
+                PlaceholderUpY="-10"
+                PlaceholderScale="0.9"
+                EntryDownY="10"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#6B7280"
+                TextChanged="OnEntryTextChanged"
+                EntryFocused="OnEntryFocused" />
+
+            <!-- ===================================================== -->
+            <!-- CORNER RADIUS -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="CornerRadius"
+                TextColor="Black" />
+
+            <controls:MaterialEntry
+                HeightRequest="56"
+                BackgroundColor="#F9FAFB"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="0"
+                Padding="14,0"
+                Placeholder="CornerRadius 0"
+                Text="Bordi quadrati"
+                UseFloatingPlaceholder="True"
+                PlaceholderUpY="-10"
+                PlaceholderScale="0.9"
+                EntryDownY="10"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#6B7280" />
+
+            <controls:MaterialEntry
+                HeightRequest="56"
+                BackgroundColor="#F9FAFB"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="24"
+                Padding="14,0"
+                Placeholder="CornerRadius 24"
+                Text="Raggio uniforme"
+                UseFloatingPlaceholder="True"
+                PlaceholderUpY="-10"
+                PlaceholderScale="0.9"
+                EntryDownY="10"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#6B7280" />
+
+            <controls:MaterialEntry
+                HeightRequest="56"
+                BackgroundColor="#F9FAFB"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="28,4,28,4"
+                Padding="14,0"
+                Placeholder="CornerRadius per angolo"
+                Text="28,4,28,4"
+                UseFloatingPlaceholder="True"
+                PlaceholderUpY="-10"
+                PlaceholderScale="0.9"
+                EntryDownY="10"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#6B7280" />
+
+            <controls:MaterialEntry
+                HeightRequest="56"
+                BackgroundColor="#F9FAFB"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="4,28,4,28"
+                Padding="14,0"
+                Placeholder="CornerRadius per angolo"
+                Text="4,28,4,28"
+                UseFloatingPlaceholder="True"
+                PlaceholderUpY="-10"
+                PlaceholderScale="0.9"
+                EntryDownY="10"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#6B7280" />
+
+            <!-- ===================================================== -->
+            <!-- FLOATING PLACEHOLDER -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Floating placeholder"
+                TextColor="Black" />
+
+            <controls:MaterialEntry
+                HeightRequest="56"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="14,0"
+                Placeholder="Floating attivo"
+                Text="Placeholder in alto"
+                UseFloatingPlaceholder="True"
+                PlaceholderUpY="-10"
+                PlaceholderScale="0.9"
+                EntryDownY="10"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#2563EB" />
+
+            <controls:MaterialEntry
+                HeightRequest="56"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="14,0"
+                Placeholder="Floating disattivo"
+                Text="Placeholder nativo"
+                UseFloatingPlaceholder="False"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#6B7280" />
+
+            <controls:MaterialEntry
+                HeightRequest="64"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="14,0"
+                Placeholder="PlaceholderUpY -16 / EntryDownY 16"
+                Text="Test placeholder più alto"
+                UseFloatingPlaceholder="True"
+                PlaceholderUpY="-16"
+                PlaceholderScale="0.82"
+                EntryDownY="16"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#2563EB" />
+
+            <!-- ===================================================== -->
+            <!-- ALIGNMENT -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Allineamenti"
+                TextColor="Black" />
+
+            <controls:MaterialEntry
+                HeightRequest="56"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="14,0"
+                Placeholder="Start"
+                Text="Testo a sinistra"
+                UseFloatingPlaceholder="True"
+                PlaceholderUpY="-10"
+                PlaceholderScale="0.9"
+                EntryDownY="10"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#6B7280"
+                HorizontalTextAlignment="Start"
+                HorizontalPlaceholderAlignment="Start" />
+
+            <controls:MaterialEntry
+                HeightRequest="56"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="14,0"
+                Placeholder="Center"
+                Text="Testo centrato"
+                UseFloatingPlaceholder="True"
+                PlaceholderUpY="-10"
+                PlaceholderScale="0.9"
+                EntryDownY="10"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#6B7280"
+                HorizontalTextAlignment="Center"
+                HorizontalPlaceholderAlignment="Center" />
+
+            <controls:MaterialEntry
+                HeightRequest="56"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="14,0"
+                Placeholder="End"
+                Text="Testo a destra"
+                UseFloatingPlaceholder="True"
+                PlaceholderUpY="-10"
+                PlaceholderScale="0.9"
+                EntryDownY="10"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#6B7280"
+                HorizontalTextAlignment="End"
+                HorizontalPlaceholderAlignment="End" />
+
+            <!-- ===================================================== -->
+            <!-- TEXT INDENT -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="TextIndent"
+                TextColor="Black" />
+
+            <controls:MaterialEntry
+                HeightRequest="56"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="14,0"
+                Placeholder="TextIndent 0"
+                Text="Nessun indent"
+                UseFloatingPlaceholder="True"
+                PlaceholderUpY="-10"
+                PlaceholderScale="0.9"
+                EntryDownY="10"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#6B7280"
+                TextIndent="0" />
+
+            <controls:MaterialEntry
+                HeightRequest="56"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="14,0"
+                Placeholder="TextIndent 24"
+                Text="Testo spostato"
+                UseFloatingPlaceholder="True"
+                PlaceholderUpY="-10"
+                PlaceholderScale="0.9"
+                EntryDownY="10"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#6B7280"
+                TextIndent="24" />
+
+            <!-- ===================================================== -->
+            <!-- CARD TEST -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Dentro FastBorder/Card"
+                TextColor="Black" />
+
+            <controls:FastBorder
+                BackgroundColor="#F3F4F6"
+                BorderColor="#E5E7EB"
+                BorderThickness="1"
+                CornerRadius="28"
+                Padding="18"
+                HorizontalOptions="Fill">
+                <controls:FastBorder.Shadow>
+                    <Shadow
+                        Brush="Black"
+                        Offset="2,4"
+                        Opacity="0.15"
+                        Radius="12" />
+                </controls:FastBorder.Shadow>
+
+                <VerticalStackLayout Spacing="14">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        Text="Card con MaterialEntry"
+                        TextColor="Black" />
+
+                    <Label
+                        FontSize="13"
+                        Text="Test per verificare MaterialEntry dentro un contenitore FastBorder con corner radius e shadow."
+                        TextColor="#707070" />
+
+                    <controls:MaterialEntry
+                        Style="{StaticResource DefaultEntry}"
+                        Placeholder="Nome"
+                        Text="Mario Rossi"
+                        TextChanged="OnEntryTextChanged"
+                        EntryFocused="OnEntryFocused" />
+
+                    <controls:MaterialEntry
+                        Style="{StaticResource DefaultEntry}"
+                        Placeholder="Email"
+                        Text="mario.rossi@email.com"
+                        Keyboard="Email"
+                        TextChanged="OnEntryTextChanged"
+                        EntryFocused="OnEntryFocused" />
+
+                    <controls:MaterialEntry
+                        Style="{StaticResource DefaultEntry}"
+                        Placeholder="Password"
+                        Text="password123"
+                        IsPassword="True"
+                        ShowEye="True"
+                        TextChanged="OnEntryTextChanged"
+                        EntryFocused="OnEntryFocused" />
+
+                    <controls:MaterialEntry
+                        Style="{StaticResource DefaultEntry}"
+                        Placeholder="Campo obbligatorio"
+                        Text="Dato mancante"
+                        HasError="True"
+                        ErrorBorderThickness="2"
+                        TextChanged="OnEntryTextChanged"
+                        EntryFocused="OnEntryFocused" />
+                </VerticalStackLayout>
+            </controls:FastBorder>
+
+            <!-- ===================================================== -->
+            <!-- RESULT -->
+            <!-- ===================================================== -->
+
+            <controls:FastBorder
+                BackgroundColor="#EEF2FF"
+                BorderColor="#C7D2FE"
+                BorderThickness="1"
+                CornerRadius="18"
+                Padding="14"
+                HorizontalOptions="Fill">
+                <Label
+                    x:Name="ResultLabel"
+                    Text="Nessun evento ancora."
+                    TextColor="#1E1B4B"
+                    FontSize="14" />
+            </controls:FastBorder>
+
+            <BoxView HeightRequest="30" Opacity="0" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

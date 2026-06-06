@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SevexLabsUiControls.SampleApp.TestPagesMenuPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SevexLabs.Ui.Maui.Controls;assembly=SevexLabs.Ui.Maui.Controls"
+    BackgroundColor="#FFFFFF"
+    Title="Test Pages">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="16"
+            Spacing="18">
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="28"
+                Text="SevexLabs UI Controls"
+                TextColor="Black" />
+
+            <Label
+                FontSize="14"
+                Text="Seleziona una pagina di test da aprire."
+                TextColor="#707070" />
+
+            <controls:FastBorder
+                BackgroundColor="#EEF2FF"
+                BorderColor="#C7D2FE"
+                BorderThickness="1"
+                CornerRadius="28"
+                Padding="18"
+                HorizontalOptions="Fill">
+
+                <VerticalStackLayout Spacing="12">
+
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        Text="Documentation"
+                        TextColor="#111827" />
+
+                    <controls:MaterialButton
+                        Style="{StaticResource PrimaryButton}"
+                        Text="Controls Gallery"
+                        Clicked="OnControlsGalleryClicked" />
+
+                </VerticalStackLayout>
+            </controls:FastBorder>
+
+            <controls:FastBorder
+                BackgroundColor="#F3F4F6"
+                BorderColor="#E5E7EB"
+                BorderThickness="1"
+                CornerRadius="28"
+                Padding="18"
+                HorizontalOptions="Fill">
+
+                <VerticalStackLayout Spacing="12">
+
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        Text="Layout / Base"
+                        TextColor="Black" />
+
+                    <controls:MaterialButton
+                        Style="{StaticResource PrimaryButton}"
+                        Text="FastBorder Tests"
+                        Clicked="OnFastBorderTestsClicked" />
+
+                    <controls:MaterialButton
+                        Style="{StaticResource SecondaryButton}"
+                        Text="Border vs FastBorder Profiling"
+                        Clicked="OnBorderVsFastBorderProfilingTestsClicked" />
+
+                </VerticalStackLayout>
+            </controls:FastBorder>
+
+            <controls:FastBorder
+                BackgroundColor="#F8FAFC"
+                BorderColor="#E5E7EB"
+                BorderThickness="1"
+                CornerRadius="28"
+                Padding="18"
+                HorizontalOptions="Fill">
+
+                <VerticalStackLayout Spacing="12">
+
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        Text="Material controls"
+                        TextColor="Black" />
+
+                    <controls:MaterialButton
+                        Style="{StaticResource PrimaryButton}"
+                        Text="MaterialButton Tests"
+                        Clicked="OnMaterialButtonTestsClicked" />
+
+                    <controls:MaterialButton
+                        Style="{StaticResource SecondaryButton}"
+                        Text="MaterialDisplayField Tests"
+                        Clicked="OnMaterialDisplayFieldTestsClicked" />
+
+                    <controls:MaterialButton
+                        Style="{StaticResource SecondaryButton}"
+                        Text="MaterialEditor Tests"
+                        Clicked="OnMaterialEditorTestsClicked" />
+
+                    <controls:MaterialButton
+                        Style="{StaticResource SecondaryButton}"
+                        Text="MaterialEntry Tests"
+                        Clicked="OnMaterialEntryTestsClicked" />
+
+                    <controls:MaterialButton
+                        Style="{StaticResource SecondaryButton}"
+                        Text="MaterialErrorState Tests"
+                        Clicked="OnMaterialErrorStateTestsClicked" />
+
+                    <controls:MaterialButton
+                        Style="{StaticResource SecondaryButton}"
+                        Text="MaterialNumericEntry Tests"
+                        Clicked="OnMaterialNumericEntryTestsClicked" />
+
+                </VerticalStackLayout>
+            </controls:FastBorder>
+
+            <controls:FastBorder
+                BackgroundColor="#F8FAFC"
+                BorderColor="#E5E7EB"
+                BorderThickness="1"
+                CornerRadius="28"
+                Padding="18"
+                HorizontalOptions="Fill">
+
+                <VerticalStackLayout Spacing="12">
+
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        Text="Selection controls"
+                        TextColor="Black" />
+
+                    <controls:MaterialButton
+                        Style="{StaticResource PrimaryButton}"
+                        Text="MaterialSegmentedControl Tests"
+                        Clicked="OnMaterialSegmentedControlTestsClicked" />
+
+                    <controls:MaterialButton
+                        Style="{StaticResource SecondaryButton}"
+                        Text="MaterialFlexChips Tests"
+                        Clicked="OnMaterialFlexChipsTestsClicked" />
+
+                    <controls:MaterialButton
+                        Style="{StaticResource SecondaryButton}"
+                        Text="MaterialScrollView Tests"
+                        Clicked="OnMaterialScrollViewTestsClicked" />
+
+                    <controls:MaterialButton
+                        Style="{StaticResource SecondaryButton}"
+                        Text="MaterialPicker Tests"
+                        Clicked="OnMaterialPickerTestsClicked" />
+
+                </VerticalStackLayout>
+            </controls:FastBorder>
+
+            <controls:FastBorder
+                BackgroundColor="#F8FAFC"
+                BorderColor="#E5E7EB"
+                BorderThickness="1"
+                CornerRadius="28"
+                Padding="18"
+                HorizontalOptions="Fill">
+
+                <VerticalStackLayout Spacing="12">
+
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        Text="Text / Navigation helpers"
+                        TextColor="Black" />
+
+                    <controls:MaterialButton
+                        Style="{StaticResource PrimaryButton}"
+                        Text="HtmlFormsLabel Tests"
+                        Clicked="OnHtmlFormsLabelTestsClicked" />
+
+                    <controls:MaterialButton
+                        Style="{StaticResource SecondaryButton}"
+                        Text="SlideStepsView Tests"
+                        Clicked="OnSlideStepsViewTestsClicked" />
+
+                </VerticalStackLayout>
+            </controls:FastBorder>
+
+            <controls:FastBorder
+                BackgroundColor="#F8FAFC"
+                BorderColor="#E5E7EB"
+                BorderThickness="1"
+                CornerRadius="28"
+                Padding="18"
+                HorizontalOptions="Fill">
+
+                <VerticalStackLayout Spacing="12">
+
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        Text="Countdown / Progress"
+                        TextColor="Black" />
+
+                    <controls:MaterialButton
+                        Style="{StaticResource PrimaryButton}"
+                        Text="MediaProgressBar Tests"
+                        Clicked="OnMediaProgressBarTestsClicked" />
+
+                    <controls:MaterialButton
+                        Style="{StaticResource SecondaryButton}"
+                        Text="CountdownControls Tests"
+                        Clicked="OnCountdownControlsTestsClicked" />
+
+                    <controls:MaterialButton
+                        Style="{StaticResource SecondaryButton}"
+                        Text="Lifecycle Stress Tests"
+                        Clicked="OnLifecycleStressTestsClicked" />
+
+                </VerticalStackLayout>
+            </controls:FastBorder>
+            
+            <controls:FastBorder
+                BackgroundColor="#F8FAFC"
+                BorderColor="#E5E7EB"
+                BorderThickness="1"
+                CornerRadius="28"
+                Padding="18"
+                HorizontalOptions="Fill">
+
+                <VerticalStackLayout Spacing="12">
+
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        Text="Pages"
+                        TextColor="Black" />
+
+                    <controls:MaterialButton
+                        Style="{StaticResource PrimaryButton}"
+                        Text="Print Page"
+                        Clicked="OnPrintPageTestsClicked" />
+
+                    <controls:MaterialButton
+                        Style="{StaticResource SecondaryButton}"
+                        Text="Settings Page"
+                        Clicked="OnSettingsPageTestsClicked" />
+                    
+                </VerticalStackLayout>
+            </controls:FastBorder>
+
+            <BoxView
+                HeightRequest="30"
+                Opacity="0" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

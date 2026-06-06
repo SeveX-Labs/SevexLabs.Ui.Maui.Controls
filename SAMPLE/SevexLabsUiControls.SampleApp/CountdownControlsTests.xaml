@@ -1,0 +1,719 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SevexLabsUiControls.SampleApp.CountdownControlsTests"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SevexLabs.Ui.Maui.Controls;assembly=SevexLabs.Ui.Maui.Controls"
+    BackgroundColor="#FFFFFF"
+    Title="Countdown Controls Tests">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="16"
+            Spacing="22">
+
+            <!-- Header -->
+            <Label
+                FontAttributes="Bold"
+                FontSize="26"
+                Text="Countdown Controls Tests"
+                TextColor="Black" />
+
+            <Label
+                FontSize="14"
+                Text="Pagina di test per ArcCountdown, PieCountdown e PopCountdownView."
+                TextColor="#707070" />
+
+            <!-- ===================================================== -->
+            <!-- ARC COUNTDOWN INTERACTIVE -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="ArcCountdown interattivo"
+                TextColor="Black" />
+
+            <controls:FastBorder
+                BackgroundColor="#F8FAFC"
+                BorderColor="#E5E7EB"
+                BorderThickness="1"
+                CornerRadius="28"
+                Padding="18"
+                HorizontalOptions="Fill">
+                <controls:FastBorder.Shadow>
+                    <Shadow
+                        Brush="Black"
+                        Offset="2,4"
+                        Opacity="0.12"
+                        Radius="12" />
+                </controls:FastBorder.Shadow>
+
+                <VerticalStackLayout Spacing="14">
+
+                    <controls:ArcCountdown
+                        x:Name="MainArcCountdown"
+                        WidthRequest="180"
+                        HeightRequest="180"
+                        HorizontalOptions="Center"
+                        StartValue="10"
+                        FinalValue="0"
+                        StepValue="1"
+                        StepInterval="00:00:01"
+                        Animate="True"
+                        AnimationDuration="300"
+                        Direction="Clockwise"
+                        TimeDisplayFormat="Ss"
+                        MaxDecimals="0"
+                        ValueSuffix="s"
+                        FontFamily="MontserratSemiBold"
+                        FontSize="34"
+                        TextColor="#111827"
+                        TrackColor="#E5E7EB"
+                        TrackThickness="18"
+                        ProgressColor="#2563EB"
+                        StrokeCap="Round"
+                        CenterBackgroundColor="#FFFFFF"
+                        InnerArcColor="#DBEAFE"
+                        InnerArcThickness="6"
+                        InnerArcOuterMargin="8"
+                        InnerArcInnerMargin="10"
+                        CountdownStarted="OnArcCountdownStarted"
+                        CountdownPaused="OnArcCountdownPaused"
+                        CountdownStopped="OnArcCountdownStopped"
+                        CountdownUpdated="OnArcCountdownUpdated"
+                        CountdownCompleted="OnArcCountdownCompleted" />
+
+                    <Grid
+                        ColumnDefinitions="*,*,*"
+                        ColumnSpacing="10">
+
+                        <controls:MaterialButton
+                            Grid.Column="0"
+                            Style="{StaticResource PrimaryButton}"
+                            Text="Start"
+                            Clicked="OnMainArcStartClicked" />
+
+                        <controls:MaterialButton
+                            Grid.Column="1"
+                            Style="{StaticResource SecondaryButton}"
+                            Text="Pause"
+                            Clicked="OnMainArcPauseClicked" />
+
+                        <controls:MaterialButton
+                            Grid.Column="2"
+                            Style="{StaticResource SecondaryButton}"
+                            Text="Stop"
+                            Clicked="OnMainArcStopClicked" />
+                    </Grid>
+
+                    <controls:FastBorder
+                        BackgroundColor="#EEF2FF"
+                        BorderColor="#C7D2FE"
+                        BorderThickness="1"
+                        CornerRadius="16"
+                        Padding="12"
+                        HorizontalOptions="Fill">
+
+                        <VerticalStackLayout Spacing="4">
+                            <Label
+                                x:Name="ArcStateLabel"
+                                FontAttributes="Bold"
+                                FontSize="14"
+                                Text="Arc State: Stopped"
+                                TextColor="#1E1B4B" />
+
+                            <Label
+                                x:Name="ArcFlagsLabel"
+                                FontSize="13"
+                                Text="IsRunning=False | IsPaused=False | IsCompleted=False"
+                                TextColor="#374151" />
+                        </VerticalStackLayout>
+                    </controls:FastBorder>
+
+                </VerticalStackLayout>
+            </controls:FastBorder>
+
+            <!-- ===================================================== -->
+            <!-- PIE COUNTDOWN INTERACTIVE -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="PieCountdown interattivo"
+                TextColor="Black" />
+
+            <controls:FastBorder
+                BackgroundColor="#F8FAFC"
+                BorderColor="#E5E7EB"
+                BorderThickness="1"
+                CornerRadius="28"
+                Padding="18"
+                HorizontalOptions="Fill">
+
+                <VerticalStackLayout Spacing="14">
+
+                    <controls:PieCountdown
+                        x:Name="MainPieCountdown"
+                        WidthRequest="180"
+                        HeightRequest="180"
+                        HorizontalOptions="Center"
+                        StartValue="10"
+                        FinalValue="0"
+                        StepValue="1"
+                        StepInterval="00:00:01"
+                        Animate="True"
+                        AnimationDuration="300"
+                        Direction="Clockwise"
+                        TimeDisplayFormat="Ss"
+                        MaxDecimals="0"
+                        ValueSuffix="s"
+                        FontFamily="MontserratSemiBold"
+                        FontSize="34"
+                        TextColor="#FFFFFF"
+                        CircleBackgroundColor="#E5E7EB"
+                        FillColor="#16A34A"
+                        CountdownStarted="OnPieCountdownStarted"
+                        CountdownPaused="OnPieCountdownPaused"
+                        CountdownStopped="OnPieCountdownStopped"
+                        CountdownUpdated="OnPieCountdownUpdated"
+                        CountdownCompleted="OnPieCountdownCompleted" />
+
+                    <Grid
+                        ColumnDefinitions="*,*,*"
+                        ColumnSpacing="10">
+
+                        <controls:MaterialButton
+                            Grid.Column="0"
+                            Style="{StaticResource PrimaryButton}"
+                            Text="Start"
+                            Clicked="OnMainPieStartClicked" />
+
+                        <controls:MaterialButton
+                            Grid.Column="1"
+                            Style="{StaticResource SecondaryButton}"
+                            Text="Pause"
+                            Clicked="OnMainPiePauseClicked" />
+
+                        <controls:MaterialButton
+                            Grid.Column="2"
+                            Style="{StaticResource SecondaryButton}"
+                            Text="Stop"
+                            Clicked="OnMainPieStopClicked" />
+                    </Grid>
+
+                    <controls:FastBorder
+                        BackgroundColor="#ECFDF5"
+                        BorderColor="#A7F3D0"
+                        BorderThickness="1"
+                        CornerRadius="16"
+                        Padding="12"
+                        HorizontalOptions="Fill">
+
+                        <VerticalStackLayout Spacing="4">
+                            <Label
+                                x:Name="PieStateLabel"
+                                FontAttributes="Bold"
+                                FontSize="14"
+                                Text="Pie State: Stopped"
+                                TextColor="#064E3B" />
+
+                            <Label
+                                x:Name="PieFlagsLabel"
+                                FontSize="13"
+                                Text="IsRunning=False | IsPaused=False | IsCompleted=False"
+                                TextColor="#374151" />
+                        </VerticalStackLayout>
+                    </controls:FastBorder>
+
+                </VerticalStackLayout>
+            </controls:FastBorder>
+
+            <!-- ===================================================== -->
+            <!-- POP COUNTDOWN INTERACTIVE -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="PopCountdownView interattivo"
+                TextColor="Black" />
+
+            <controls:FastBorder
+                BackgroundColor="#111827"
+                BorderColor="#374151"
+                BorderThickness="1"
+                CornerRadius="28"
+                Padding="18"
+                HorizontalOptions="Fill">
+
+                <VerticalStackLayout Spacing="14">
+
+                    <controls:PopCountdownView
+                        x:Name="MainPopCountdown"
+                        HeightRequest="220"
+                        HorizontalOptions="Fill"
+                        StartValue="5"
+                        EndValue="0"
+                        Interval="00:00:01"
+                        AnimateOnValueChanged="True"
+                        HideOnCompleted="False"
+                        TextColor="#FFFFFF"
+                        FontFamily="MontserratSemiBold"
+                        FontSize="110"
+                        DepthColor="#2563EB"
+                        DepthOffsetX="6"
+                        DepthOffsetY="8"
+                        DepthLayers="4"
+                        UseSingleDepthLayer="False"
+                        IsShadowEnabled="True"
+                        ShadowColor="#99000000"
+                        ShadowOffsetX="0"
+                        ShadowOffsetY="8"
+                        ShadowBlur="12"
+                        AnimationDuration="00:00:00.220"
+                        StartScale="0.05"
+                        EndScale="1.55"
+                        StartValueMode="Default"
+                        BackgroundColor="#111827"
+                        Started="OnPopStarted"
+                        Paused="OnPopPaused"
+                        Stopped="OnPopStopped"
+                        Completed="OnPopCompleted"
+                        ValueChanged="OnPopValueChanged"
+                        DisplayTextChanged="OnPopDisplayTextChanged">
+                        <controls:PopCountdownView.FinalTexts>
+                            <x:String>GO</x:String>
+                            <x:String>START</x:String>
+                        </controls:PopCountdownView.FinalTexts>
+                    </controls:PopCountdownView>
+
+                    <Grid
+                        ColumnDefinitions="*,*,*"
+                        ColumnSpacing="10">
+
+                        <controls:MaterialButton
+                            Grid.Column="0"
+                            Style="{StaticResource PrimaryButton}"
+                            Text="Start"
+                            Clicked="OnMainPopStartClicked" />
+
+                        <controls:MaterialButton
+                            Grid.Column="1"
+                            Style="{StaticResource SecondaryButton}"
+                            Text="Pause"
+                            Clicked="OnMainPopPauseClicked" />
+
+                        <controls:MaterialButton
+                            Grid.Column="2"
+                            Style="{StaticResource SecondaryButton}"
+                            Text="Stop"
+                            Clicked="OnMainPopStopClicked" />
+                    </Grid>
+
+                    <Grid
+                        ColumnDefinitions="*,*"
+                        ColumnSpacing="10">
+
+                        <controls:MaterialButton
+                            Grid.Column="0"
+                            Style="{StaticResource SecondaryButton}"
+                            Text="Reset"
+                            Clicked="OnMainPopResetClicked" />
+
+                        <controls:MaterialButton
+                            Grid.Column="1"
+                            Style="{StaticResource PrimaryButton}"
+                            Text="Restart"
+                            Clicked="OnMainPopRestartClicked" />
+                    </Grid>
+
+                    <controls:FastBorder
+                        BackgroundColor="#1F2937"
+                        BorderColor="#374151"
+                        BorderThickness="1"
+                        CornerRadius="16"
+                        Padding="12"
+                        HorizontalOptions="Fill">
+
+                        <VerticalStackLayout Spacing="4">
+                            <Label
+                                x:Name="PopStateLabel"
+                                FontAttributes="Bold"
+                                FontSize="14"
+                                Text="Pop IsRunning=False"
+                                TextColor="#FFFFFF" />
+
+                            <Label
+                                x:Name="PopValueLabel"
+                                FontSize="13"
+                                Text="Value=5 | DisplayText=5"
+                                TextColor="#D1D5DB" />
+                        </VerticalStackLayout>
+                    </controls:FastBorder>
+
+                </VerticalStackLayout>
+            </controls:FastBorder>
+
+            <!-- ===================================================== -->
+            <!-- ARC VARIANTS -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="ArcCountdown varianti visuali"
+                TextColor="Black" />
+
+            <Grid
+                ColumnDefinitions="*,*"
+                ColumnSpacing="14"
+                RowDefinitions="Auto,Auto"
+                RowSpacing="14">
+
+                <controls:ArcCountdown
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    WidthRequest="150"
+                    HeightRequest="150"
+                    HorizontalOptions="Center"
+                    StartValue="90"
+                    FinalValue="0"
+                    Direction="Clockwise"
+                    TimeDisplayFormat="MmSs"
+                    FontFamily="MontserratSemiBold"
+                    FontSize="24"
+                    TextColor="#111827"
+                    TrackColor="#E5E7EB"
+                    TrackThickness="14"
+                    ProgressColor="#2563EB"
+                    StrokeCap="Butt"
+                    CenterBackgroundColor="#F8FAFC" />
+
+                <controls:ArcCountdown
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    WidthRequest="150"
+                    HeightRequest="150"
+                    HorizontalOptions="Center"
+                    StartValue="90"
+                    FinalValue="0"
+                    Direction="CounterClockwise"
+                    TimeDisplayFormat="MmSs"
+                    FontFamily="MontserratSemiBold"
+                    FontSize="24"
+                    TextColor="#111827"
+                    TrackColor="#E5E7EB"
+                    TrackThickness="14"
+                    ProgressColor="#F97316"
+                    StrokeCap="Round"
+                    CenterBackgroundColor="#FFF7ED" />
+
+                <controls:ArcCountdown
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    WidthRequest="150"
+                    HeightRequest="150"
+                    HorizontalOptions="Center"
+                    StartValue="3605"
+                    FinalValue="0"
+                    Direction="Clockwise"
+                    TimeDisplayFormat="HhMmSs"
+                    FontFamily="MontserratSemiBold"
+                    FontSize="18"
+                    TextColor="#111827"
+                    TrackColor="#DDD6FE"
+                    TrackThickness="18"
+                    ProgressColor="#7C3AED"
+                    StrokeCap="RoundInline"
+                    CenterBackgroundColor="#F5F3FF"
+                    InnerArcColor="#C4B5FD"
+                    InnerArcThickness="5"
+                    InnerArcOuterMargin="6"
+                    InnerArcInnerMargin="8" />
+
+                <controls:ArcCountdown
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    WidthRequest="150"
+                    HeightRequest="150"
+                    HorizontalOptions="Center"
+                    StartValue="25"
+                    FinalValue="0"
+                    Direction="Clockwise"
+                    TimeDisplayFormat="Ss"
+                    ValueSuffix="%"
+                    FontFamily="MontserratSemiBold"
+                    FontSize="28"
+                    TextColor="#064E3B"
+                    TrackColor="#D1FAE5"
+                    TrackThickness="12"
+                    ProgressColor="#16A34A"
+                    StrokeCap="Square"
+                    CenterBackgroundColor="#ECFDF5"
+                    TrackUseShadow="True"
+                    TextUseShadow="True">
+                    <controls:ArcCountdown.TrackShadow>
+                        <Shadow
+                            Brush="#16A34A"
+                            Offset="0,2"
+                            Opacity="0.35"
+                            Radius="8" />
+                    </controls:ArcCountdown.TrackShadow>
+                    <controls:ArcCountdown.TextShadow>
+                        <Shadow
+                            Brush="Black"
+                            Offset="0,2"
+                            Opacity="0.25"
+                            Radius="4" />
+                    </controls:ArcCountdown.TextShadow>
+                </controls:ArcCountdown>
+
+            </Grid>
+
+            <!-- ===================================================== -->
+            <!-- PIE VARIANTS -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="PieCountdown varianti visuali"
+                TextColor="Black" />
+
+            <Grid
+                ColumnDefinitions="*,*"
+                ColumnSpacing="14"
+                RowDefinitions="Auto,Auto"
+                RowSpacing="14">
+
+                <controls:PieCountdown
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    WidthRequest="150"
+                    HeightRequest="150"
+                    HorizontalOptions="Center"
+                    StartValue="60"
+                    FinalValue="0"
+                    Direction="Clockwise"
+                    TimeDisplayFormat="MmSs"
+                    FontFamily="MontserratSemiBold"
+                    FontSize="24"
+                    TextColor="White"
+                    CircleBackgroundColor="#E5E7EB"
+                    FillColor="#2563EB" />
+
+                <controls:PieCountdown
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    WidthRequest="150"
+                    HeightRequest="150"
+                    HorizontalOptions="Center"
+                    StartValue="60"
+                    FinalValue="0"
+                    Direction="CounterClockwise"
+                    TimeDisplayFormat="MmSs"
+                    FontFamily="MontserratSemiBold"
+                    FontSize="24"
+                    TextColor="White"
+                    CircleBackgroundColor="#FEE2E2"
+                    FillColor="#DC2626" />
+
+                <controls:PieCountdown
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    WidthRequest="150"
+                    HeightRequest="150"
+                    HorizontalOptions="Center"
+                    StartValue="15"
+                    FinalValue="0"
+                    Direction="Clockwise"
+                    TimeDisplayFormat="Ss"
+                    ValueSuffix="s"
+                    FontFamily="MontserratSemiBold"
+                    FontSize="30"
+                    TextColor="#111827"
+                    CircleBackgroundColor="#FEF3C7"
+                    FillColor="#F59E0B" />
+
+                <controls:PieCountdown
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    WidthRequest="150"
+                    HeightRequest="150"
+                    HorizontalOptions="Center"
+                    StartValue="3605"
+                    FinalValue="0"
+                    Direction="Clockwise"
+                    TimeDisplayFormat="HhMmSs"
+                    FontFamily="MontserratSemiBold"
+                    FontSize="18"
+                    TextColor="White"
+                    CircleBackgroundColor="#E0E7FF"
+                    FillColor="#6366F1" />
+
+            </Grid>
+
+            <!-- ===================================================== -->
+            <!-- POP VARIANTS -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="PopCountdownView varianti visuali"
+                TextColor="Black" />
+
+            <Grid
+                ColumnDefinitions="*,*"
+                ColumnSpacing="14"
+                RowDefinitions="Auto,Auto"
+                RowSpacing="14">
+
+                <controls:FastBorder
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    BackgroundColor="#111827"
+                    BorderColor="#374151"
+                    BorderThickness="1"
+                    CornerRadius="22"
+                    Padding="8">
+                    <controls:PopCountdownView
+                        HeightRequest="150"
+                        StartValue="3"
+                        EndValue="0"
+                        Interval="00:00:01"
+                        TextColor="White"
+                        FontFamily="MontserratSemiBold"
+                        FontSize="78"
+                        DepthColor="#2563EB"
+                        DepthOffsetX="4"
+                        DepthOffsetY="5"
+                        DepthLayers="3"
+                        UseSingleDepthLayer="False"
+                        BackgroundColor="#111827" />
+                </controls:FastBorder>
+
+                <controls:FastBorder
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    BackgroundColor="#FEF2F2"
+                    BorderColor="#FCA5A5"
+                    BorderThickness="1"
+                    CornerRadius="22"
+                    Padding="8">
+                    <controls:PopCountdownView
+                        HeightRequest="150"
+                        StartValue="3"
+                        EndValue="0"
+                        Interval="00:00:01"
+                        TextColor="#DC2626"
+                        FontFamily="MontserratSemiBold"
+                        FontSize="78"
+                        DepthColor="#FCA5A5"
+                        DepthOffsetX="3"
+                        DepthOffsetY="4"
+                        DepthLayers="2"
+                        UseSingleDepthLayer="True"
+                        BackgroundColor="#FEF2F2" />
+                </controls:FastBorder>
+
+                <controls:FastBorder
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    BackgroundColor="#ECFDF5"
+                    BorderColor="#A7F3D0"
+                    BorderThickness="1"
+                    CornerRadius="22"
+                    Padding="8">
+                    <controls:PopCountdownView
+                        HeightRequest="150"
+                        StartValue="3"
+                        EndValue="0"
+                        Interval="00:00:01"
+                        TextColor="#064E3B"
+                        FontFamily="MontserratSemiBold"
+                        FontSize="78"
+                        DepthColor="#16A34A"
+                        DepthOffsetX="4"
+                        DepthOffsetY="5"
+                        DepthLayers="3"
+                        UseSingleDepthLayer="False"
+                        IsShadowEnabled="True"
+                        ShadowColor="#66000000"
+                        ShadowOffsetY="6"
+                        ShadowBlur="8"
+                        BackgroundColor="#ECFDF5" />
+                </controls:FastBorder>
+
+                <controls:FastBorder
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    BackgroundColor="#EEF2FF"
+                    BorderColor="#C7D2FE"
+                    BorderThickness="1"
+                    CornerRadius="22"
+                    Padding="8">
+                    <controls:PopCountdownView
+                        HeightRequest="150"
+                        StartValue="3"
+                        EndValue="0"
+                        Interval="00:00:01"
+                        TextColor="#4F46E5"
+                        FontFamily="MontserratSemiBold"
+                        FontSize="78"
+                        DepthColor="#C7D2FE"
+                        DepthOffsetX="5"
+                        DepthOffsetY="5"
+                        DepthLayers="4"
+                        UseSingleDepthLayer="False"
+                        StartScale="0.1"
+                        EndScale="1.35"
+                        StartValueMode="StartScaleAnimated"
+                        BackgroundColor="#EEF2FF" />
+                </controls:FastBorder>
+
+            </Grid>
+
+            <Grid
+                ColumnDefinitions="*,*"
+                ColumnSpacing="12">
+
+                <controls:MaterialButton
+                    Grid.Column="0"
+                    Style="{StaticResource PrimaryButton}"
+                    Text="Start pop variants"
+                    Clicked="OnStartPopVariantsClicked" />
+
+                <controls:MaterialButton
+                    Grid.Column="1"
+                    Style="{StaticResource SecondaryButton}"
+                    Text="Reset pop variants"
+                    Clicked="OnResetPopVariantsClicked" />
+
+            </Grid>
+
+            <!-- ===================================================== -->
+            <!-- RESULT -->
+            <!-- ===================================================== -->
+
+            <controls:FastBorder
+                BackgroundColor="#EEF2FF"
+                BorderColor="#C7D2FE"
+                BorderThickness="1"
+                CornerRadius="18"
+                Padding="14"
+                HorizontalOptions="Fill">
+                <Label
+                    x:Name="ResultLabel"
+                    Text="Nessun evento ancora."
+                    TextColor="#1E1B4B"
+                    FontSize="14" />
+            </controls:FastBorder>
+
+            <BoxView HeightRequest="30" Opacity="0" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

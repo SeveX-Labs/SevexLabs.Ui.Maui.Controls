@@ -1,0 +1,348 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    xmlns:controls="clr-namespace:SevexLabs.Ui.Maui.Controls;assembly=SevexLabs.Ui.Maui.Controls">
+
+    <Style x:Key="DefaultEntry" TargetType="controls:MaterialEntry">
+        <Setter Property="HeightRequest" Value="56"></Setter>
+        <Setter Property="UseFloatingPlaceholder" Value="True"></Setter>
+        <Setter Property="CornerRadius" Value="20"></Setter>
+        <Setter Property="TextIndent" Value="15"></Setter>
+        <Setter Property="HorizontalTextAlignment" Value="End"></Setter>
+        <Setter Property="HorizontalPlaceholderAlignment" Value="Start"></Setter>
+        <Setter Property="PlaceholderFontFamily" Value="MontserratLight"></Setter>
+        <Setter Property="FontFamily" Value="MontserratSemiBold"></Setter>
+        <Setter Property="TextColor" Value="{StaticResource SensorGray}"></Setter>
+        <Setter Property="ErrorColor" Value="{StaticResource Strawberry}"></Setter>
+        <Setter Property="FontSize" Value="18"></Setter>
+        <Setter Property="BorderThickness" Value="1"></Setter>
+        <Setter Property="BorderColor" Value="{StaticResource Primary}"></Setter>
+        <Setter Property="VerticalOptions" Value="Start"></Setter>
+        <Setter Property="HorizontalOptions" Value="Fill"></Setter>
+        <Setter Property="Keyboard" Value="Plain"></Setter>
+        <Setter Property="PlaceholderUpY" Value="-10"></Setter>
+        <Setter Property="PlaceholderScale" Value="0.9"></Setter>
+        <Setter Property="EntryDownY" Value="10"></Setter>
+
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal">
+                        <VisualState.Setters>
+                            <Setter Property="BackgroundColor" Value="Transparent"></Setter>
+                            <Setter Property="PlaceholderColor" Value="{StaticResource Primary}"></Setter>
+                            <Setter Property="BorderColor" Value="{StaticResource Primary}"></Setter>
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+                            <Setter Property="BackgroundColor" Value="{StaticResource DisabledGray}"></Setter>
+                            <Setter Property="PlaceholderColor" Value="{StaticResource SensorGray}"></Setter>
+                            <Setter Property="BorderColor" Value="{StaticResource DisabledGray}"></Setter>
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+    </Style>
+    
+    <Style x:Key="DefaultDisplayField" TargetType="controls:MaterialDisplayField">
+        <Setter Property="HeightRequest" Value="56"></Setter>
+        <Setter Property="UseFloatingPlaceholder" Value="True"></Setter>
+        <Setter Property="CornerRadius" Value="20"></Setter>
+        <Setter Property="TextIndent" Value="15"></Setter>
+        <Setter Property="HorizontalTextAlignment" Value="End"></Setter>
+        <Setter Property="HorizontalPlaceholderAlignment" Value="Start"></Setter>
+        <Setter Property="PlaceholderFontFamily" Value="MontserratLight"></Setter>
+        <Setter Property="FontFamily" Value="MontserratSemiBold"></Setter>
+        <Setter Property="TextColor" Value="{StaticResource SensorGray}"></Setter>
+        <Setter Property="ErrorColor" Value="{StaticResource Strawberry}"></Setter>
+        <Setter Property="FontSize" Value="18"></Setter>
+        <Setter Property="BorderThickness" Value="1"></Setter>
+        <Setter Property="BorderColor" Value="{StaticResource Primary}"></Setter>
+        <Setter Property="VerticalOptions" Value="Start"></Setter>
+        <Setter Property="HorizontalOptions" Value="Fill"></Setter>
+        
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal">
+                        <VisualState.Setters>
+                            <Setter Property="BackgroundColor" Value="Transparent" />
+                            <Setter Property="PlaceholderColor" Value="{StaticResource Primary}" />
+                            <Setter Property="BorderColor" Value="{StaticResource Primary}" />
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+                            <Setter Property="BackgroundColor" Value="{StaticResource DisabledGray}" />
+                            <Setter Property="PlaceholderColor" Value="{StaticResource SensorGray}" />
+                            <Setter Property="BorderColor" Value="{StaticResource DisabledGray}" />
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+    </Style>
+
+
+    <Style x:Key="DefaultEditor" TargetType="controls:MaterialEditor">
+        <Setter Property="Padding" Value="15, 15, 10, 10"></Setter>
+        <Setter Property="UseFloatingPlaceholder" Value="True"></Setter>
+        <Setter Property="CornerRadius" Value="20"></Setter>
+        <Setter Property="HorizontalTextAlignment" Value="End"></Setter>
+        <Setter Property="HorizontalPlaceholderAlignment" Value="Start"></Setter>
+        <Setter Property="PlaceholderFontFamily" Value="MontserratLight"></Setter>
+        <Setter Property="FontFamily" Value="MontserratSemiBold"></Setter>
+        <Setter Property="TextColor" Value="{StaticResource SensorGray}"></Setter>
+        <Setter Property="ErrorColor" Value="{StaticResource Strawberry}"></Setter>
+        <Setter Property="FontSize" Value="18"></Setter>
+        <Setter Property="BorderThickness" Value="1"></Setter>
+        <Setter Property="BorderColor" Value="{StaticResource Primary}"></Setter>
+        <Setter Property="VerticalOptions" Value="Start"></Setter>
+        <Setter Property="HorizontalOptions" Value="Fill"></Setter>
+        <Setter Property="Keyboard" Value="Plain"></Setter>
+        <Setter Property="PlaceholderUpY" Value="-7"></Setter>
+        <Setter Property="PlaceholderScale" Value="0.9"></Setter>
+        <Setter Property="EditorDownY" Value="10"></Setter>
+
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal">
+                        <VisualState.Setters>
+                            <Setter Property="BackgroundColor" Value="Transparent"></Setter>
+                            <Setter Property="PlaceholderColor" Value="{StaticResource Primary}"></Setter>
+                            <Setter Property="BorderColor" Value="{StaticResource Primary}"></Setter>
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+                            <Setter Property="BackgroundColor" Value="{StaticResource DisabledGray}"></Setter>
+                            <Setter Property="PlaceholderColor" Value="{StaticResource SensorGray}"></Setter>
+                            <Setter Property="BorderColor" Value="{StaticResource DisabledGray}"></Setter>
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+    </Style>
+
+    <Style x:Key="DefaultNumericEntry" TargetType="controls:MaterialNumericEntry">
+        <Setter Property="HeightRequest" Value="56"></Setter>
+        <Setter Property="ErrorColor" Value="{StaticResource Strawberry}"></Setter>
+        <Setter Property="UseFloatingPlaceholder" Value="True"></Setter>
+        <Setter Property="CornerRadius" Value="20"></Setter>
+        <Setter Property="HorizontalTextAlignment" Value="End"></Setter>
+        <Setter Property="TextIndent" Value="0"></Setter>
+        <Setter Property="DecreaseBackgroundColor" Value="Transparent"></Setter>
+        <Setter Property="ButtonsFontFamily" Value="MontserratRegular"></Setter>
+        <Setter Property="ButtonsFontSize" Value="32"></Setter>
+        <Setter Property="ButtonsTextColor" Value="{StaticResource Primary}"></Setter>
+        <Setter Property="IncreaseBackgroundColor" Value="Transparent"></Setter>
+        <Setter Property="DecimalPlaces" Value="1"></Setter>
+        <Setter Property="PlaceholderFontFamily" Value="MontserratLight"></Setter>
+        <Setter Property="HorizontalPlaceholderAlignment" Value="Start"></Setter>
+        <Setter Property="FontFamily" Value="MontserratSemiBold"></Setter>
+        <Setter Property="TextColor" Value="{StaticResource SensorGray}"></Setter>
+        <Setter Property="FontSize" Value="18"></Setter>
+        <Setter Property="BorderColor" Value="{StaticResource Primary}"></Setter>
+        <Setter Property="BorderThickness" Value="1"></Setter>
+        <Setter Property="VerticalOptions" Value="Start"></Setter>
+        <Setter Property="HorizontalOptions" Value="Fill"></Setter>
+        <Setter Property="PlaceholderUpY" Value="-7"></Setter>
+        <Setter Property="PlaceholderScale" Value="0.9"></Setter>
+        <Setter Property="EntryDownY" Value="10"></Setter>
+
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal">
+                        <VisualState.Setters>
+                            <Setter Property="BackgroundColor" Value="Transparent"></Setter>
+                            <Setter Property="PlaceholderColor" Value="{StaticResource Primary}"></Setter>
+                            <Setter Property="BorderColor" Value="{StaticResource Primary}"></Setter>
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+                            <Setter Property="BackgroundColor" Value="{StaticResource DisabledGray}"></Setter>
+                            <Setter Property="PlaceholderColor" Value="{StaticResource SensorGray}"></Setter>
+                            <Setter Property="BorderColor" Value="{StaticResource DisabledGray}"></Setter>
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+    </Style>
+
+    <Style x:Key="PrimaryButton" TargetType="controls:MaterialButton">
+        <Setter Property="Padding" Value="15, 16"></Setter>
+        <Setter Property="CornerRadius" Value="20"></Setter>
+        <Setter Property="FontFamily" Value="MontserratSemiBold"></Setter>
+        <Setter Property="TextColor" Value="{StaticResource White}"></Setter>
+        <Setter Property="FontSize" Value="16"></Setter>
+        <Setter Property="MustReduceToLoading" Value="False"></Setter>
+        <Setter Property="LoadingColor" Value="{StaticResource White}"></Setter>
+        <Setter Property="TextTransform" Value="Default"></Setter>
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal">
+                        <VisualState.Setters>
+                            <Setter Property="BackgroundColor" Value="{StaticResource Primary}"></Setter>
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+                            <Setter Property="BackgroundColor" Value="{StaticResource DisabledGray}"></Setter>
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+    </Style>
+
+
+    <Style x:Key="SecondaryButton" TargetType="controls:MaterialButton">
+        <Setter Property="Padding" Value="15, 16"></Setter>
+        <Setter Property="CornerRadius" Value="20"></Setter>
+        <Setter Property="FontFamily" Value="MontserratSemiBold"></Setter>
+        <Setter Property="BackgroundColor" Value="Transparent"></Setter>
+        <Setter Property="FontSize" Value="16"></Setter>
+        <Setter Property="BorderThickness" Value="1"></Setter>
+        <Setter Property="MustReduceToLoading" Value="False"></Setter>
+        <Setter Property="LoadingColor" Value="{StaticResource Primary}"></Setter>
+        <Setter Property="TextTransform" Value="Default"></Setter>
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal">
+                        <VisualState.Setters>
+                            <Setter Property="BackgroundColor" Value="Transparent"></Setter>
+                            <Setter Property="TextColor" Value="{StaticResource Primary}"></Setter>
+                            <Setter Property="BorderColor" Value="{StaticResource Primary}"></Setter>
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+                            <Setter Property="BackgroundColor" Value="{StaticResource DisabledGray}"></Setter>
+                            <Setter Property="TextColor" Value="{StaticResource White}"></Setter>
+                            <Setter Property="BorderColor" Value="{StaticResource DisabledGray}"></Setter>
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+    </Style>
+    
+    <Style x:Key="TestSegmentPrimaryStyle" TargetType="controls:MaterialSegment">
+        <Setter Property="SegmentHeight" Value="44" />
+        <Setter Property="SegmentPadding" Value="12,0" />
+        <Setter Property="SegmentRadius" Value="18" />
+        <Setter Property="FontFamily" Value="MontserratSemiBold" />
+        <Setter Property="FontSize" Value="14" />
+
+        <Setter Property="SegmentBackgroundColor" Value="Transparent" />
+        <Setter Property="TextColor" Value="#2563EB" />
+
+        <Setter Property="SelectedSegmentBackgroundColor" Value="#2563EB" />
+        <Setter Property="SelectedTextColor" Value="White" />
+    </Style>
+    
+    <Style x:Key="TestSegmentDarkStyle" TargetType="controls:MaterialSegment">
+        <Setter Property="SegmentHeight" Value="46" />
+        <Setter Property="SegmentPadding" Value="16,0" />
+        <Setter Property="SegmentRadius" Value="22" />
+        <Setter Property="FontFamily" Value="MontserratSemiBold" />
+        <Setter Property="FontSize" Value="14" />
+
+        <Setter Property="SegmentBackgroundColor" Value="#E5E7EB" />
+        <Setter Property="TextColor" Value="#111827" />
+
+        <Setter Property="SelectedSegmentBackgroundColor" Value="#111827" />
+        <Setter Property="SelectedTextColor" Value="White" />
+    </Style>
+    
+    <Style x:Key="TestSegmentRoundedStyle" TargetType="controls:MaterialSegment">
+        <Setter Property="SegmentHeight" Value="50" />
+        <Setter Property="SegmentPadding" Value="18,0" />
+        <Setter Property="SegmentRadius" Value="24,6,24,6" />
+        <Setter Property="FontFamily" Value="MontserratSemiBold" />
+        <Setter Property="FontSize" Value="14" />
+
+        <Setter Property="SegmentBackgroundColor" Value="#F3F4F6" />
+        <Setter Property="TextColor" Value="#7C2D12" />
+
+        <Setter Property="SelectedSegmentBackgroundColor" Value="#C75C00" />
+        <Setter Property="SelectedTextColor" Value="White" />
+    </Style>
+    
+    <Style x:Key="DefaultSegment" TargetType="controls:MaterialSegment">
+        <Setter Property="SegmentHeight" Value="44" />
+        <Setter Property="SegmentPadding" Value="12,0" />
+        <Setter Property="SegmentRadius" Value="18" />
+        <Setter Property="FontFamily" Value="MontserratSemiBold" />
+        <Setter Property="FontSize" Value="14" />
+
+        <Setter Property="SegmentBackgroundColor" Value="Transparent" />
+        <Setter Property="TextColor" Value="{StaticResource Primary}" />
+
+        <Setter Property="SelectedSegmentBackgroundColor" Value="{StaticResource Primary}" />
+        <Setter Property="SelectedTextColor" Value="{StaticResource White}" />
+    </Style>
+    
+    <Style x:Key="TestFlexChipPrimaryStyle" TargetType="controls:MaterialFlexChip">
+        <Setter Property="ChipHeight" Value="44" />
+        <Setter Property="ChipPadding" Value="14,0" />
+        <Setter Property="ChipRadius" Value="22" />
+        <Setter Property="FontFamily" Value="MontserratSemiBold" />
+        <Setter Property="FontSize" Value="14" />
+
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderColor" Value="#2563EB" />
+        <Setter Property="ChipBackgroundColor" Value="Transparent" />
+        <Setter Property="TextColor" Value="#2563EB" />
+
+        <Setter Property="SelectedBorderThickness" Value="1" />
+        <Setter Property="SelectedBorderColor" Value="#2563EB" />
+        <Setter Property="SelectedChipBackgroundColor" Value="#2563EB" />
+        <Setter Property="SelectedTextColor" Value="White" />
+    </Style>
+    
+    <Style x:Key="TestFlexChipDarkStyle" TargetType="controls:MaterialFlexChip">
+        <Setter Property="ChipHeight" Value="44" />
+        <Setter Property="ChipPadding" Value="16,0" />
+        <Setter Property="ChipRadius" Value="22" />
+        <Setter Property="FontFamily" Value="MontserratSemiBold" />
+        <Setter Property="FontSize" Value="14" />
+
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderColor" Value="#E5E7EB" />
+        <Setter Property="ChipBackgroundColor" Value="#E5E7EB" />
+        <Setter Property="TextColor" Value="#111827" />
+
+        <Setter Property="SelectedBorderThickness" Value="1" />
+        <Setter Property="SelectedBorderColor" Value="#111827" />
+        <Setter Property="SelectedChipBackgroundColor" Value="#111827" />
+        <Setter Property="SelectedTextColor" Value="White" />
+    </Style>
+    
+    <Style x:Key="TestFlexChipRoundedStyle" TargetType="controls:MaterialFlexChip">
+        <Setter Property="ChipHeight" Value="46" />
+        <Setter Property="ChipPadding" Value="18,0" />
+        <Setter Property="ChipRadius" Value="24,6,24,6" />
+        <Setter Property="FontFamily" Value="MontserratSemiBold" />
+        <Setter Property="FontSize" Value="14" />
+
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderColor" Value="#FDBA74" />
+        <Setter Property="ChipBackgroundColor" Value="#FFF7ED" />
+        <Setter Property="TextColor" Value="#7C2D12" />
+
+        <Setter Property="SelectedBorderThickness" Value="1" />
+        <Setter Property="SelectedBorderColor" Value="#C75C00" />
+        <Setter Property="SelectedChipBackgroundColor" Value="#C75C00" />
+        <Setter Property="SelectedTextColor" Value="White" />
+    </Style>
+
+</ResourceDictionary>

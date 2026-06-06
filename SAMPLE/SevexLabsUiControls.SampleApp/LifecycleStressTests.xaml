@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SevexLabsUiControls.SampleApp.LifecycleStressTests"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SevexLabs.Ui.Maui.Controls;assembly=SevexLabs.Ui.Maui.Controls"
+    BackgroundColor="#FFFFFF"
+    Title="Lifecycle Stress Tests">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="16"
+            Spacing="22">
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="26"
+                Text="Lifecycle Stress Tests"
+                TextColor="Black" />
+
+            <Label
+                FontSize="14"
+                Text="Timer, task and animation controls: mount, unmount and watch counters."
+                TextColor="#707070" />
+
+            <controls:FastBorder
+                BackgroundColor="#F8FAFC"
+                BorderColor="#E5E7EB"
+                BorderThickness="1"
+                CornerRadius="18"
+                Padding="16"
+                HorizontalOptions="Fill">
+
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        Text="ArcCountdown lifecycle"
+                        TextColor="Black" />
+
+                    <ContentView
+                        x:Name="ArcHost"
+                        HeightRequest="210"
+                        HorizontalOptions="Fill" />
+
+                    <Grid
+                        ColumnDefinitions="*,*,*"
+                        ColumnSpacing="8"
+                        RowDefinitions="Auto,Auto,Auto"
+                        RowSpacing="8">
+                        <controls:MaterialButton Grid.Row="0" Grid.Column="0" Style="{StaticResource PrimaryButton}" Text="Mount" Clicked="OnArcMountClicked" />
+                        <controls:MaterialButton Grid.Row="0" Grid.Column="1" Style="{StaticResource SecondaryButton}" Text="Unmount" Clicked="OnArcUnmountClicked" />
+                        <controls:MaterialButton Grid.Row="0" Grid.Column="2" Style="{StaticResource SecondaryButton}" Text="Remount" Clicked="OnArcRemountClicked" />
+                        <controls:MaterialButton Grid.Row="1" Grid.Column="0" Style="{StaticResource SecondaryButton}" Text="Cycle 10x" Clicked="OnArcCycleClicked" />
+                        <controls:MaterialButton Grid.Row="1" Grid.Column="1" Style="{StaticResource PrimaryButton}" Text="Start" Clicked="OnArcStartClicked" />
+                        <controls:MaterialButton Grid.Row="1" Grid.Column="2" Style="{StaticResource SecondaryButton}" Text="Stop" Clicked="OnArcStopClicked" />
+                        <controls:MaterialButton Grid.Row="2" Grid.ColumnSpan="3" Style="{StaticResource SecondaryButton}" Text="Reset counters" Clicked="OnArcResetClicked" />
+                    </Grid>
+
+                    <Label x:Name="ArcCountersLabel" FontSize="13" TextColor="#374151" />
+                    <Label x:Name="ArcStatusLabel" FontSize="13" TextColor="#6B7280" />
+                </VerticalStackLayout>
+            </controls:FastBorder>
+
+            <controls:FastBorder
+                BackgroundColor="#F8FAFC"
+                BorderColor="#E5E7EB"
+                BorderThickness="1"
+                CornerRadius="18"
+                Padding="16"
+                HorizontalOptions="Fill">
+
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        Text="MediaProgressBar lifecycle"
+                        TextColor="Black" />
+
+                    <ContentView
+                        x:Name="MediaHost"
+                        HeightRequest="110"
+                        HorizontalOptions="Fill" />
+
+                    <Grid
+                        ColumnDefinitions="*,*,*"
+                        ColumnSpacing="8"
+                        RowDefinitions="Auto,Auto,Auto"
+                        RowSpacing="8">
+                        <controls:MaterialButton Grid.Row="0" Grid.Column="0" Style="{StaticResource PrimaryButton}" Text="Mount" Clicked="OnMediaMountClicked" />
+                        <controls:MaterialButton Grid.Row="0" Grid.Column="1" Style="{StaticResource SecondaryButton}" Text="Unmount" Clicked="OnMediaUnmountClicked" />
+                        <controls:MaterialButton Grid.Row="0" Grid.Column="2" Style="{StaticResource SecondaryButton}" Text="Remount" Clicked="OnMediaRemountClicked" />
+                        <controls:MaterialButton Grid.Row="1" Grid.Column="0" Style="{StaticResource SecondaryButton}" Text="Cycle 10x" Clicked="OnMediaCycleClicked" />
+                        <controls:MaterialButton Grid.Row="1" Grid.Column="1" Style="{StaticResource PrimaryButton}" Text="Start" Clicked="OnMediaStartClicked" />
+                        <controls:MaterialButton Grid.Row="1" Grid.Column="2" Style="{StaticResource SecondaryButton}" Text="Stop" Clicked="OnMediaStopClicked" />
+                        <controls:MaterialButton Grid.Row="2" Grid.ColumnSpan="3" Style="{StaticResource SecondaryButton}" Text="Reset counters" Clicked="OnMediaResetClicked" />
+                    </Grid>
+
+                    <Label x:Name="MediaCountersLabel" FontSize="13" TextColor="#374151" />
+                    <Label x:Name="MediaStatusLabel" FontSize="13" TextColor="#6B7280" />
+                </VerticalStackLayout>
+            </controls:FastBorder>
+
+            <controls:FastBorder
+                BackgroundColor="#F8FAFC"
+                BorderColor="#E5E7EB"
+                BorderThickness="1"
+                CornerRadius="18"
+                Padding="16"
+                HorizontalOptions="Fill">
+
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        Text="PopCountdownView lifecycle"
+                        TextColor="Black" />
+
+                    <ContentView
+                        x:Name="PopHost"
+                        HeightRequest="220"
+                        HorizontalOptions="Fill" />
+
+                    <Grid
+                        ColumnDefinitions="*,*,*"
+                        ColumnSpacing="8"
+                        RowDefinitions="Auto,Auto,Auto"
+                        RowSpacing="8">
+                        <controls:MaterialButton Grid.Row="0" Grid.Column="0" Style="{StaticResource PrimaryButton}" Text="Mount" Clicked="OnPopMountClicked" />
+                        <controls:MaterialButton Grid.Row="0" Grid.Column="1" Style="{StaticResource SecondaryButton}" Text="Unmount" Clicked="OnPopUnmountClicked" />
+                        <controls:MaterialButton Grid.Row="0" Grid.Column="2" Style="{StaticResource SecondaryButton}" Text="Remount" Clicked="OnPopRemountClicked" />
+                        <controls:MaterialButton Grid.Row="1" Grid.Column="0" Style="{StaticResource SecondaryButton}" Text="Cycle 10x" Clicked="OnPopCycleClicked" />
+                        <controls:MaterialButton Grid.Row="1" Grid.Column="1" Style="{StaticResource PrimaryButton}" Text="Start" Clicked="OnPopStartClicked" />
+                        <controls:MaterialButton Grid.Row="1" Grid.Column="2" Style="{StaticResource SecondaryButton}" Text="Stop" Clicked="OnPopStopClicked" />
+                        <controls:MaterialButton Grid.Row="2" Grid.ColumnSpan="3" Style="{StaticResource SecondaryButton}" Text="Reset counters" Clicked="OnPopResetClicked" />
+                    </Grid>
+
+                    <Label x:Name="PopCountersLabel" FontSize="13" TextColor="#374151" />
+                    <Label x:Name="PopStatusLabel" FontSize="13" TextColor="#6B7280" />
+                </VerticalStackLayout>
+            </controls:FastBorder>
+
+            <controls:FastBorder
+                BackgroundColor="#F8FAFC"
+                BorderColor="#E5E7EB"
+                BorderThickness="1"
+                CornerRadius="18"
+                Padding="16"
+                HorizontalOptions="Fill">
+
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        Text="Shimmer lifecycle"
+                        TextColor="Black" />
+
+                    <ContentView
+                        x:Name="ShimmerHost"
+                        HeightRequest="170"
+                        HorizontalOptions="Fill" />
+
+                    <Grid
+                        ColumnDefinitions="*,*,*"
+                        ColumnSpacing="8"
+                        RowDefinitions="Auto,Auto,Auto"
+                        RowSpacing="8">
+                        <controls:MaterialButton Grid.Row="0" Grid.Column="0" Style="{StaticResource PrimaryButton}" Text="Mount" Clicked="OnShimmerMountClicked" />
+                        <controls:MaterialButton Grid.Row="0" Grid.Column="1" Style="{StaticResource SecondaryButton}" Text="Unmount" Clicked="OnShimmerUnmountClicked" />
+                        <controls:MaterialButton Grid.Row="0" Grid.Column="2" Style="{StaticResource SecondaryButton}" Text="Remount" Clicked="OnShimmerRemountClicked" />
+                        <controls:MaterialButton Grid.Row="1" Grid.Column="0" Style="{StaticResource SecondaryButton}" Text="Cycle 10x" Clicked="OnShimmerCycleClicked" />
+                        <controls:MaterialButton Grid.Row="1" Grid.Column="1" Style="{StaticResource PrimaryButton}" Text="Loading on" Clicked="OnShimmerLoadingOnClicked" />
+                        <controls:MaterialButton Grid.Row="1" Grid.Column="2" Style="{StaticResource SecondaryButton}" Text="Loading off" Clicked="OnShimmerLoadingOffClicked" />
+                        <controls:MaterialButton Grid.Row="2" Grid.ColumnSpan="3" Style="{StaticResource SecondaryButton}" Text="Reset counters" Clicked="OnShimmerResetClicked" />
+                    </Grid>
+
+                    <Label x:Name="ShimmerCountersLabel" FontSize="13" TextColor="#374151" />
+                    <Label x:Name="ShimmerStatusLabel" FontSize="13" TextColor="#6B7280" />
+                </VerticalStackLayout>
+            </controls:FastBorder>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

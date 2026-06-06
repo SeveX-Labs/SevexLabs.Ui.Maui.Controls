@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SevexLabsUiControls.SampleApp.MaterialSegmentedControlTests"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SevexLabs.Ui.Maui.Controls;assembly=SevexLabs.Ui.Maui.Controls"
+    BackgroundColor="#FFFFFF"
+    Title="MaterialSegmentedControl Tests">
+    
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="16"
+            Spacing="22">
+
+            <!-- Header -->
+            <Label
+                FontAttributes="Bold"
+                FontSize="26"
+                Text="MaterialSegmentedControl Tests"
+                TextColor="Black" />
+
+            <Label
+                FontSize="14"
+                Text="Pagina di test per verificare MaterialSegmentedControl, Segment, selezione, deselect, width mode, HasError, command, event e FastBorder."
+                TextColor="#707070" />
+
+            <!-- ===================================================== -->
+            <!-- DEFAULT STYLE -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Default style"
+                TextColor="Black" />
+
+            <Label
+                FontSize="13"
+                Text="Questo controllo usa il SegmentStyle di default, se esiste una risorsa DefaultSegment nello Styles.xaml."
+                TextColor="#707070" />
+
+            <controls:MaterialSegmentedControl
+                x:Name="DefaultSegmentedControl"
+                ItemsSource="{Binding StatusSegments}"
+                SelectedSegment="{Binding SelectedStatusSegment}"
+                SegmentsWidthMode="Equal"
+                BackgroundColor="#F8FAFC"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="22"
+                Padding="4"
+                ErrorBorderThickness="2"
+                SegmentSelectionChanged="OnSegmentSelectionChanged" />
+
+            <!-- ===================================================== -->
+            <!-- EQUAL WIDTH -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="SegmentsWidthMode Equal"
+                TextColor="Black" />
+
+            <controls:MaterialSegmentedControl
+                x:Name="EqualSegmentedControl"
+                ItemsSource="{Binding TimeRangeSegments}"
+                SelectedSegment="{Binding SelectedTimeRangeSegment}"
+                SegmentsWidthMode="Equal"
+                SegmentStyle="{StaticResource TestSegmentPrimaryStyle}"
+                BackgroundColor="#EFF6FF"
+                BorderColor="#2563EB"
+                BorderThickness="1"
+                CornerRadius="24"
+                Padding="4"
+                ErrorColor="#DC2626"
+                ErrorBorderThickness="2"
+                SegmentSelectionChanged="OnSegmentSelectionChanged" />
+
+            <!-- ===================================================== -->
+            <!-- AUTO WIDTH -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="SegmentsWidthMode Auto"
+                TextColor="Black" />
+
+            <controls:MaterialSegmentedControl
+                x:Name="AutoSegmentedControl"
+                ItemsSource="{Binding CategorySegments}"
+                SelectedSegment="{Binding SelectedCategorySegment}"
+                SegmentsWidthMode="Auto"
+                SegmentStyle="{StaticResource TestSegmentDarkStyle}"
+                BackgroundColor="#F9FAFB"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="24"
+                Padding="4"
+                ErrorColor="#DC2626"
+                ErrorBorderThickness="2"
+                SegmentSelectionChanged="OnSegmentSelectionChanged" />
+
+            <!-- ===================================================== -->
+            <!-- CORNER RADIUS PER SEGMENT -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="SegmentRadius per angolo"
+                TextColor="Black" />
+
+            <controls:MaterialSegmentedControl
+                x:Name="RoundedSegmentedControl"
+                ItemsSource="{Binding ShapeSegments}"
+                SelectedSegment="{Binding SelectedShapeSegment}"
+                SegmentsWidthMode="Equal"
+                SegmentStyle="{StaticResource TestSegmentRoundedStyle}"
+                BackgroundColor="#FFF7ED"
+                BorderColor="#FDBA74"
+                BorderThickness="1"
+                CornerRadius="28,8,28,8"
+                Padding="5"
+                ErrorColor="#DC2626"
+                ErrorBorderThickness="2"
+                SegmentSelectionChanged="OnSegmentSelectionChanged" />
+
+            <!-- ===================================================== -->
+            <!-- PROGRAMMATIC SELECTION -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Selezione programmatica"
+                TextColor="Black" />
+
+            <controls:MaterialSegmentedControl
+                x:Name="ProgrammaticSegmentedControl"
+                ItemsSource="{Binding PrioritySegments}"
+                SelectedSegment="{Binding SelectedPrioritySegment}"
+                SegmentsWidthMode="Equal"
+                SegmentStyle="{StaticResource TestSegmentPrimaryStyle}"
+                BackgroundColor="#F8FAFC"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="22"
+                Padding="4"
+                SegmentSelectionChanged="OnSegmentSelectionChanged" />
+
+            <Grid
+                ColumnDefinitions="*,*,*"
+                ColumnSpacing="10">
+
+                <controls:MaterialButton
+                    Grid.Column="0"
+                    Style="{StaticResource SecondaryButton}"
+                    Text="Low"
+                    Clicked="OnSelectLowClicked" />
+
+                <controls:MaterialButton
+                    Grid.Column="1"
+                    Style="{StaticResource SecondaryButton}"
+                    Text="Medium"
+                    Clicked="OnSelectMediumClicked" />
+
+                <controls:MaterialButton
+                    Grid.Column="2"
+                    Style="{StaticResource PrimaryButton}"
+                    Text="High"
+                    Clicked="OnSelectHighClicked" />
+
+            </Grid>
+
+            <controls:MaterialButton
+                Style="{StaticResource SecondaryButton}"
+                Text="Deselect selected segment"
+                Clicked="OnDeselectPriorityClicked" />
+
+            <!-- ===================================================== -->
+            <!-- HAS ERROR -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="HasError"
+                TextColor="Black" />
+
+            <controls:MaterialSegmentedControl
+                x:Name="ErrorSegmentedControl"
+                ItemsSource="{Binding GenderSegments}"
+                SelectedSegment="{Binding SelectedGenderSegment}"
+                SegmentsWidthMode="Equal"
+                SegmentStyle="{StaticResource TestSegmentPrimaryStyle}"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="22"
+                Padding="4"
+                HasError="True"
+                ErrorColor="#DC2626"
+                ErrorBorderThickness="3"
+                SegmentSelectionChanged="OnSegmentSelectionChanged" />
+
+            <controls:FastBorder
+                BackgroundColor="#F8FAFC"
+                BorderColor="#E5E7EB"
+                BorderThickness="1"
+                CornerRadius="22"
+                Padding="14"
+                HorizontalOptions="Fill">
+
+                <VerticalStackLayout Spacing="12">
+
+                    <controls:MaterialSegmentedControl
+                        x:Name="ButtonToggleErrorSegmentedControl"
+                        ItemsSource="{Binding YesNoSegments}"
+                        SelectedSegment="{Binding SelectedYesNoSegment}"
+                        SegmentsWidthMode="Equal"
+                        SegmentStyle="{StaticResource TestSegmentDarkStyle}"
+                        BackgroundColor="#FFFFFF"
+                        BorderColor="#D1D5DB"
+                        BorderThickness="1"
+                        CornerRadius="22"
+                        Padding="4"
+                        ErrorColor="#DC2626"
+                        ErrorBorderThickness="3"
+                        SegmentSelectionChanged="OnSegmentSelectionChanged" />
+
+                    <Grid
+                        ColumnDefinitions="*,*"
+                        ColumnSpacing="12">
+
+                        <controls:MaterialButton
+                            Grid.Column="0"
+                            Style="{StaticResource SecondaryButton}"
+                            Text="Toggle HasError"
+                            Clicked="OnToggleSegmentedErrorButtonClicked" />
+
+                        <controls:MaterialButton
+                            Grid.Column="1"
+                            Style="{StaticResource PrimaryButton}"
+                            Text="Reset"
+                            Clicked="OnResetSegmentedErrorButtonClicked" />
+
+                    </Grid>
+
+                </VerticalStackLayout>
+            </controls:FastBorder>
+
+            <!-- ===================================================== -->
+            <!-- COMMAND TEST -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="SelectionChangedCommand"
+                TextColor="Black" />
+
+            <controls:MaterialSegmentedControl
+                x:Name="CommandSegmentedControl"
+                ItemsSource="{Binding CommandSegments}"
+                SelectedSegment="{Binding SelectedCommandSegment}"
+                SelectionChangedCommand="{Binding SegmentSelectedCommand}"
+                SegmentsWidthMode="Equal"
+                SegmentStyle="{StaticResource TestSegmentPrimaryStyle}"
+                BackgroundColor="#EEF2FF"
+                BorderColor="#6366F1"
+                BorderThickness="1"
+                CornerRadius="22"
+                Padding="4" />
+
+            <!-- ===================================================== -->
+            <!-- INSIDE FASTBORDER CARD -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Dentro FastBorder/Card"
+                TextColor="Black" />
+
+            <controls:FastBorder
+                BackgroundColor="#F3F4F6"
+                BorderColor="#E5E7EB"
+                BorderThickness="1"
+                CornerRadius="28"
+                Padding="18"
+                HorizontalOptions="Fill">
+                <controls:FastBorder.Shadow>
+                    <Shadow
+                        Brush="Black"
+                        Offset="2,4"
+                        Opacity="0.15"
+                        Radius="12" />
+                </controls:FastBorder.Shadow>
+
+                <VerticalStackLayout Spacing="14">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        Text="Card con segmenti"
+                        TextColor="Black" />
+
+                    <Label
+                        FontSize="13"
+                        Text="Test per verificare MaterialSegmentedControl dentro un contenitore FastBorder con corner radius e shadow."
+                        TextColor="#707070" />
+
+                    <controls:MaterialSegmentedControl
+                        ItemsSource="{Binding VisitTypeSegments}"
+                        SelectedSegment="{Binding SelectedVisitTypeSegment}"
+                        SegmentsWidthMode="Equal"
+                        SegmentStyle="{StaticResource TestSegmentPrimaryStyle}"
+                        BackgroundColor="#FFFFFF"
+                        BorderColor="#D1D5DB"
+                        BorderThickness="1"
+                        CornerRadius="22"
+                        Padding="4"
+                        SegmentSelectionChanged="OnSegmentSelectionChanged" />
+
+                    <controls:MaterialSegmentedControl
+                        ItemsSource="{Binding CategorySegments}"
+                        SelectedSegment="{Binding SelectedCategorySegment}"
+                        SegmentsWidthMode="Auto"
+                        SegmentStyle="{StaticResource TestSegmentDarkStyle}"
+                        BackgroundColor="#FFFFFF"
+                        BorderColor="#D1D5DB"
+                        BorderThickness="1"
+                        CornerRadius="22"
+                        Padding="4"
+                        SegmentSelectionChanged="OnSegmentSelectionChanged" />
+
+                </VerticalStackLayout>
+            </controls:FastBorder>
+
+            <!-- ===================================================== -->
+            <!-- RESULT -->
+            <!-- ===================================================== -->
+
+            <controls:FastBorder
+                BackgroundColor="#EEF2FF"
+                BorderColor="#C7D2FE"
+                BorderThickness="1"
+                CornerRadius="18"
+                Padding="14"
+                HorizontalOptions="Fill">
+                <Label
+                    x:Name="ResultLabel"
+                    Text="Nessuna selezione ancora."
+                    TextColor="#1E1B4B"
+                    FontSize="14" />
+            </controls:FastBorder>
+
+            <BoxView HeightRequest="30" Opacity="0" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

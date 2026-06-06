@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FlexLayout xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:controls="clr-namespace:SevexLabs.Ui.Maui.Controls"
+            x:Class="SevexLabs.Ui.Maui.Controls.MaterialFlexChips"
+            x:Name="Self"
+            Wrap="Wrap" Direction="Row" AlignContent="Start" AlignItems="Start"
+            HorizontalOptions="Fill" 
+            BindableLayout.ItemsSource="{Binding Source={x:Reference Self}, Path=Items}">
+    
+    <FlexLayout.Resources>
+        <DataTemplate x:Key="DefaultChipTemplate"
+                      x:DataType="controls:MaterialFlexChips+SelectableChip">
+            <controls:MaterialFlexChip ChipText="{Binding Label}"
+                                       IsSelected="{Binding IsSelected}"
+                                       Style="{Binding Source={x:Reference Self}, Path=ChipStyle}" />
+
+        </DataTemplate>
+    </FlexLayout.Resources>
+    
+    <BindableLayout.ItemTemplate>
+        <DataTemplate x:DataType="controls:MaterialFlexChips+SelectableChip">
+            <Grid Margin="{Binding NormalizedSpacing}">
+
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="HandleChipTappedInternal"
+                                          CommandParameter="{Binding .}" />
+                </Grid.GestureRecognizers>
+
+                <controls:MaterialFlexChipTemplateHost
+                    Chip="{Binding .}"
+                    ChipTemplate="{Binding Source={x:Reference Self}, Path=EffectiveChipTemplate}" />
+
+            </Grid>
+        </DataTemplate>
+    </BindableLayout.ItemTemplate>
+    
+</FlexLayout>

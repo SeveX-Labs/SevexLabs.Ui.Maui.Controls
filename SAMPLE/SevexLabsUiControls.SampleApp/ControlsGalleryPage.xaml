@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SevexLabsUiControls.SampleApp.ControlsGalleryPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SevexLabs.Ui.Maui.Controls;assembly=SevexLabs.Ui.Maui.Controls"
+    BackgroundColor="#F3F4F6"
+    Shell.NavBarIsVisible="False"
+    Title="Controls Gallery">
+
+    <Grid RowDefinitions="Auto,Auto,*">
+        <VerticalStackLayout
+            Padding="18,18,18,10"
+            Spacing="4">
+            <Label
+                FontAttributes="Bold"
+                FontSize="28"
+                Text="Controls Gallery"
+                TextColor="#111827" />
+            <Label
+                FontSize="13"
+                Text="Real SampleApp views prepared for README screenshots."
+                TextColor="#6B7280" />
+        </VerticalStackLayout>
+
+        <ScrollView
+            Grid.Row="1"
+            Orientation="Horizontal"
+            HorizontalScrollBarVisibility="Never">
+            <HorizontalStackLayout
+                Padding="18,0,18,12"
+                Spacing="8">
+                <controls:MaterialButton
+                    Style="{StaticResource PrimaryButton}"
+                    Text="Borders"
+                    Clicked="OnFastBorderClicked" />
+                <controls:MaterialButton
+                    Style="{StaticResource SecondaryButton}"
+                    Text="Inputs"
+                    Clicked="OnInputsClicked" />
+                <controls:MaterialButton
+                    Style="{StaticResource SecondaryButton}"
+                    Text="Selection"
+                    Clicked="OnSelectionClicked" />
+                <controls:MaterialButton
+                    Style="{StaticResource SecondaryButton}"
+                    Text="Text"
+                    Clicked="OnTextStepsClicked" />
+                <controls:MaterialButton
+                    Style="{StaticResource SecondaryButton}"
+                    Text="Progress"
+                    Clicked="OnProgressClicked" />
+            </HorizontalStackLayout>
+        </ScrollView>
+
+        <Grid Grid.Row="2">
+            <ScrollView x:Name="FastBorderSection">
+                <VerticalStackLayout Padding="18,0,18,24" Spacing="14">
+                    <controls:FastBorder
+                        BackgroundColor="#FFFFFF"
+                        BorderColor="#E5E7EB"
+                        BorderThickness="1"
+                        CornerRadius="26"
+                        Padding="16">
+                        <VerticalStackLayout Spacing="14">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="18"
+                                Text="FastBorder"
+                                TextColor="#111827" />
+
+                            <controls:FastBorder
+                                BackgroundColor="#F8FAFC"
+                                BorderColor="#2563EB"
+                                BorderThickness="2"
+                                CornerRadius="14"
+                                Padding="16">
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="15"
+                                    Text="Basic border with color, thickness and padding"
+                                    TextColor="#1D4ED8" />
+                            </controls:FastBorder>
+
+                            <controls:FastBorder
+                                BackgroundColor="#EEF2FF"
+                                BorderColor="#C7D2FE"
+                                BorderThickness="1"
+                                CornerRadius="34"
+                                Padding="18">
+                                <controls:FastBorder.Shadow>
+                                    <Shadow
+                                        Brush="Black"
+                                        Offset="0,8"
+                                        Opacity="0.18"
+                                        Radius="20" />
+                                </controls:FastBorder.Shadow>
+                                <VerticalStackLayout Spacing="5">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="16"
+                                        Text="Rounded card with shadow"
+                                        TextColor="#312E81" />
+                                    <Label
+                                        FontSize="13"
+                                        Text="Corner radius, background and shadow are rendered together."
+                                        TextColor="#4B5563" />
+                                </VerticalStackLayout>
+                            </controls:FastBorder>
+
+                            <controls:FastBorder
+                                BorderColor="#111827"
+                                BorderThickness="2"
+                                CornerRadius="36,6,36,6"
+                                HeightRequest="132"
+                                Padding="0">
+                                <Grid ColumnDefinitions="*,*,*">
+                                    <BoxView BackgroundColor="#22C55E" />
+                                    <BoxView Grid.Column="1" BackgroundColor="#F59E0B" />
+                                    <BoxView Grid.Column="2" BackgroundColor="#EF4444" />
+                                    <Label
+                                        Grid.ColumnSpan="3"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"
+                                        FontAttributes="Bold"
+                                        FontSize="18"
+                                        Text="Clipped content"
+                                        TextColor="White" />
+                                </Grid>
+                            </controls:FastBorder>
+                        </VerticalStackLayout>
+                    </controls:FastBorder>
+                </VerticalStackLayout>
+            </ScrollView>
+
+            <ScrollView
+                x:Name="InputsSection"
+                IsVisible="False">
+                <VerticalStackLayout Padding="18,0,18,24" Spacing="14">
+                    <controls:FastBorder
+                        BackgroundColor="#FFFFFF"
+                        BorderColor="#E5E7EB"
+                        BorderThickness="1"
+                        CornerRadius="26"
+                        Padding="16">
+                        <VerticalStackLayout Spacing="12">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="18"
+                                Text="Inputs and forms"
+                                TextColor="#111827" />
+
+                            <controls:MaterialEntry
+                                Style="{StaticResource DefaultEntry}"
+                                Placeholder="Patient name"
+                                Text="Maria Rossi" />
+
+                            <controls:MaterialEntry
+                                Style="{StaticResource DefaultEntry}"
+                                Placeholder="Required code"
+                                Text="Missing value"
+                                HasError="True"
+                                ErrorBorderThickness="2" />
+
+                            <controls:MaterialEditor
+                                Style="{StaticResource DefaultEditor}"
+                                HeightRequest="94"
+                                Placeholder="Clinical notes"
+                                Text="Multiline editor with floating placeholder." />
+
+                            <controls:MaterialDisplayField
+                                Style="{StaticResource DefaultDisplayField}"
+                                Placeholder="Status">
+                                <controls:MaterialDisplayField.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Ready " />
+                                        <Span
+                                            FontAttributes="Bold"
+                                            Text="for review" />
+                                    </FormattedString>
+                                </controls:MaterialDisplayField.FormattedText>
+                            </controls:MaterialDisplayField>
+
+                            <controls:MaterialNumericEntry
+                                Style="{StaticResource DefaultNumericEntry}"
+                                Placeholder="Quantity"
+                                Value="12"
+                                Step="1"
+                                IsManualInputDisabled="True" />
+
+                            <controls:MaterialPicker
+                                x:Name="VisitTypePicker"
+                                Title="Visit type"
+                                ItemsSource="{Binding VisitTypes}"
+                                TextColor="#111827"
+                                TitleColor="#6B7280" />
+                        </VerticalStackLayout>
+                    </controls:FastBorder>
+                </VerticalStackLayout>
+            </ScrollView>
+
+            <ScrollView
+                x:Name="SelectionSection"
+                IsVisible="False">
+                <VerticalStackLayout Padding="18,0,18,24" Spacing="14">
+                    <controls:FastBorder
+                        BackgroundColor="#FFFFFF"
+                        BorderColor="#E5E7EB"
+                        BorderThickness="1"
+                        CornerRadius="26"
+                        Padding="16">
+                        <VerticalStackLayout Spacing="14">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="18"
+                                Text="Buttons and selection"
+                                TextColor="#111827" />
+
+                            <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                                <controls:MaterialButton
+                                    Grid.Column="0"
+                                    Style="{StaticResource PrimaryButton}"
+                                    Text="Confirm" />
+                                <controls:MaterialButton
+                                    Grid.Column="1"
+                                    Style="{StaticResource SecondaryButton}"
+                                    Text="Icon"
+                                    UseIcon="True"
+                                    IconSource="icon_hamburger_menu_black"
+                                    IconPosition="Left"
+                                    IconSize="18"
+                                    IconSpacing="8" />
+                            </Grid>
+
+                            <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                                <controls:MaterialButton
+                                    Grid.Column="0"
+                                    Style="{StaticResource PrimaryButton}"
+                                    Text="Loading"
+                                    IsLoading="True"
+                                    MustReduceToLoading="False" />
+                                <controls:MaterialButton
+                                    Grid.Column="1"
+                                    Style="{StaticResource SecondaryButton}"
+                                    Text="Reduced"
+                                    IsLoading="True"
+                                    MustReduceToLoading="True"
+                                    LoadingColor="#2563EB" />
+                            </Grid>
+
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="14"
+                                Text="MaterialFlexChips"
+                                TextColor="#374151" />
+                            <controls:MaterialFlexChips
+                                ItemsSource="{Binding WorkflowChips}"
+                                SelectedItems="{Binding SelectedWorkflowChips}"
+                                SelectionMode="Multiple"
+                                ChipStyle="{StaticResource TestFlexChipPrimaryStyle}"
+                                Spacing="0,0,10,10" />
+
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="14"
+                                Text="MaterialSegmentedControl"
+                                TextColor="#374151" />
+                            <controls:MaterialSegmentedControl
+                                ItemsSource="{Binding DashboardSegments}"
+                                SelectedSegment="{Binding SelectedDashboardSegment}"
+                                SegmentStyle="{StaticResource TestSegmentPrimaryStyle}"
+                                SegmentsWidthMode="Equal"
+                                BackgroundColor="#EFF6FF"
+                                BorderColor="#2563EB"
+                                BorderThickness="1"
+                                CornerRadius="24"
+                                Padding="4" />
+                        </VerticalStackLayout>
+                    </controls:FastBorder>
+                </VerticalStackLayout>
+            </ScrollView>
+
+            <ScrollView
+                x:Name="TextStepsSection"
+                IsVisible="False">
+                <VerticalStackLayout Padding="18,0,18,24" Spacing="14">
+                    <controls:FastBorder
+                        BackgroundColor="#FFFFFF"
+                        BorderColor="#E5E7EB"
+                        BorderThickness="1"
+                        CornerRadius="26"
+                        Padding="16">
+                        <VerticalStackLayout Spacing="14">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="18"
+                                Text="Text and navigation helpers"
+                                TextColor="#111827" />
+
+                            <controls:FastBorder
+                                BackgroundColor="#F8FAFC"
+                                BorderColor="#E5E7EB"
+                                BorderThickness="1"
+                                CornerRadius="20"
+                                Padding="14">
+                                <controls:HtmlFormsLabel
+                                    FontSize="16"
+                                    HtmlFontFamily="{StaticResource MontserratRegular}"
+                                    HtmlFontBoldFamily="{StaticResource MontserratBold}"
+                                    HtmlFontItalicFamily="{StaticResource MontserratItalic}"
+                                    HtmlText="HtmlFormsLabel supports &lt;b&gt;bold&lt;/b&gt;, &lt;i&gt;italic&lt;/i&gt;, &lt;u&gt;underline&lt;/u&gt; and &lt;a href='action://details'&gt;links&lt;/a&gt;."
+                                    LinkColor="#2563EB"
+                                    LineBreakMode="WordWrap"
+                                    TextColor="#111827" />
+                            </controls:FastBorder>
+
+                            <controls:FastBorder
+                                BackgroundColor="#F8FAFC"
+                                BorderColor="#D1D5DB"
+                                BorderThickness="1"
+                                CornerRadius="22"
+                                Padding="0">
+                                <controls:SlideStepsView
+                                    HeightRequest="260"
+                                    CurrentIndex="1"
+                                    AnimationDuration="320">
+                                    <Grid
+                                        Padding="18"
+                                        BackgroundColor="#EFF6FF"
+                                        RowDefinitions="Auto,Auto,*"
+                                        RowSpacing="10">
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="22"
+                                            Text="Step 1"
+                                            TextColor="#1D4ED8" />
+                                        <Label
+                                            Grid.Row="1"
+                                            FontSize="14"
+                                            Text="The first card is ready for a guided workflow."
+                                            TextColor="#1F2937" />
+                                    </Grid>
+                                    <Grid
+                                        Padding="18"
+                                        BackgroundColor="#F0FDF4"
+                                        RowDefinitions="Auto,Auto,Auto,*"
+                                        RowSpacing="10">
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="22"
+                                            Text="Step 2"
+                                            TextColor="#15803D" />
+                                        <Label
+                                            Grid.Row="1"
+                                            FontSize="14"
+                                            Text="Current content slides into view."
+                                            TextColor="#1F2937" />
+                                        <controls:MaterialButton
+                                            Grid.Row="3"
+                                            VerticalOptions="End"
+                                            Style="{StaticResource SecondaryButton}"
+                                            Text="Continue" />
+                                    </Grid>
+                                    <Grid
+                                        Padding="18"
+                                        BackgroundColor="#FFF7ED"
+                                        RowDefinitions="Auto,Auto,*"
+                                        RowSpacing="10">
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="22"
+                                            Text="Step 3"
+                                            TextColor="#C2410C" />
+                                        <Label
+                                            Grid.Row="1"
+                                            FontSize="14"
+                                            Text="Final step with different background and content."
+                                            TextColor="#1F2937" />
+                                    </Grid>
+                                </controls:SlideStepsView>
+                            </controls:FastBorder>
+                        </VerticalStackLayout>
+                    </controls:FastBorder>
+                </VerticalStackLayout>
+            </ScrollView>
+
+            <ScrollView
+                x:Name="ProgressSection"
+                IsVisible="False">
+                <VerticalStackLayout Padding="18,0,18,24" Spacing="14">
+                    <controls:FastBorder
+                        BackgroundColor="#FFFFFF"
+                        BorderColor="#E5E7EB"
+                        BorderThickness="1"
+                        CornerRadius="26"
+                        Padding="16">
+                        <VerticalStackLayout Spacing="14">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="18"
+                                Text="Loading and progress"
+                                TextColor="#111827" />
+
+                            <controls:ShimmerLayout
+                                HeightRequest="92"
+                                IsLoading="True"
+                                BackgroundGradientColor="#E5E7EB"
+                                ShimmerGradientColor="#FFFFFF"
+                                ShimmerOpacity="0.78"
+                                CornerRadius="18">
+                                <Grid
+                                    Padding="14"
+                                    ColumnDefinitions="64,*"
+                                    RowDefinitions="18,18,18"
+                                    ColumnSpacing="12"
+                                    RowSpacing="10">
+                                    <BoxView
+                                        Grid.RowSpan="3"
+                                        BackgroundColor="#D1D5DB"
+                                        CornerRadius="16" />
+                                    <BoxView
+                                        Grid.Column="1"
+                                        BackgroundColor="#D1D5DB"
+                                        CornerRadius="8" />
+                                    <BoxView
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        WidthRequest="190"
+                                        HorizontalOptions="Start"
+                                        BackgroundColor="#D1D5DB"
+                                        CornerRadius="8" />
+                                    <BoxView
+                                        Grid.Row="2"
+                                        Grid.Column="1"
+                                        WidthRequest="130"
+                                        HorizontalOptions="Start"
+                                        BackgroundColor="#D1D5DB"
+                                        CornerRadius="8" />
+                                </Grid>
+                            </controls:ShimmerLayout>
+
+                            <Grid ColumnDefinitions="*,*,*" ColumnSpacing="10">
+                                <controls:ArcCountdown
+                                    Grid.Column="0"
+                                    WidthRequest="92"
+                                    HeightRequest="92"
+                                    HorizontalOptions="Center"
+                                    StartValue="45"
+                                    FinalValue="0"
+                                    TimeDisplayFormat="Ss"
+                                    ValueSuffix="s"
+                                    FontFamily="MontserratSemiBold"
+                                    FontSize="20"
+                                    TextColor="#111827"
+                                    TrackColor="#E5E7EB"
+                                    TrackThickness="10"
+                                    ProgressColor="#2563EB"
+                                    StrokeCap="Round"
+                                    CenterBackgroundColor="#F8FAFC" />
+                                <controls:PieCountdown
+                                    Grid.Column="1"
+                                    WidthRequest="92"
+                                    HeightRequest="92"
+                                    HorizontalOptions="Center"
+                                    StartValue="60"
+                                    FinalValue="0"
+                                    TimeDisplayFormat="Ss"
+                                    ValueSuffix="s"
+                                    FontFamily="MontserratSemiBold"
+                                    FontSize="20"
+                                    TextColor="White"
+                                    CircleBackgroundColor="#FEE2E2"
+                                    FillColor="#DC2626" />
+                                <controls:PopCountdownView
+                                    Grid.Column="2"
+                                    HeightRequest="92"
+                                    StartValue="3"
+                                    EndValue="0"
+                                    Interval="00:00:01"
+                                    TextColor="#4F46E5"
+                                    FontFamily="MontserratSemiBold"
+                                    FontSize="54"
+                                    DepthColor="#C7D2FE"
+                                    DepthOffsetX="3"
+                                    DepthOffsetY="4"
+                                    DepthLayers="3"
+                                    BackgroundColor="#EEF2FF" />
+                            </Grid>
+
+                            <controls:MediaProgressBar
+                                StartValue="90"
+                                FinalValue="0"
+                                StepValue="1"
+                                StepInterval="00:00:01"
+                                Animate="False"
+                                TimeDisplayFormat="MmSs"
+                                TimeLabelPosition="Top"
+                                TimeHorizontalAlignment="Center"
+                                FontFamily="MontserratSemiBold"
+                                FontSize="17"
+                                TextColor="#111827"
+                                TrackColor="#E5E7EB"
+                                ProgressColor="#16A34A"
+                                ProgressBarHeight="12"
+                                ProgressBarCornerRadius="999"
+                                Spacing="8" />
+                        </VerticalStackLayout>
+                    </controls:FastBorder>
+                </VerticalStackLayout>
+            </ScrollView>
+        </Grid>
+    </Grid>
+</ContentPage>

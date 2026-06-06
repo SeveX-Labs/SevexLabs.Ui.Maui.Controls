@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SevexLabsUiControls.SampleApp.MaterialScrollViewTests"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SevexLabs.Ui.Maui.Controls;assembly=SevexLabs.Ui.Maui.Controls"
+    BackgroundColor="#FFFFFF"
+    Title="MaterialScrollView Tests">
+
+    <Grid
+        Padding="16"
+        RowDefinitions="Auto,*,Auto"
+        RowSpacing="12">
+
+        <VerticalStackLayout Spacing="4">
+            <Label
+                FontAttributes="Bold"
+                FontSize="26"
+                Text="MaterialScrollView"
+                TextColor="Black" />
+            <Label
+                FontSize="13"
+                Text="Test manuale Android: scroll abilitato/disabilitato, child interattivi e istanze multiple."
+                TextColor="#707070" />
+        </VerticalStackLayout>
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Spacing="18">
+
+                <controls:FastBorder
+                    BackgroundColor="#F8FAFC"
+                    BorderColor="#D1D5DB"
+                    BorderThickness="1"
+                    CornerRadius="20"
+                    Padding="14">
+                    <Grid RowDefinitions="Auto,Auto" RowSpacing="10">
+                        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="17"
+                                Text="Singola dentro Grid - IsScrollEnabled=true"
+                                TextColor="Black"
+                                VerticalOptions="Center" />
+                            <Switch
+                                IsToggled="True"
+                                StyleId="EnabledGridScroll"
+                                Toggled="OnScrollEnabledToggled" />
+                        </Grid>
+
+                        <controls:MaterialScrollView
+                            x:Name="EnabledGridScroll"
+                            Grid.Row="1"
+                            HeightRequest="230"
+                            IsScrollEnabled="True"
+                            BackgroundColor="#FFFFFF">
+                            <VerticalStackLayout Padding="12" Spacing="10">
+                                <Label Text="Questa scroll view deve scorrere normalmente." TextColor="#374151" />
+                                <controls:MaterialButton Style="{StaticResource PrimaryButton}" Text="Button enabled grid" Clicked="OnMaterialButtonClicked" />
+                                <Entry Placeholder="Entry enabled grid" Focused="OnEntryFocused" />
+                                <Label Text="Label tappabile enabled grid" TextColor="#2563EB">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnLabelTapped" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+                                <Switch Toggled="OnChildSwitchToggled" />
+                                <Label Text="Riga 1 - contenuto lungo per rendere evidente lo scroll." />
+                                <Label Text="Riga 2 - contenuto lungo per rendere evidente lo scroll." />
+                                <Label Text="Riga 3 - contenuto lungo per rendere evidente lo scroll." />
+                                <Label Text="Riga 4 - contenuto lungo per rendere evidente lo scroll." />
+                                <Label Text="Riga 5 - contenuto lungo per rendere evidente lo scroll." />
+                                <Label Text="Riga 6 - contenuto lungo per rendere evidente lo scroll." />
+                                <Label Text="Riga 7 - contenuto lungo per rendere evidente lo scroll." />
+                                <Label Text="Riga 8 - contenuto lungo per rendere evidente lo scroll." />
+                            </VerticalStackLayout>
+                        </controls:MaterialScrollView>
+                    </Grid>
+                </controls:FastBorder>
+
+                <controls:FastBorder
+                    BackgroundColor="#F8FAFC"
+                    BorderColor="#D1D5DB"
+                    BorderThickness="1"
+                    CornerRadius="20"
+                    Padding="14">
+                    <VerticalStackLayout Spacing="10">
+                        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="17"
+                                Text="Singola dentro VerticalStackLayout - IsScrollEnabled=false"
+                                TextColor="Black"
+                                VerticalOptions="Center" />
+                            <Switch
+                                IsToggled="False"
+                                StyleId="DisabledStackScroll"
+                                Toggled="OnScrollEnabledToggled" />
+                        </Grid>
+
+                        <controls:MaterialScrollView
+                            x:Name="DisabledStackScroll"
+                            HeightRequest="230"
+                            IsScrollEnabled="False"
+                            BackgroundColor="#FFFFFF">
+                            <VerticalStackLayout Padding="12" Spacing="10">
+                                <Label Text="Questa scroll view non deve scorrere; i child devono restare usabili quando possibile." TextColor="#374151" />
+                                <controls:MaterialButton Style="{StaticResource PrimaryButton}" Text="Button disabled stack" Clicked="OnMaterialButtonClicked" />
+                                <Entry Placeholder="Entry disabled stack" Focused="OnEntryFocused" />
+                                <Label Text="Label tappabile disabled stack" TextColor="#2563EB">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnLabelTapped" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+                                <CheckBox CheckedChanged="OnChildCheckBoxChanged" />
+                                <Label Text="Riga 1 - contenuto lungo per rendere evidente lo scroll." />
+                                <Label Text="Riga 2 - contenuto lungo per rendere evidente lo scroll." />
+                                <Label Text="Riga 3 - contenuto lungo per rendere evidente lo scroll." />
+                                <Label Text="Riga 4 - contenuto lungo per rendere evidente lo scroll." />
+                                <Label Text="Riga 5 - contenuto lungo per rendere evidente lo scroll." />
+                                <Label Text="Riga 6 - contenuto lungo per rendere evidente lo scroll." />
+                                <Label Text="Riga 7 - contenuto lungo per rendere evidente lo scroll." />
+                                <Label Text="Riga 8 - contenuto lungo per rendere evidente lo scroll." />
+                            </VerticalStackLayout>
+                        </controls:MaterialScrollView>
+                    </VerticalStackLayout>
+                </controls:FastBorder>
+
+                <controls:FastBorder
+                    BackgroundColor="#F8FAFC"
+                    BorderColor="#D1D5DB"
+                    BorderThickness="1"
+                    CornerRadius="20"
+                    Padding="14">
+                    <VerticalStackLayout Spacing="14">
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="17"
+                            Text="Due istanze indipendenti"
+                            TextColor="Black" />
+
+                        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+                            <Label Text="Prima istanza abilitata" TextColor="#374151" VerticalOptions="Center" />
+                            <Switch IsToggled="True" StyleId="TwinEnabledScroll" Toggled="OnScrollEnabledToggled" />
+                        </Grid>
+                        <controls:MaterialScrollView
+                            x:Name="TwinEnabledScroll"
+                            HeightRequest="190"
+                            IsScrollEnabled="True"
+                            BackgroundColor="#FFFFFF">
+                            <VerticalStackLayout Padding="12" Spacing="10">
+                                <controls:MaterialButton Style="{StaticResource SecondaryButton}" Text="Button twin enabled" Clicked="OnMaterialButtonClicked" />
+                                <Entry Placeholder="Entry twin enabled" Focused="OnEntryFocused" />
+                                <Label Text="Label tappabile twin enabled" TextColor="#2563EB">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnLabelTapped" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+                                <Switch Toggled="OnChildSwitchToggled" />
+                                <Label Text="Twin enabled riga 1" />
+                                <Label Text="Twin enabled riga 2" />
+                                <Label Text="Twin enabled riga 3" />
+                                <Label Text="Twin enabled riga 4" />
+                                <Label Text="Twin enabled riga 5" />
+                                <Label Text="Twin enabled riga 6" />
+                            </VerticalStackLayout>
+                        </controls:MaterialScrollView>
+
+                        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+                            <Label Text="Seconda istanza disabilitata" TextColor="#374151" VerticalOptions="Center" />
+                            <Switch IsToggled="False" StyleId="TwinDisabledScroll" Toggled="OnScrollEnabledToggled" />
+                        </Grid>
+                        <controls:MaterialScrollView
+                            x:Name="TwinDisabledScroll"
+                            HeightRequest="190"
+                            IsScrollEnabled="False"
+                            BackgroundColor="#FFFFFF">
+                            <VerticalStackLayout Padding="12" Spacing="10">
+                                <controls:MaterialButton Style="{StaticResource SecondaryButton}" Text="Button twin disabled" Clicked="OnMaterialButtonClicked" />
+                                <Entry Placeholder="Entry twin disabled" Focused="OnEntryFocused" />
+                                <Label Text="Label tappabile twin disabled" TextColor="#2563EB">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnLabelTapped" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+                                <CheckBox CheckedChanged="OnChildCheckBoxChanged" />
+                                <Label Text="Twin disabled riga 1" />
+                                <Label Text="Twin disabled riga 2" />
+                                <Label Text="Twin disabled riga 3" />
+                                <Label Text="Twin disabled riga 4" />
+                                <Label Text="Twin disabled riga 5" />
+                                <Label Text="Twin disabled riga 6" />
+                            </VerticalStackLayout>
+                        </controls:MaterialScrollView>
+                    </VerticalStackLayout>
+                </controls:FastBorder>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <controls:FastBorder
+            Grid.Row="2"
+            BackgroundColor="#111827"
+            BorderColor="#111827"
+            BorderThickness="1"
+            CornerRadius="14"
+            Padding="12">
+            <Label
+                x:Name="LogLabel"
+                FontFamily="monospace"
+                FontSize="12"
+                LineBreakMode="TailTruncation"
+                MaxLines="6"
+                Text="Log eventi"
+                TextColor="#F9FAFB" />
+        </controls:FastBorder>
+    </Grid>
+</ContentPage>

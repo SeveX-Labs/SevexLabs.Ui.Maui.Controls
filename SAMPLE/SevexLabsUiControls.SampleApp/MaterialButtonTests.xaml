@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SevexLabsUiControls.SampleApp.MaterialButtonTests"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SevexLabs.Ui.Maui.Controls;assembly=SevexLabs.Ui.Maui.Controls"
+    BackgroundColor="#FFFFFF"
+    Title="MaterialButton Tests">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="16"
+            Spacing="22">
+
+            <!-- Header -->
+            <Label
+                FontAttributes="Bold"
+                FontSize="26"
+                Text="MaterialButton Tests"
+                TextColor="Black" />
+
+            <Label
+                FontSize="14"
+                Text="Pagina di test per verificare MaterialButton, FastBorder, stati visuali, corner radius, loading, shadow, icone e layout."
+                TextColor="#707070" />
+
+            <!-- ===================================================== -->
+            <!-- STYLE BASE -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Style base"
+                TextColor="Black" />
+
+            <controls:MaterialButton
+                Style="{StaticResource PrimaryButton}"
+                Text="Primary button"
+                Clicked="OnButtonClicked" />
+
+            <controls:MaterialButton
+                Style="{StaticResource SecondaryButton}"
+                Text="Secondary button"
+                Clicked="OnButtonClicked" />
+
+            <!-- ===================================================== -->
+            <!-- DISABLED STATE -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Disabled state"
+                TextColor="Black" />
+
+            <controls:MaterialButton
+                Style="{StaticResource PrimaryButton}"
+                Text="Primary disabled"
+                IsEnabled="False" />
+
+            <controls:MaterialButton
+                Style="{StaticResource SecondaryButton}"
+                Text="Secondary disabled"
+                IsEnabled="False" />
+
+            <!-- ===================================================== -->
+            <!-- LOADING STATE -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Loading state"
+                TextColor="Black" />
+
+            <Grid
+                ColumnDefinitions="*,Auto"
+                ColumnSpacing="12">
+
+                <controls:MaterialButton
+                    Grid.Column="0"
+                    Style="{StaticResource PrimaryButton}"
+                    Text="Loading"
+                    IsLoading="True"
+                    MustReduceToLoading="False" />
+
+                <controls:MaterialButton
+                    Grid.Column="1"
+                    Style="{StaticResource PrimaryButton}"
+                    Text="Reduced fill"
+                    IsLoading="True"
+                    MustReduceToLoading="True"
+                    HorizontalOptions="End" />
+            </Grid>
+
+            <controls:MaterialButton
+                Style="{StaticResource PrimaryButton}"
+                Text="Reduced start"
+                IsLoading="True"
+                MustReduceToLoading="True"
+                HorizontalOptions="Start" />
+
+            <controls:MaterialButton
+                x:Name="ToggleLoadingButton"
+                Style="{StaticResource SecondaryButton}"
+                Text="Vai al dettaglio esercizio"
+                MustReduceToLoading="True"
+                HorizontalOptions="Start"
+                Clicked="OnToggleLoadingClicked" />
+
+            <!-- ===================================================== -->
+            <!-- ICON LEFT / RIGHT -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Icone"
+                TextColor="Black" />
+
+            <controls:MaterialButton
+                Style="{StaticResource PrimaryButton}"
+                Text="Icon left"
+                UseIcon="True"
+                IconSource="icon_hamburger_menu_black"
+                IconPosition="Left"
+                IconSize="20"
+                IconSpacing="10"
+                Clicked="OnButtonClicked" />
+
+            <controls:MaterialButton
+                Style="{StaticResource PrimaryButton}"
+                Text="Icon right"
+                UseIcon="True"
+                IconSource="icon_hamburger_menu_black"
+                IconPosition="Right"
+                IconSize="20"
+                IconSpacing="10"
+                Clicked="OnButtonClicked" />
+
+            <Grid
+                ColumnDefinitions="Auto,*,Auto"
+                ColumnSpacing="12">
+
+                <controls:MaterialButton
+                    Grid.Column="0"
+                    Style="{StaticResource SecondaryButton}"
+                    UseIcon="True"
+                    IconSource="icon_hamburger_menu_black"
+                    IconSize="22"
+                    Padding="16"
+                    WidthRequest="58"
+                    HeightRequest="58"
+                    CornerRadius="29"
+                    Clicked="OnButtonClicked" />
+
+                <controls:MaterialButton
+                    Grid.Column="1"
+                    Style="{StaticResource SecondaryButton}"
+                    Text="Text only"
+                    Clicked="OnButtonClicked" />
+
+                <controls:MaterialButton
+                    Grid.Column="2"
+                    Style="{StaticResource PrimaryButton}"
+                    UseIcon="True"
+                    IconSource="icon_hamburger_menu_black"
+                    IconSize="22"
+                    Padding="16"
+                    WidthRequest="58"
+                    HeightRequest="58"
+                    CornerRadius="29"
+                    Clicked="OnButtonClicked" />
+            </Grid>
+
+            <!-- ===================================================== -->
+            <!-- CORNER RADIUS -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="CornerRadius"
+                TextColor="Black" />
+
+            <controls:MaterialButton
+                Style="{StaticResource PrimaryButton}"
+                Text="CornerRadius uniforme 20"
+                CornerRadius="20"
+                Clicked="OnButtonClicked" />
+
+            <controls:MaterialButton
+                Style="{StaticResource PrimaryButton}"
+                Text="CornerRadius pill 32"
+                CornerRadius="32"
+                Padding="18,16"
+                Clicked="OnButtonClicked" />
+
+            <controls:MaterialButton
+                Style="{StaticResource PrimaryButton}"
+                Text="TopLeft + BottomRight"
+                CornerRadius="32,4,4,32"
+                Clicked="OnButtonClicked" />
+
+            <controls:MaterialButton
+                Style="{StaticResource PrimaryButton}"
+                Text="TopRight + BottomLeft"
+                CornerRadius="4,32,32,4"
+                Clicked="OnButtonClicked" />
+
+            <controls:MaterialButton
+                Style="{StaticResource SecondaryButton}"
+                Text="Solo top rounded"
+                CornerRadius="28,28,0,0"
+                Clicked="OnButtonClicked" />
+
+            <controls:MaterialButton
+                Style="{StaticResource SecondaryButton}"
+                Text="Solo bottom rounded"
+                CornerRadius="0,0,28,28"
+                Clicked="OnButtonClicked" />
+
+            <!-- ===================================================== -->
+            <!-- SHADOW -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Shadow"
+                TextColor="Black" />
+
+            <controls:MaterialButton
+                Style="{StaticResource PrimaryButton}"
+                Text="Primary with shadow"
+                CornerRadius="24"
+                Clicked="OnButtonClicked">
+                <controls:MaterialButton.Shadow>
+                    <Shadow
+                        Brush="Black"
+                        Offset="4,4"
+                        Opacity="0.35"
+                        Radius="12" />
+                </controls:MaterialButton.Shadow>
+            </controls:MaterialButton>
+
+            <controls:MaterialButton
+                Style="{StaticResource SecondaryButton}"
+                Text="Secondary with shadow"
+                CornerRadius="24,4,24,4"
+                Clicked="OnButtonClicked">
+                <controls:MaterialButton.Shadow>
+                    <Shadow
+                        Brush="Black"
+                        Offset="4,4"
+                        Opacity="0.25"
+                        Radius="10" />
+                </controls:MaterialButton.Shadow>
+            </controls:MaterialButton>
+
+            <!-- ===================================================== -->
+            <!-- DECLINAZIONI SENZA NUOVI STYLE -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Declinazioni inline"
+                TextColor="Black" />
+
+            <controls:MaterialButton
+                Text="Danger inline"
+                BackgroundColor="#DC2626"
+                TextColor="White"
+                BorderThickness="0"
+                CornerRadius="20"
+                Padding="15,16"
+                FontFamily="MontserratSemiBold"
+                FontSize="16"
+                LoadingColor="White"
+                Clicked="OnButtonClicked" />
+
+            <controls:MaterialButton
+                Text="Warning inline"
+                BackgroundColor="#F59E0B"
+                TextColor="Black"
+                BorderThickness="0"
+                CornerRadius="20"
+                Padding="15,16"
+                FontFamily="MontserratSemiBold"
+                FontSize="16"
+                LoadingColor="Black"
+                Clicked="OnButtonClicked" />
+
+            <controls:MaterialButton
+                Text="Success outline inline"
+                BackgroundColor="Transparent"
+                BorderColor="#16A34A"
+                BorderThickness="2"
+                TextColor="#16A34A"
+                CornerRadius="20"
+                Padding="15,16"
+                FontFamily="MontserratSemiBold"
+                FontSize="16"
+                LoadingColor="#16A34A"
+                Clicked="OnButtonClicked" />
+
+            <controls:MaterialButton
+                Text="Dark asymmetric"
+                BackgroundColor="#111827"
+                BorderColor="#8B5CF6"
+                BorderThickness="2"
+                TextColor="White"
+                CornerRadius="32,6,32,6"
+                Padding="18,16"
+                FontFamily="MontserratSemiBold"
+                FontSize="16"
+                LoadingColor="White"
+                Clicked="OnButtonClicked" />
+
+            <!-- ===================================================== -->
+            <!-- TEXT TRANSFORM -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="TextTransform"
+                TextColor="Black" />
+
+            <controls:MaterialButton
+                Style="{StaticResource PrimaryButton}"
+                Text="uppercase transform"
+                TextTransform="Uppercase"
+                Clicked="OnButtonClicked" />
+
+            <controls:MaterialButton
+                Style="{StaticResource SecondaryButton}"
+                Text="lowercase transform"
+                TextTransform="Lowercase"
+                Clicked="OnButtonClicked" />
+
+            <!-- ===================================================== -->
+            <!-- WIDTH / ALIGNMENT -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Width e alignment"
+                TextColor="Black" />
+
+            <controls:MaterialButton
+                Style="{StaticResource PrimaryButton}"
+                Text="Full width"
+                HorizontalOptions="Fill"
+                Clicked="OnButtonClicked" />
+
+            <controls:MaterialButton
+                Style="{StaticResource PrimaryButton}"
+                Text="Start"
+                HorizontalOptions="Start"
+                Clicked="OnButtonClicked" />
+
+            <controls:MaterialButton
+                Style="{StaticResource PrimaryButton}"
+                Text="Center"
+                HorizontalOptions="Center"
+                Clicked="OnButtonClicked" />
+
+            <controls:MaterialButton
+                Style="{StaticResource PrimaryButton}"
+                Text="End"
+                HorizontalOptions="End"
+                Clicked="OnButtonClicked" />
+
+            <Grid
+                ColumnDefinitions="*,Auto"
+                BackgroundColor="#E5E7EB">
+                <controls:MaterialButton
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Style="{StaticResource PrimaryButton}"
+                    Text="Grid span start"
+                    Padding="10,8"
+                    HorizontalOptions="Start"
+                    Clicked="OnButtonClicked" />
+            </Grid>
+
+            <!-- ===================================================== -->
+            <!-- CARD TEST -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Dentro FastBorder/Card"
+                TextColor="Black" />
+
+            <controls:FastBorder
+                BackgroundColor="#F3F4F6"
+                BorderColor="#E5E7EB"
+                BorderThickness="1"
+                CornerRadius="28"
+                Padding="18"
+                HorizontalOptions="Fill">
+                <controls:FastBorder.Shadow>
+                    <Shadow
+                        Brush="Black"
+                        Offset="2,4"
+                        Opacity="0.15"
+                        Radius="12" />
+                </controls:FastBorder.Shadow>
+
+                <VerticalStackLayout Spacing="12" BackgroundColor="LightBlue">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        Text="Card con azioni"
+                        TextColor="Black" />
+
+                    <Label
+                        FontSize="13"
+                        Text="Questo test verifica MaterialButton dentro un contenitore FastBorder con corner radius e shadow."
+                        TextColor="#707070" />
+
+                    <Grid
+                        ColumnDefinitions="*,*"
+                        ColumnSpacing="12">
+
+                        <controls:MaterialButton
+                            Grid.Column="0"
+                            Style="{StaticResource SecondaryButton}"
+                            Text="Annulla"
+                            Clicked="OnButtonClicked" />
+
+                        <controls:MaterialButton
+                            Grid.Column="1"
+                            Style="{StaticResource PrimaryButton}"
+                            Text="Conferma"
+                            Clicked="OnButtonClicked" />
+                    </Grid>
+                </VerticalStackLayout>
+            </controls:FastBorder>
+
+            <!-- ===================================================== -->
+            <!-- RESULT -->
+            <!-- ===================================================== -->
+
+            <controls:FastBorder
+                BackgroundColor="#EEF2FF"
+                BorderColor="#C7D2FE"
+                BorderThickness="1"
+                CornerRadius="18"
+                Padding="14"
+                HorizontalOptions="Fill">
+                <Label
+                    x:Name="ResultLabel"
+                    Text="Nessun click ancora."
+                    TextColor="#1E1B4B"
+                    FontSize="14" />
+            </controls:FastBorder>
+
+            <BoxView HeightRequest="30" Opacity="0" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

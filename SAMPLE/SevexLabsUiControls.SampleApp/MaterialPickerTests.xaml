@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SevexLabsUiControls.SampleApp.MaterialPickerTests"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SevexLabs.Ui.Maui.Controls;assembly=SevexLabs.Ui.Maui.Controls"
+    BackgroundColor="#FFFFFF"
+    Title="MaterialPicker Tests">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="16"
+            Spacing="22">
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="26"
+                Text="MaterialPicker Tests"
+                TextColor="Black" />
+
+            <Label
+                FontSize="14"
+                Text="Pagina di test per verificare ItemsSource, SelectedIndex, SelectedItem, Title, stato disabled e gli eventi iOS SelectionConfirmed / SelectionCancelled."
+                TextColor="#707070" />
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Lista semplice con valore iniziale"
+                TextColor="Black" />
+
+            <controls:MaterialPicker
+                x:Name="SimplePicker"
+                Title="Scegli tipo visita"
+                ItemsSource="{Binding VisitTypes}"
+                SelectedIndex="1"
+                SelectedIndexChanged="OnPickerSelectedIndexChanged"
+                SelectionConfirmed="OnPickerSelectionConfirmed"
+                SelectionCancelled="OnPickerSelectionCancelled"
+                TextColor="Black"
+                TitleColor="#6B7280" />
+
+            <Label
+                FontSize="13"
+                Text="{Binding Source={x:Reference SimplePicker}, Path=SelectedIndex, StringFormat='SelectedIndex: {0}'}"
+                TextColor="#374151" />
+
+            <Label
+                FontSize="13"
+                Text="{Binding Source={x:Reference SimplePicker}, Path=SelectedItem, StringFormat='SelectedItem: {0}'}"
+                TextColor="#374151" />
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Binding SelectedIndex / SelectedItem"
+                TextColor="Black" />
+
+            <controls:MaterialPicker
+                x:Name="BoundPicker"
+                Title="Picker con binding"
+                ItemsSource="{Binding VisitTypes}"
+                SelectedIndex="{Binding BoundSelectedIndex, Mode=TwoWay}"
+                SelectedItem="{Binding BoundSelectedItem, Mode=TwoWay}"
+                SelectedIndexChanged="OnPickerSelectedIndexChanged"
+                SelectionConfirmed="OnPickerSelectionConfirmed"
+                SelectionCancelled="OnPickerSelectionCancelled"
+                TextColor="Black"
+                TitleColor="#6B7280" />
+
+            <Grid
+                ColumnDefinitions="*,*"
+                ColumnSpacing="12">
+
+                <controls:MaterialButton
+                    Grid.Column="0"
+                    Style="{StaticResource SecondaryButton}"
+                    Text="Set index 0"
+                    Clicked="OnSetBoundIndexZeroClicked" />
+
+                <controls:MaterialButton
+                    Grid.Column="1"
+                    Style="{StaticResource PrimaryButton}"
+                    Text="Set index 2"
+                    Clicked="OnSetBoundIndexTwoClicked" />
+
+            </Grid>
+
+            <Label
+                FontSize="13"
+                Text="{Binding BoundSummary}"
+                TextColor="#374151" />
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Placeholder e disabled"
+                TextColor="Black" />
+
+            <controls:MaterialPicker
+                Title="Placeholder senza selezione"
+                ItemsSource="{Binding VisitTypes}"
+                TextColor="Black"
+                TitleColor="#6B7280" />
+
+            <controls:MaterialPicker
+                Title="Picker disabilitato"
+                ItemsSource="{Binding VisitTypes}"
+                SelectedIndex="0"
+                IsEnabled="False"
+                TextColor="Black"
+                TitleColor="#6B7280" />
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Eventi iOS"
+                TextColor="Black" />
+
+            <Label
+                FontSize="13"
+                Text="SelectionConfirmed e SelectionCancelled sono emessi dal handler iOS. Su Android questa sezione resta utile come pagina di regressione, ma non dovrebbe produrre questi eventi."
+                TextColor="#707070" />
+
+            <controls:FastBorder
+                BackgroundColor="#F8FAFC"
+                BorderColor="#E5E7EB"
+                BorderThickness="1"
+                CornerRadius="22"
+                Padding="14"
+                HorizontalOptions="Fill">
+
+                <VerticalStackLayout Spacing="8">
+
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="14"
+                        Text="Log"
+                        TextColor="Black" />
+
+                    <Label
+                        x:Name="ResultLabel"
+                        FontSize="13"
+                        LineBreakMode="WordWrap"
+                        Text="Interagisci con i picker per vedere SelectedIndexChanged e, su iOS, conferma/annulla."
+                        TextColor="#374151" />
+
+                </VerticalStackLayout>
+            </controls:FastBorder>
+
+            <BoxView
+                HeightRequest="30"
+                Opacity="0" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,1087 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SevexLabsUiControls.SampleApp.MaterialNumericEntryTests"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SevexLabs.Ui.Maui.Controls;assembly=SevexLabs.Ui.Maui.Controls"
+    BackgroundColor="#FFFFFF"
+    Title="MaterialNumericEntry Tests">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="16"
+            Spacing="22">
+
+            <!-- Header -->
+            <Label
+                FontAttributes="Bold"
+                FontSize="26"
+                Text="MaterialNumericEntry Tests"
+                TextColor="Black" />
+
+            <Label
+                FontSize="14"
+                Text="Pagina di test per verificare MaterialNumericEntry, FastBorder, valore numerico, step, min/max, decimal places, bottoni, HasError, read only e style DefaultNumericEntry."
+                TextColor="#707070" />
+
+            <!-- ===================================================== -->
+            <!-- DEFAULT STYLE -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="DefaultNumericEntry style"
+                TextColor="Black" />
+
+            <Label
+                FontSize="13"
+                Text="Test dei MaterialNumericEntry che usano direttamente lo style DefaultNumericEntry definito in Styles.xaml."
+                TextColor="#707070" />
+
+            <controls:MaterialNumericEntry
+                Style="{StaticResource DefaultNumericEntry}"
+                Placeholder="Peso"
+                Value="72"
+                Minimum="0"
+                Maximum="250"
+                Step="1"
+                ValueChanged="OnNumericValueChanged" />
+
+            <controls:MaterialNumericEntry
+                Style="{StaticResource DefaultNumericEntry}"
+                Placeholder="Altezza"
+                Value="178"
+                Minimum="0"
+                Maximum="250"
+                Step="1"
+                DecimalPlaces="0"
+                ValueChanged="OnNumericValueChanged" />
+
+            <controls:MaterialNumericEntry
+                Style="{StaticResource DefaultNumericEntry}"
+                Placeholder="Temperatura"
+                Value="36.5"
+                Minimum="30"
+                Maximum="45"
+                Step="0.1"
+                DecimalPlaces="1"
+                ValueChanged="OnNumericValueChanged" />
+
+            <controls:MaterialNumericEntry
+                Style="{StaticResource DefaultNumericEntry}"
+                Placeholder="Campo vuoto"
+                Minimum="0"
+                Maximum="100"
+                Step="1"
+                ValueChanged="OnNumericValueChanged" />
+
+            <controls:MaterialNumericEntry
+                Style="{StaticResource DefaultNumericEntry}"
+                Placeholder="Con errore"
+                Value="12"
+                Minimum="0"
+                Maximum="100"
+                Step="1"
+                HasError="True"
+                ErrorBorderThickness="2"
+                ValueChanged="OnNumericValueChanged" />
+
+            <Grid
+                ColumnDefinitions="*,*"
+                ColumnSpacing="12">
+
+                <controls:MaterialNumericEntry
+                    Grid.Column="0"
+                    Style="{StaticResource DefaultNumericEntry}"
+                    Placeholder="Normale"
+                    Value="10"
+                    Minimum="0"
+                    Maximum="20"
+                    Step="1"
+                    ValueChanged="OnNumericValueChanged" />
+
+                <controls:MaterialNumericEntry
+                    Grid.Column="1"
+                    Style="{StaticResource DefaultNumericEntry}"
+                    Placeholder="Errore"
+                    Value="5"
+                    Minimum="0"
+                    Maximum="20"
+                    Step="1"
+                    HasError="True"
+                    ErrorBorderThickness="2"
+                    ValueChanged="OnNumericValueChanged" />
+            </Grid>
+
+            <controls:MaterialNumericEntry
+                x:Name="StyledToggleErrorNumericEntry"
+                Style="{StaticResource DefaultNumericEntry}"
+                Placeholder="Tap read only per errore"
+                Value="7"
+                Minimum="0"
+                Maximum="20"
+                Step="1"
+                IsReadOnly="True"
+                RaiseTapWhenReadOnly="True"
+                ErrorBorderThickness="2"
+                ReadOnlyTapped="OnStyledToggleErrorNumericEntryTapped"
+                ValueChanged="OnNumericValueChanged" />
+
+            <controls:MaterialNumericEntry
+                Style="{StaticResource DefaultNumericEntry}"
+                Placeholder="Disabled"
+                Value="15"
+                Minimum="0"
+                Maximum="100"
+                Step="1"
+                IsEnabled="False" />
+            
+            
+            <!-- ===================================================== -->
+            <!-- HAS ERROR TOGGLE WITH BUTTON -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="HasError toggle con bottone"
+                TextColor="Black" />
+
+            <controls:FastBorder
+                BackgroundColor="#F8FAFC"
+                BorderColor="#E5E7EB"
+                BorderThickness="1"
+                CornerRadius="22"
+                Padding="14"
+                HorizontalOptions="Fill">
+
+                <VerticalStackLayout Spacing="12">
+
+                    <controls:MaterialNumericEntry
+                        x:Name="ButtonToggleErrorNumericEntry"
+                        Style="{StaticResource DefaultNumericEntry}"
+                        Placeholder="Valore controllato da bottone"
+                        Value="25"
+                        Minimum="0"
+                        Maximum="100"
+                        Step="1"
+                        DecimalPlaces="0"
+                        ErrorBorderThickness="2"
+                        ValueChanged="OnNumericValueChanged" />
+
+                    <Grid
+                        ColumnDefinitions="*,*"
+                        ColumnSpacing="12">
+
+                        <controls:MaterialButton
+                            Grid.Column="0"
+                            Style="{StaticResource SecondaryButton}"
+                            Text="Toggle HasError"
+                            Clicked="OnToggleNumericErrorButtonClicked" />
+
+                        <controls:MaterialButton
+                            Grid.Column="1"
+                            Style="{StaticResource PrimaryButton}"
+                            Text="Reset"
+                            Clicked="OnResetNumericErrorButtonClicked" />
+
+                    </Grid>
+
+                </VerticalStackLayout>
+            </controls:FastBorder>
+            
+
+            <!-- ===================================================== -->
+            <!-- BASE INLINE -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Base inline"
+                TextColor="Black" />
+
+            <controls:MaterialNumericEntry
+                HeightRequest="56"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="0"
+                Placeholder="Quantità"
+                Value="3"
+                Minimum="0"
+                Maximum="99"
+                Step="1"
+                DecimalPlaces="0"
+                UseFloatingPlaceholder="True"
+                PlaceholderUpY="-10"
+                PlaceholderScale="0.9"
+                EntryDownY="10"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#6B7280"
+                ButtonsTextColor="#2563EB"
+                ButtonsFontSize="28"
+                ValueChanged="OnNumericValueChanged" />
+
+            <controls:MaterialNumericEntry
+                HeightRequest="56"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="0"
+                Placeholder="Valore vuoto"
+                Minimum="0"
+                Maximum="100"
+                Step="1"
+                DecimalPlaces="0"
+                UseFloatingPlaceholder="True"
+                PlaceholderUpY="-10"
+                PlaceholderScale="0.9"
+                EntryDownY="10"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#6B7280"
+                ButtonsTextColor="#2563EB"
+                ButtonsFontSize="28"
+                ValueChanged="OnNumericValueChanged" />
+
+            <!-- ===================================================== -->
+            <!-- HAS ERROR -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="HasError"
+                TextColor="Black" />
+
+            <controls:MaterialNumericEntry
+                HeightRequest="56"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="0"
+                Placeholder="Errore standard"
+                Value="10"
+                Minimum="0"
+                Maximum="100"
+                Step="1"
+                DecimalPlaces="0"
+                UseFloatingPlaceholder="True"
+                PlaceholderUpY="-10"
+                PlaceholderScale="0.9"
+                EntryDownY="10"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#6B7280"
+                ButtonsTextColor="#DC2626"
+                ButtonsFontSize="28"
+                HasError="True"
+                ErrorColor="#DC2626"
+                ErrorBorderThickness="2"
+                ValueChanged="OnNumericValueChanged" />
+
+            <controls:MaterialNumericEntry
+                HeightRequest="56"
+                BackgroundColor="#FEF2F2"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="0"
+                Placeholder="Errore evidente"
+                Value="99"
+                Minimum="0"
+                Maximum="100"
+                Step="1"
+                DecimalPlaces="0"
+                UseFloatingPlaceholder="True"
+                PlaceholderUpY="-10"
+                PlaceholderScale="0.9"
+                EntryDownY="10"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#991B1B"
+                ButtonsTextColor="#EF4444"
+                ButtonsFontSize="28"
+                HasError="True"
+                ErrorColor="#EF4444"
+                ErrorBorderThickness="3"
+                ValueChanged="OnNumericValueChanged" />
+
+            <controls:MaterialNumericEntry
+                x:Name="ToggleErrorNumericEntry"
+                HeightRequest="56"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#2563EB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="0"
+                Placeholder="ReadOnly tap per errore"
+                Value="12"
+                Minimum="0"
+                Maximum="100"
+                Step="1"
+                DecimalPlaces="0"
+                UseFloatingPlaceholder="True"
+                PlaceholderUpY="-10"
+                PlaceholderScale="0.9"
+                EntryDownY="10"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#2563EB"
+                ButtonsTextColor="#2563EB"
+                ButtonsFontSize="28"
+                ErrorColor="#DC2626"
+                ErrorBorderThickness="3"
+                IsReadOnly="True"
+                RaiseTapWhenReadOnly="True"
+                ReadOnlyTapped="OnToggleErrorNumericEntryTapped"
+                ValueChanged="OnNumericValueChanged" />
+
+            <!-- ===================================================== -->
+            <!-- STEP / MIN / MAX -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Step, Minimum, Maximum"
+                TextColor="Black" />
+
+            <controls:MaterialNumericEntry
+                HeightRequest="56"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="0"
+                Placeholder="Step 1 / Min 0 / Max 10"
+                Value="5"
+                Minimum="0"
+                Maximum="10"
+                Step="1"
+                DecimalPlaces="0"
+                ButtonsTextColor="#2563EB"
+                ButtonsFontSize="28"
+                ValueChanged="OnNumericValueChanged" />
+
+            <controls:MaterialNumericEntry
+                HeightRequest="56"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="0"
+                Placeholder="Step 5 / Min 0 / Max 100"
+                Value="25"
+                Minimum="0"
+                Maximum="100"
+                Step="5"
+                DecimalPlaces="0"
+                ButtonsTextColor="#2563EB"
+                ButtonsFontSize="28"
+                ValueChanged="OnNumericValueChanged" />
+
+            <controls:MaterialNumericEntry
+                HeightRequest="56"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="0"
+                Placeholder="Step 0.5 / Min -10 / Max 10"
+                Value="-1.5"
+                Minimum="-10"
+                Maximum="10"
+                Step="0.5"
+                DecimalPlaces="1"
+                ButtonsTextColor="#2563EB"
+                ButtonsFontSize="28"
+                ValueChanged="OnNumericValueChanged" />
+
+            <!-- ===================================================== -->
+            <!-- DECIMAL PLACES -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="DecimalPlaces"
+                TextColor="Black" />
+
+            <controls:MaterialNumericEntry
+                HeightRequest="56"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="0"
+                Placeholder="DecimalPlaces 0"
+                Value="12"
+                Minimum="0"
+                Maximum="100"
+                Step="1"
+                DecimalPlaces="0"
+                ButtonsTextColor="#2563EB"
+                ButtonsFontSize="28"
+                ValueChanged="OnNumericValueChanged" />
+
+            <controls:MaterialNumericEntry
+                HeightRequest="56"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="0"
+                Placeholder="DecimalPlaces 1"
+                Value="12.5"
+                Minimum="0"
+                Maximum="100"
+                Step="0.1"
+                DecimalPlaces="1"
+                ButtonsTextColor="#2563EB"
+                ButtonsFontSize="28"
+                ValueChanged="OnNumericValueChanged" />
+
+            <controls:MaterialNumericEntry
+                HeightRequest="56"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="0"
+                Placeholder="DecimalPlaces 2"
+                Value="12.75"
+                Minimum="0"
+                Maximum="100"
+                Step="0.25"
+                DecimalPlaces="2"
+                ButtonsTextColor="#2563EB"
+                ButtonsFontSize="28"
+                ValueChanged="OnNumericValueChanged" />
+
+            <!-- ===================================================== -->
+            <!-- BUTTONS STYLE -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Bottoni + / -"
+                TextColor="Black" />
+
+            <controls:MaterialNumericEntry
+                HeightRequest="60"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="20"
+                Padding="0"
+                Placeholder="Bottoni larghi"
+                Value="10"
+                Minimum="0"
+                Maximum="100"
+                Step="1"
+                DecimalPlaces="0"
+                DecreaseWidth="64"
+                IncreaseWidth="64"
+                ButtonsTextColor="#2563EB"
+                ButtonsFontSize="34"
+                ValueChanged="OnNumericValueChanged" />
+
+            <controls:MaterialNumericEntry
+                HeightRequest="60"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="20"
+                Padding="0"
+                Placeholder="Bottoni colorati"
+                Value="10"
+                Minimum="0"
+                Maximum="100"
+                Step="1"
+                DecimalPlaces="0"
+                DecreaseBackgroundColor="#FEE2E2"
+                IncreaseBackgroundColor="#DCFCE7"
+                ButtonsTextColor="#111827"
+                ButtonsFontSize="30"
+                ValueChanged="OnNumericValueChanged" />
+
+            <controls:MaterialNumericEntry
+                HeightRequest="60"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="30"
+                Padding="0"
+                Placeholder="EntryWidth 100"
+                Value="50"
+                Minimum="0"
+                Maximum="100"
+                Step="10"
+                DecimalPlaces="0"
+                EntryWidth="100"
+                DecreaseWidth="56"
+                IncreaseWidth="56"
+                ButtonsTextColor="#2563EB"
+                ButtonsFontSize="30"
+                HorizontalOptions="Center"
+                ValueChanged="OnNumericValueChanged" />
+
+            <!-- ===================================================== -->
+            <!-- READ ONLY -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="ReadOnly"
+                TextColor="Black" />
+
+            <controls:MaterialNumericEntry
+                HeightRequest="56"
+                BackgroundColor="#F9FAFB"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="0"
+                Placeholder="ReadOnly semplice"
+                Value="42"
+                Minimum="0"
+                Maximum="100"
+                Step="1"
+                DecimalPlaces="0"
+                IsReadOnly="True"
+                ButtonsTextColor="#6B7280" />
+
+            <controls:MaterialNumericEntry
+                HeightRequest="56"
+                BackgroundColor="#EEF2FF"
+                BorderColor="#6366F1"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="0"
+                Placeholder="ReadOnly tappabile"
+                Value="24"
+                Minimum="0"
+                Maximum="100"
+                Step="1"
+                DecimalPlaces="0"
+                IsReadOnly="True"
+                RaiseTapWhenReadOnly="True"
+                ButtonsTextColor="#6366F1"
+                ReadOnlyTapped="OnReadOnlyNumericEntryTapped" />
+
+            <!-- ===================================================== -->
+            <!-- CORNER RADIUS -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="CornerRadius"
+                TextColor="Black" />
+
+            <controls:MaterialNumericEntry
+                HeightRequest="56"
+                BackgroundColor="#F9FAFB"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="0"
+                Padding="0"
+                Placeholder="CornerRadius 0"
+                Value="1"
+                Minimum="0"
+                Maximum="10"
+                Step="1"
+                ButtonsTextColor="#2563EB"
+                ButtonsFontSize="28"
+                ValueChanged="OnNumericValueChanged" />
+
+            <controls:MaterialNumericEntry
+                HeightRequest="56"
+                BackgroundColor="#F9FAFB"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="24"
+                Padding="0"
+                Placeholder="CornerRadius 24"
+                Value="2"
+                Minimum="0"
+                Maximum="10"
+                Step="1"
+                ButtonsTextColor="#2563EB"
+                ButtonsFontSize="28"
+                ValueChanged="OnNumericValueChanged" />
+
+            <controls:MaterialNumericEntry
+                HeightRequest="56"
+                BackgroundColor="#F9FAFB"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="28,4,28,4"
+                Padding="0"
+                Placeholder="CornerRadius 28,4,28,4"
+                Value="3"
+                Minimum="0"
+                Maximum="10"
+                Step="1"
+                ButtonsTextColor="#2563EB"
+                ButtonsFontSize="28"
+                ValueChanged="OnNumericValueChanged" />
+
+            <controls:MaterialNumericEntry
+                HeightRequest="56"
+                BackgroundColor="#F9FAFB"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="4,28,4,28"
+                Padding="0"
+                Placeholder="CornerRadius 4,28,4,28"
+                Value="4"
+                Minimum="0"
+                Maximum="10"
+                Step="1"
+                ButtonsTextColor="#2563EB"
+                ButtonsFontSize="28"
+                ValueChanged="OnNumericValueChanged" />
+
+            <!-- ===================================================== -->
+            <!-- ALIGNMENT / PLACEHOLDER -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Allineamenti e placeholder"
+                TextColor="Black" />
+
+            <controls:MaterialNumericEntry
+                HeightRequest="56"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="0"
+                Placeholder="Text Start"
+                Value="123"
+                Minimum="0"
+                Maximum="999"
+                Step="1"
+                DecimalPlaces="0"
+                HorizontalTextAlignment="Start"
+                HorizontalPlaceholderAlignment="Start"
+                TextIndent="10"
+                ButtonsTextColor="#2563EB"
+                ButtonsFontSize="28"
+                ValueChanged="OnNumericValueChanged" />
+
+            <controls:MaterialNumericEntry
+                HeightRequest="56"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="0"
+                Placeholder="Text Center"
+                Value="123"
+                Minimum="0"
+                Maximum="999"
+                Step="1"
+                DecimalPlaces="0"
+                HorizontalTextAlignment="Center"
+                HorizontalPlaceholderAlignment="Center"
+                ButtonsTextColor="#2563EB"
+                ButtonsFontSize="28"
+                ValueChanged="OnNumericValueChanged" />
+
+            <controls:MaterialNumericEntry
+                HeightRequest="56"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="0"
+                Placeholder="Floating off"
+                Value="123"
+                Minimum="0"
+                Maximum="999"
+                Step="1"
+                DecimalPlaces="0"
+                UseFloatingPlaceholder="False"
+                HorizontalTextAlignment="End"
+                HorizontalPlaceholderAlignment="Start"
+                ButtonsTextColor="#2563EB"
+                ButtonsFontSize="28"
+                ValueChanged="OnNumericValueChanged" />
+
+            <!-- ===================================================== -->
+            <!-- CARD TEST -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Dentro FastBorder/Card"
+                TextColor="Black" />
+
+            <controls:FastBorder
+                BackgroundColor="#F3F4F6"
+                BorderColor="#E5E7EB"
+                BorderThickness="1"
+                CornerRadius="28"
+                Padding="18"
+                HorizontalOptions="Fill">
+                <controls:FastBorder.Shadow>
+                    <Shadow
+                        Brush="Black"
+                        Offset="2,4"
+                        Opacity="0.15"
+                        Radius="12" />
+                </controls:FastBorder.Shadow>
+
+                <VerticalStackLayout Spacing="14">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        Text="Card con MaterialNumericEntry"
+                        TextColor="Black" />
+
+                    <Label
+                        FontSize="13"
+                        Text="Test per verificare MaterialNumericEntry dentro un contenitore FastBorder con corner radius e shadow."
+                        TextColor="#707070" />
+
+                    <controls:MaterialNumericEntry
+                        Style="{StaticResource DefaultNumericEntry}"
+                        Placeholder="Peso"
+                        Value="72"
+                        Minimum="0"
+                        Maximum="250"
+                        Step="1"
+                        DecimalPlaces="1"
+                        ValueChanged="OnNumericValueChanged" />
+
+                    <controls:MaterialNumericEntry
+                        Style="{StaticResource DefaultNumericEntry}"
+                        Placeholder="Altezza"
+                        Value="178"
+                        Minimum="0"
+                        Maximum="250"
+                        Step="1"
+                        DecimalPlaces="0"
+                        ValueChanged="OnNumericValueChanged" />
+
+                    <controls:MaterialNumericEntry
+                        Style="{StaticResource DefaultNumericEntry}"
+                        Placeholder="Temperatura"
+                        Value="39.2"
+                        Minimum="30"
+                        Maximum="45"
+                        Step="0.1"
+                        DecimalPlaces="1"
+                        HasError="True"
+                        ErrorBorderThickness="2"
+                        ValueChanged="OnNumericValueChanged" />
+                </VerticalStackLayout>
+            </controls:FastBorder>
+
+            <!-- ===================================================== -->
+            <!-- MANUAL INPUT DISABLED -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Manual input disabled"
+                TextColor="Black" />
+
+            <controls:FastBorder
+                BackgroundColor="#F8FAFC"
+                BorderColor="#E5E7EB"
+                BorderThickness="1"
+                CornerRadius="18"
+                Padding="14"
+                HorizontalOptions="Fill">
+
+                <VerticalStackLayout Spacing="12">
+
+                    <controls:MaterialNumericEntry
+                        Style="{StaticResource DefaultNumericEntry}"
+                        Placeholder="Manual input enabled"
+                        Value="10"
+                        Minimum="0"
+                        Maximum="100"
+                        Step="1"
+                        DecimalPlaces="0"
+                        IsManualInputDisabled="False"
+                        ValueChanged="OnManualInputNumericValueChanged"
+                        ReadOnlyTapped="OnManualInputReadOnlyTapped" />
+
+                    <controls:MaterialNumericEntry
+                        Style="{StaticResource DefaultNumericEntry}"
+                        Placeholder="Manual input disabled"
+                        Value="20"
+                        Minimum="0"
+                        Maximum="100"
+                        Step="1"
+                        DecimalPlaces="0"
+                        IsManualInputDisabled="True"
+                        ValueChanged="OnManualInputNumericValueChanged"
+                        ReadOnlyTapped="OnManualInputReadOnlyTapped" />
+
+                    <controls:MaterialNumericEntry
+                        x:Name="ManualInputToggleEntry"
+                        Style="{StaticResource DefaultNumericEntry}"
+                        Placeholder="Runtime toggle"
+                        Value="30"
+                        Minimum="0"
+                        Maximum="100"
+                        Step="1"
+                        DecimalPlaces="0"
+                        IsManualInputDisabled="True"
+                        IsReadOnly="False"
+                        RaiseTapWhenReadOnly="True"
+                        ValueChanged="OnManualInputNumericValueChanged"
+                        ReadOnlyTapped="OnManualInputReadOnlyTapped" />
+
+                    <controls:MaterialNumericEntry
+                        Style="{StaticResource DefaultNumericEntry}"
+                        Placeholder="Manual disabled + read-only"
+                        Value="40"
+                        Minimum="0"
+                        Maximum="100"
+                        Step="1"
+                        DecimalPlaces="0"
+                        IsManualInputDisabled="True"
+                        IsReadOnly="True"
+                        RaiseTapWhenReadOnly="True"
+                        ValueChanged="OnManualInputNumericValueChanged"
+                        ReadOnlyTapped="OnManualInputReadOnlyTapped" />
+
+                    <Grid
+                        ColumnDefinitions="*,*"
+                        ColumnSpacing="10"
+                        RowDefinitions="Auto,Auto"
+                        RowSpacing="10">
+
+                        <controls:MaterialButton
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Style="{StaticResource SecondaryButton}"
+                            Text="Toggle manual input"
+                            Clicked="OnManualInputToggleClicked" />
+
+                        <controls:MaterialButton
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Style="{StaticResource SecondaryButton}"
+                            Text="Toggle read-only"
+                            Clicked="OnManualInputReadOnlyToggleClicked" />
+
+                        <controls:MaterialButton
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Style="{StaticResource SecondaryButton}"
+                            Text="Value +1"
+                            Clicked="OnManualInputIncrementClicked" />
+
+                        <controls:MaterialButton
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Style="{StaticResource PrimaryButton}"
+                            Text="Reset counters"
+                            Clicked="OnManualInputResetClicked" />
+                    </Grid>
+
+                    <Grid
+                        ColumnDefinitions="*,*"
+                        ColumnSpacing="10"
+                        RowDefinitions="Auto,Auto"
+                        RowSpacing="6">
+
+                        <Label
+                            x:Name="ManualInputToggleStateLabel"
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            FontSize="13"
+                            TextColor="#374151" />
+
+                        <Label
+                            x:Name="ManualInputReadOnlyStateLabel"
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            FontSize="13"
+                            TextColor="#374151" />
+
+                        <Label
+                            x:Name="ManualInputValueChangedCountLabel"
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            FontSize="13"
+                            TextColor="#374151" />
+
+                        <Label
+                            x:Name="ManualInputReadOnlyTapCountLabel"
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            FontSize="13"
+                            TextColor="#374151" />
+                    </Grid>
+
+                    <Label
+                        x:Name="ManualInputCurrentValueLabel"
+                        FontSize="13"
+                        TextColor="#4B5563" />
+
+                    <Label
+                        x:Name="ManualInputStatusLabel"
+                        FontSize="13"
+                        TextColor="#4B5563" />
+                </VerticalStackLayout>
+            </controls:FastBorder>
+
+            <!-- ===================================================== -->
+            <!-- LIFECYCLE / DUPLICATE EVENTS -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Lifecycle / duplicate events"
+                TextColor="Black" />
+
+            <controls:FastBorder
+                BackgroundColor="#F8FAFC"
+                BorderColor="#E5E7EB"
+                BorderThickness="1"
+                CornerRadius="18"
+                Padding="14"
+                HorizontalOptions="Fill">
+
+                <VerticalStackLayout Spacing="12">
+
+                    <ContentView
+                        x:Name="LifecycleHost"
+                        HorizontalOptions="Fill" />
+
+                    <Grid
+                        ColumnDefinitions="*,*"
+                        ColumnSpacing="10"
+                        RowDefinitions="Auto,Auto,Auto"
+                        RowSpacing="10">
+
+                        <controls:MaterialButton
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Style="{StaticResource SecondaryButton}"
+                            Text="Mount"
+                            Clicked="OnLifecycleMountClicked" />
+
+                        <controls:MaterialButton
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Style="{StaticResource SecondaryButton}"
+                            Text="Unmount"
+                            Clicked="OnLifecycleUnmountClicked" />
+
+                        <controls:MaterialButton
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Style="{StaticResource SecondaryButton}"
+                            Text="Remount same instance"
+                            Clicked="OnLifecycleRemountClicked" />
+
+                        <controls:MaterialButton
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Style="{StaticResource SecondaryButton}"
+                            Text="Cycle 10x"
+                            Clicked="OnLifecycleCycleClicked" />
+
+                        <controls:MaterialButton
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            Style="{StaticResource SecondaryButton}"
+                            Text="Value +1"
+                            Clicked="OnLifecycleIncrementValueClicked" />
+
+                        <controls:MaterialButton
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Style="{StaticResource PrimaryButton}"
+                            Text="Reset counters"
+                            Clicked="OnLifecycleResetClicked" />
+                    </Grid>
+
+                    <Grid
+                        ColumnDefinitions="*,*"
+                        ColumnSpacing="10"
+                        RowDefinitions="Auto,Auto"
+                        RowSpacing="6">
+
+                        <Label
+                            x:Name="LifecycleMountCountLabel"
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            FontSize="13"
+                            TextColor="#374151" />
+
+                        <Label
+                            x:Name="LifecycleValueChangedCountLabel"
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            FontSize="13"
+                            TextColor="#374151" />
+
+                        <Label
+                            x:Name="LifecycleReadOnlyTapCountLabel"
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            FontSize="13"
+                            TextColor="#374151" />
+
+                        <Label
+                            x:Name="LifecycleCurrentValueLabel"
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            FontSize="13"
+                            TextColor="#374151" />
+                    </Grid>
+
+                    <Label
+                        x:Name="LifecycleStatusLabel"
+                        FontSize="13"
+                        TextColor="#4B5563" />
+                </VerticalStackLayout>
+            </controls:FastBorder>
+
+            <!-- ===================================================== -->
+            <!-- RESULT -->
+            <!-- ===================================================== -->
+
+            <controls:FastBorder
+                BackgroundColor="#EEF2FF"
+                BorderColor="#C7D2FE"
+                BorderThickness="1"
+                CornerRadius="18"
+                Padding="14"
+                HorizontalOptions="Fill">
+                <Label
+                    x:Name="ResultLabel"
+                    Text="Nessun evento ancora."
+                    TextColor="#1E1B4B"
+                    FontSize="14" />
+            </controls:FastBorder>
+
+            <BoxView HeightRequest="30" Opacity="0" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

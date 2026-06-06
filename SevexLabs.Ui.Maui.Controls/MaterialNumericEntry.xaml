@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<controls:FastBorder
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SevexLabs.Ui.Maui.Controls"
+    x:Class="SevexLabs.Ui.Maui.Controls.MaterialNumericEntry"
+    x:Name="this">
+
+    <Grid x:Name="RootGrid"
+          RowSpacing="0"
+          ColumnSpacing="0"
+          HorizontalOptions="Fill"
+          VerticalOptions="Fill">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Minus -->
+        <Grid x:Name="MinusHost"
+              Grid.Column="0"
+              VerticalOptions="Fill"
+              HorizontalOptions="Start"
+              BackgroundColor="Transparent">
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnMinusTapped" />
+            </Grid.GestureRecognizers>
+
+            <Label x:Name="MinusLabel"
+                   Text="-"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   WidthRequest="44"
+                   VerticalOptions="Fill" />
+        </Grid>
+
+        <!-- Field -->
+        <controls:MaterialEntry x:Name="Field"
+                                BorderThickness="0"
+                                ErrorBorderThickness="0"
+                                BorderColor="Transparent"
+                                Grid.Column="1"
+                                VerticalOptions="Fill"
+                                HorizontalOptions="Fill"
+                                TextIndent="0"
+                                HorizontalTextAlignment="End"
+                                UseFloatingPlaceholder="True"
+                                ShowEye="False"
+                                IsPassword="False"
+                                Keyboard="Numeric" />
+
+        <!-- Plus -->
+        <Grid x:Name="PlusHost"
+              Grid.Column="2"
+              VerticalOptions="Fill"
+              HorizontalOptions="End"
+              BackgroundColor="Transparent">
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnPlusTapped" />
+            </Grid.GestureRecognizers>
+
+            <Label x:Name="PlusLabel"
+                   Text="+"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   WidthRequest="44"
+                   VerticalOptions="Fill" />
+        </Grid>
+
+    </Grid>
+</controls:FastBorder>

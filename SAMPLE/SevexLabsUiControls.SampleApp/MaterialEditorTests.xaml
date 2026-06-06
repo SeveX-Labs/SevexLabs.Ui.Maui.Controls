@@ -1,0 +1,699 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SevexLabsUiControls.SampleApp.MaterialEditorTests"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SevexLabs.Ui.Maui.Controls;assembly=SevexLabs.Ui.Maui.Controls"
+    BackgroundColor="#FFFFFF"
+    Title="MaterialEditor Tests">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="16"
+            Spacing="22">
+
+            <!-- Header -->
+            <Label
+                FontAttributes="Bold"
+                FontSize="26"
+                Text="MaterialEditor Tests"
+                TextColor="Black" />
+
+            <Label
+                FontSize="14"
+                Text="Pagina di test per verificare MaterialEditor, FastBorder, placeholder floating, testo multilinea, read only, HasError, padding, alignment e style DefaultEditor."
+                TextColor="#707070" />
+
+            <!-- ===================================================== -->
+            <!-- DEFAULT STYLE -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="DefaultEditor style"
+                TextColor="Black" />
+
+            <Label
+                FontSize="13"
+                Text="Test dei MaterialEditor che usano direttamente lo style DefaultEditor definito in Styles.xaml."
+                TextColor="#707070" />
+
+            <controls:MaterialEditor
+                Style="{StaticResource DefaultEditor}"
+                HeightRequest="120"
+                Placeholder="Note"
+                Text="Questo editor usa lo style DefaultEditor." />
+
+            <controls:MaterialEditor
+                Style="{StaticResource DefaultEditor}"
+                HeightRequest="140"
+                Placeholder="Descrizione"
+                Text="Test multilinea con style DefaultEditor.
+Seconda riga di testo.
+Terza riga di testo." />
+
+            <controls:MaterialEditor
+                Style="{StaticResource DefaultEditor}"
+                HeightRequest="120"
+                Placeholder="Campo vuoto" />
+
+            <controls:MaterialEditor
+                Style="{StaticResource DefaultEditor}"
+                HeightRequest="120"
+                Placeholder="Con errore"
+                Text="Questo campo è in errore"
+                HasError="True"
+                ErrorBorderThickness="2" />
+
+            <Grid
+                ColumnDefinitions="*,*"
+                ColumnSpacing="12">
+
+                <controls:MaterialEditor
+                    Grid.Column="0"
+                    Style="{StaticResource DefaultEditor}"
+                    HeightRequest="120"
+                    Placeholder="Normale"
+                    Text="OK" />
+
+                <controls:MaterialEditor
+                    Grid.Column="1"
+                    Style="{StaticResource DefaultEditor}"
+                    HeightRequest="120"
+                    Placeholder="Errore"
+                    Text="KO"
+                    HasError="True"
+                    ErrorBorderThickness="2" />
+            </Grid>
+
+            <controls:MaterialEditor
+                x:Name="StyledToggleErrorEditor"
+                Style="{StaticResource DefaultEditor}"
+                HeightRequest="120"
+                Placeholder="Tap read only per errore"
+                Text="Toccami per alternare HasError"
+                IsReadOnly="True"
+                RaiseTapWhenReadOnly="True"
+                ErrorBorderThickness="2"
+                ReadOnlyTapped="OnStyledToggleErrorEditorTapped" />
+
+            <controls:MaterialEditor
+                Style="{StaticResource DefaultEditor}"
+                HeightRequest="120"
+                Placeholder="Disabled"
+                Text="Editor disabilitato"
+                IsEnabled="False" />
+
+            <!-- ===================================================== -->
+            <!-- BASE INLINE -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Base inline"
+                TextColor="Black" />
+
+            <controls:MaterialEditor
+                HeightRequest="120"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="14,15,10,10"
+                Placeholder="Note"
+                Text="MaterialEditor base inline"
+                UseFloatingPlaceholder="True"
+                PlaceholderUpY="-7"
+                PlaceholderScale="0.9"
+                EditorDownY="10"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#6B7280"
+                TextChanged="OnEditorTextChanged"
+                EditorFocused="OnEditorFocused" />
+
+            <controls:MaterialEditor
+                HeightRequest="120"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="14,15,10,10"
+                Placeholder="Editor vuoto"
+                UseFloatingPlaceholder="True"
+                PlaceholderUpY="-7"
+                PlaceholderScale="0.9"
+                EditorDownY="10"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#6B7280"
+                TextChanged="OnEditorTextChanged"
+                EditorFocused="OnEditorFocused" />
+
+            <!-- ===================================================== -->
+            <!-- HAS ERROR -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="HasError"
+                TextColor="Black" />
+
+            <controls:MaterialEditor
+                HeightRequest="120"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="14,15,10,10"
+                Placeholder="Errore standard"
+                Text="Questo editor ha HasError=True"
+                UseFloatingPlaceholder="True"
+                PlaceholderUpY="-7"
+                PlaceholderScale="0.9"
+                EditorDownY="10"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#6B7280"
+                HasError="True"
+                ErrorColor="#DC2626"
+                ErrorBorderThickness="2" />
+
+            <controls:MaterialEditor
+                HeightRequest="130"
+                BackgroundColor="#FEF2F2"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="14,15,10,10"
+                Placeholder="Errore evidente"
+                Text="Test con background chiaro e bordo errore più spesso."
+                UseFloatingPlaceholder="True"
+                PlaceholderUpY="-7"
+                PlaceholderScale="0.9"
+                EditorDownY="10"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#991B1B"
+                HasError="True"
+                ErrorColor="#EF4444"
+                ErrorBorderThickness="3" />
+
+            <controls:MaterialEditor
+                x:Name="ToggleErrorEditor"
+                HeightRequest="120"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#2563EB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="14,15,10,10"
+                Placeholder="ReadOnly tap per alternare errore"
+                Text="Toccami per alternare HasError"
+                UseFloatingPlaceholder="True"
+                PlaceholderUpY="-7"
+                PlaceholderScale="0.9"
+                EditorDownY="10"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#2563EB"
+                ErrorColor="#DC2626"
+                ErrorBorderThickness="3"
+                IsReadOnly="True"
+                RaiseTapWhenReadOnly="True"
+                ReadOnlyTapped="OnToggleErrorEditorTapped" />
+
+            
+            <!-- ===================================================== -->
+            <!-- HAS ERROR TOGGLE WITH BUTTON -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="HasError toggle con bottone"
+                TextColor="Black" />
+
+            <controls:FastBorder
+                BackgroundColor="#F8FAFC"
+                BorderColor="#E5E7EB"
+                BorderThickness="1"
+                CornerRadius="22"
+                Padding="14"
+                HorizontalOptions="Fill">
+
+                <VerticalStackLayout Spacing="12">
+
+                    <controls:MaterialEditor
+                        x:Name="ButtonToggleErrorEditor"
+                        Style="{StaticResource DefaultEditor}"
+                        HeightRequest="120"
+                        Placeholder="Editor controllato da bottone"
+                        Text="Testo valido"
+                        ErrorBorderThickness="2"
+                        TextChanged="OnEditorTextChanged"
+                        EditorFocused="OnEditorFocused" />
+
+                    <Grid
+                        ColumnDefinitions="*,*"
+                        ColumnSpacing="12">
+
+                        <controls:MaterialButton
+                            Grid.Column="0"
+                            Style="{StaticResource SecondaryButton}"
+                            Text="Toggle HasError"
+                            Clicked="OnToggleEditorErrorButtonClicked" />
+
+                        <controls:MaterialButton
+                            Grid.Column="1"
+                            Style="{StaticResource PrimaryButton}"
+                            Text="Reset"
+                            Clicked="OnResetEditorErrorButtonClicked" />
+
+                    </Grid>
+
+                </VerticalStackLayout>
+            </controls:FastBorder>
+            
+            
+            <!-- ===================================================== -->
+            <!-- READ ONLY -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="ReadOnly"
+                TextColor="Black" />
+
+            <controls:MaterialEditor
+                HeightRequest="120"
+                BackgroundColor="#F9FAFB"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="14,15,10,10"
+                Placeholder="ReadOnly semplice"
+                Text="Questo editor è read only e non apre la tastiera."
+                UseFloatingPlaceholder="True"
+                PlaceholderUpY="-7"
+                PlaceholderScale="0.9"
+                EditorDownY="10"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#6B7280"
+                IsReadOnly="True" />
+
+            <controls:MaterialEditor
+                HeightRequest="120"
+                BackgroundColor="#EEF2FF"
+                BorderColor="#6366F1"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="14,15,10,10"
+                Placeholder="ReadOnly tappabile"
+                Text="Questo editor è read only ma solleva ReadOnlyTapped."
+                UseFloatingPlaceholder="True"
+                PlaceholderUpY="-7"
+                PlaceholderScale="0.9"
+                EditorDownY="10"
+                FontSize="16"
+                TextColor="#1E1B4B"
+                PlaceholderColor="#6366F1"
+                IsReadOnly="True"
+                RaiseTapWhenReadOnly="True"
+                ReadOnlyTapped="OnReadOnlyEditorTapped" />
+
+            <!-- ===================================================== -->
+            <!-- CORNER RADIUS -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="CornerRadius"
+                TextColor="Black" />
+
+            <controls:MaterialEditor
+                HeightRequest="110"
+                BackgroundColor="#F9FAFB"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="0"
+                Padding="14,15,10,10"
+                Placeholder="CornerRadius 0"
+                Text="Bordi quadrati"
+                UseFloatingPlaceholder="True"
+                PlaceholderUpY="-7"
+                PlaceholderScale="0.9"
+                EditorDownY="10"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#6B7280" />
+
+            <controls:MaterialEditor
+                HeightRequest="110"
+                BackgroundColor="#F9FAFB"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="24"
+                Padding="14,15,10,10"
+                Placeholder="CornerRadius 24"
+                Text="Raggio uniforme"
+                UseFloatingPlaceholder="True"
+                PlaceholderUpY="-7"
+                PlaceholderScale="0.9"
+                EditorDownY="10"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#6B7280" />
+
+            <controls:MaterialEditor
+                HeightRequest="110"
+                BackgroundColor="#F9FAFB"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="28,4,28,4"
+                Padding="14,15,10,10"
+                Placeholder="CornerRadius per angolo"
+                Text="28,4,28,4"
+                UseFloatingPlaceholder="True"
+                PlaceholderUpY="-7"
+                PlaceholderScale="0.9"
+                EditorDownY="10"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#6B7280" />
+
+            <controls:MaterialEditor
+                HeightRequest="110"
+                BackgroundColor="#F9FAFB"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="4,28,4,28"
+                Padding="14,15,10,10"
+                Placeholder="CornerRadius per angolo"
+                Text="4,28,4,28"
+                UseFloatingPlaceholder="True"
+                PlaceholderUpY="-7"
+                PlaceholderScale="0.9"
+                EditorDownY="10"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#6B7280" />
+
+            <!-- ===================================================== -->
+            <!-- FLOATING PLACEHOLDER -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Floating placeholder"
+                TextColor="Black" />
+
+            <controls:MaterialEditor
+                HeightRequest="120"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="14,15,10,10"
+                Placeholder="Floating attivo"
+                Text="Placeholder in alto"
+                UseFloatingPlaceholder="True"
+                PlaceholderUpY="-7"
+                PlaceholderScale="0.9"
+                EditorDownY="10"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#2563EB" />
+
+            <controls:MaterialEditor
+                HeightRequest="120"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="14,15,10,10"
+                Placeholder="Floating disattivo"
+                Text="Placeholder nativo"
+                UseFloatingPlaceholder="False"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#6B7280" />
+
+            <controls:MaterialEditor
+                HeightRequest="140"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="14,18,10,10"
+                Placeholder="PlaceholderUpY -14 / EditorDownY 14"
+                Text="Test con placeholder più alto e testo più basso."
+                UseFloatingPlaceholder="True"
+                PlaceholderUpY="-14"
+                PlaceholderScale="0.82"
+                EditorDownY="14"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#2563EB" />
+
+            <!-- ===================================================== -->
+            <!-- ALIGNMENT -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Allineamenti"
+                TextColor="Black" />
+
+            <controls:MaterialEditor
+                HeightRequest="120"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="14,15,10,10"
+                Placeholder="Start"
+                Text="Testo allineato a sinistra"
+                UseFloatingPlaceholder="True"
+                PlaceholderUpY="-7"
+                PlaceholderScale="0.9"
+                EditorDownY="10"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#6B7280"
+                HorizontalTextAlignment="Start"
+                HorizontalPlaceholderAlignment="Start" />
+
+            <controls:MaterialEditor
+                HeightRequest="120"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="14,15,10,10"
+                Placeholder="Center"
+                Text="Testo centrato"
+                UseFloatingPlaceholder="True"
+                PlaceholderUpY="-7"
+                PlaceholderScale="0.9"
+                EditorDownY="10"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#6B7280"
+                HorizontalTextAlignment="Center"
+                HorizontalPlaceholderAlignment="Center" />
+
+            <controls:MaterialEditor
+                HeightRequest="120"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="14,15,10,10"
+                Placeholder="End"
+                Text="Testo allineato a destra"
+                UseFloatingPlaceholder="True"
+                PlaceholderUpY="-7"
+                PlaceholderScale="0.9"
+                EditorDownY="10"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#6B7280"
+                HorizontalTextAlignment="End"
+                HorizontalPlaceholderAlignment="End" />
+
+            <!-- ===================================================== -->
+            <!-- TEXT INDENT -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="TextIndent"
+                TextColor="Black" />
+
+            <controls:MaterialEditor
+                HeightRequest="110"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="14,15,10,10"
+                Placeholder="TextIndent 0"
+                Text="Nessun indent"
+                UseFloatingPlaceholder="True"
+                PlaceholderUpY="-7"
+                PlaceholderScale="0.9"
+                EditorDownY="10"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#6B7280"
+                TextIndent="0" />
+
+            <controls:MaterialEditor
+                HeightRequest="110"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="14,15,10,10"
+                Placeholder="TextIndent 24"
+                Text="Testo spostato"
+                UseFloatingPlaceholder="True"
+                PlaceholderUpY="-7"
+                PlaceholderScale="0.9"
+                EditorDownY="10"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#6B7280"
+                TextIndent="24" />
+
+            <!-- ===================================================== -->
+            <!-- KEYBOARD -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Keyboard"
+                TextColor="Black" />
+
+            <controls:MaterialEditor
+                HeightRequest="110"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="14,15,10,10"
+                Placeholder="Keyboard plain"
+                Text="Keyboard Plain"
+                UseFloatingPlaceholder="True"
+                PlaceholderUpY="-7"
+                PlaceholderScale="0.9"
+                EditorDownY="10"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#6B7280"
+                Keyboard="Plain" />
+
+            <controls:MaterialEditor
+                HeightRequest="110"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="14,15,10,10"
+                Placeholder="Keyboard chat"
+                Text="Keyboard Chat"
+                UseFloatingPlaceholder="True"
+                PlaceholderUpY="-7"
+                PlaceholderScale="0.9"
+                EditorDownY="10"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#6B7280"
+                Keyboard="Chat" />
+
+            <!-- ===================================================== -->
+            <!-- CARD TEST -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Dentro FastBorder/Card"
+                TextColor="Black" />
+
+            <controls:FastBorder
+                BackgroundColor="#F3F4F6"
+                BorderColor="#E5E7EB"
+                BorderThickness="1"
+                CornerRadius="28"
+                Padding="18"
+                HorizontalOptions="Fill">
+                <controls:FastBorder.Shadow>
+                    <Shadow
+                        Brush="Black"
+                        Offset="2,4"
+                        Opacity="0.15"
+                        Radius="12" />
+                </controls:FastBorder.Shadow>
+
+                <VerticalStackLayout Spacing="14">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        Text="Card con MaterialEditor"
+                        TextColor="Black" />
+
+                    <Label
+                        FontSize="13"
+                        Text="Test per verificare MaterialEditor dentro un contenitore FastBorder con corner radius e shadow."
+                        TextColor="#707070" />
+
+                    <controls:MaterialEditor
+                        Style="{StaticResource DefaultEditor}"
+                        HeightRequest="130"
+                        Placeholder="Anamnesi"
+                        Text="Paziente collaborativo. Nessuna nota particolare." />
+
+                    <controls:MaterialEditor
+                        Style="{StaticResource DefaultEditor}"
+                        HeightRequest="130"
+                        Placeholder="Note obbligatorie"
+                        Text="Dato mancante"
+                        HasError="True"
+                        ErrorBorderThickness="2" />
+                </VerticalStackLayout>
+            </controls:FastBorder>
+
+            <!-- ===================================================== -->
+            <!-- RESULT -->
+            <!-- ===================================================== -->
+
+            <controls:FastBorder
+                BackgroundColor="#EEF2FF"
+                BorderColor="#C7D2FE"
+                BorderThickness="1"
+                CornerRadius="18"
+                Padding="14"
+                HorizontalOptions="Fill">
+                <Label
+                    x:Name="ResultLabel"
+                    Text="Nessun evento ancora."
+                    TextColor="#1E1B4B"
+                    FontSize="14" />
+            </controls:FastBorder>
+
+            <BoxView HeightRequest="30" Opacity="0" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

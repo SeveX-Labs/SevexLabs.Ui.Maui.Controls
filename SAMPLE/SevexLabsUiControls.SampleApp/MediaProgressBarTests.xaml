@@ -1,0 +1,532 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SevexLabsUiControls.SampleApp.MediaProgressBarTests"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SevexLabs.Ui.Maui.Controls;assembly=SevexLabs.Ui.Maui.Controls"
+    BackgroundColor="#FFFFFF"
+    Title="MediaProgressBar Tests">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="16"
+            Spacing="22">
+
+            <!-- Header -->
+            <Label
+                FontAttributes="Bold"
+                FontSize="26"
+                Text="MediaProgressBar Tests"
+                TextColor="Black" />
+
+            <Label
+                FontSize="14"
+                Text="Pagina di test per verificare MediaProgressBar, countdown, eventi, animazioni, label tempo, direzione, shadow, colori e contenitore FastBorder."
+                TextColor="#707070" />
+
+            <!-- ===================================================== -->
+            <!-- MAIN INTERACTIVE TEST -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Countdown interattivo"
+                TextColor="Black" />
+
+            <controls:FastBorder
+                BackgroundColor="#F8FAFC"
+                BorderColor="#E5E7EB"
+                BorderThickness="1"
+                CornerRadius="24"
+                Padding="16"
+                HorizontalOptions="Fill">
+                <controls:FastBorder.Shadow>
+                    <Shadow
+                        Brush="Black"
+                        Offset="2,4"
+                        Opacity="0.12"
+                        Radius="12" />
+                </controls:FastBorder.Shadow>
+
+                <VerticalStackLayout Spacing="14">
+
+                    <controls:MediaProgressBar
+                        x:Name="MainProgressBar"
+                        StartValue="30"
+                        FinalValue="0"
+                        StepValue="1"
+                        StepInterval="00:00:01"
+                        Animate="True"
+                        AnimationDuration="300"
+                        TimeDisplayFormat="MmSs"
+                        TimeLabelPosition="Top"
+                        TimeHorizontalAlignment="Center"
+                        FontFamily="MontserratSemiBold"
+                        FontSize="18"
+                        TextColor="#111827"
+                        TrackColor="#E5E7EB"
+                        ProgressColor="#2563EB"
+                        ProgressBarHeight="12"
+                        ProgressBarCornerRadius="999"
+                        Spacing="8"
+                        ContainerBackgroundColor="Transparent"
+                        CountdownStarted="OnCountdownStarted"
+                        CountdownPaused="OnCountdownPaused"
+                        CountdownStopped="OnCountdownStopped"
+                        CountdownUpdated="OnCountdownUpdated"
+                        CountdownCompleted="OnCountdownCompleted" />
+
+                    <Grid
+                        ColumnDefinitions="*,*,*"
+                        ColumnSpacing="10">
+
+                        <controls:MaterialButton
+                            Grid.Column="0"
+                            Style="{StaticResource PrimaryButton}"
+                            Text="Start"
+                            Clicked="OnMainStartClicked" />
+
+                        <controls:MaterialButton
+                            Grid.Column="1"
+                            Style="{StaticResource SecondaryButton}"
+                            Text="Pause"
+                            Clicked="OnMainPauseClicked" />
+
+                        <controls:MaterialButton
+                            Grid.Column="2"
+                            Style="{StaticResource SecondaryButton}"
+                            Text="Stop"
+                            Clicked="OnMainStopClicked" />
+
+                    </Grid>
+
+                </VerticalStackLayout>
+            </controls:FastBorder>
+
+            <!-- ===================================================== -->
+            <!-- BASIC VARIANTS -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Varianti base"
+                TextColor="Black" />
+
+            <controls:MediaProgressBar
+                StartValue="90"
+                FinalValue="0"
+                StepValue="1"
+                StepInterval="00:00:01"
+                Animate="False"
+                TimeDisplayFormat="MmSs"
+                TimeLabelPosition="Top"
+                TimeHorizontalAlignment="Start"
+                FontSize="16"
+                TextColor="Black"
+                TrackColor="#E5E7EB"
+                ProgressColor="#16A34A"
+                ProgressBarHeight="8"
+                ProgressBarCornerRadius="999"
+                Spacing="6" />
+
+            <controls:MediaProgressBar
+                StartValue="3605"
+                FinalValue="0"
+                StepValue="1"
+                StepInterval="00:00:01"
+                Animate="False"
+                TimeDisplayFormat="HhMmSs"
+                TimeLabelPosition="Top"
+                TimeHorizontalAlignment="Center"
+                FontSize="16"
+                TextColor="Black"
+                TrackColor="#E5E7EB"
+                ProgressColor="#C75C00"
+                ProgressBarHeight="8"
+                ProgressBarCornerRadius="999"
+                Spacing="6" />
+
+            <controls:MediaProgressBar
+                StartValue="120"
+                FinalValue="0"
+                StepValue="1"
+                StepInterval="00:00:01"
+                Animate="False"
+                TimeDisplayFormat="MmSs"
+                TimeLabelPosition="Top"
+                TimeHorizontalAlignment="End"
+                FontSize="16"
+                TextColor="Black"
+                TrackColor="#E5E7EB"
+                ProgressColor="#AA1D5D"
+                ProgressBarHeight="8"
+                ProgressBarCornerRadius="999"
+                Spacing="6" />
+
+            <!-- ===================================================== -->
+            <!-- TIME LABEL POSITION -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="TimeLabelPosition"
+                TextColor="Black" />
+
+            <controls:MediaProgressBar
+                StartValue="75"
+                FinalValue="0"
+                StepValue="1"
+                StepInterval="00:00:01"
+                Animate="True"
+                AnimationDuration="250"
+                TimeDisplayFormat="MmSs"
+                TimeLabelPosition="Top"
+                TimeHorizontalAlignment="Start"
+                FontFamily="MontserratSemiBold"
+                FontSize="16"
+                TextColor="#111827"
+                TrackColor="#E5E7EB"
+                ProgressColor="#2563EB"
+                ProgressBarHeight="10"
+                ProgressBarCornerRadius="999"
+                Spacing="8" />
+
+            <controls:MediaProgressBar
+                StartValue="75"
+                FinalValue="0"
+                StepValue="1"
+                StepInterval="00:00:01"
+                Animate="True"
+                AnimationDuration="250"
+                TimeDisplayFormat="MmSs"
+                TimeLabelPosition="Left"
+                TimeHorizontalAlignment="Start"
+                TimeMargin="0,0,8,0"
+                FontFamily="MontserratSemiBold"
+                FontSize="16"
+                TextColor="#111827"
+                TrackColor="#E5E7EB"
+                ProgressColor="#2563EB"
+                ProgressBarHeight="10"
+                ProgressBarCornerRadius="999"
+                Spacing="12" />
+
+            <!-- ===================================================== -->
+            <!-- CONTAINER VISUALS -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Container visuals"
+                TextColor="Black" />
+
+            <controls:MediaProgressBar
+                StartValue="180"
+                FinalValue="0"
+                StepValue="1"
+                StepInterval="00:00:01"
+                Animate="False"
+                TimeDisplayFormat="MmSs"
+                TimeLabelPosition="Top"
+                TimeHorizontalAlignment="Center"
+                FontFamily="MontserratSemiBold"
+                FontSize="16"
+                TextColor="#1E1B4B"
+                TrackColor="#C7D2FE"
+                ProgressColor="#6366F1"
+                ProgressBarHeight="10"
+                ProgressBarCornerRadius="999"
+                ContainerBackgroundColor="#EEF2FF"
+                ContainerBorderColor="#C7D2FE"
+                ContainerBorderThickness="1"
+                ContainerCornerRadius="20"
+                ContainerPadding="14"
+                Spacing="8" />
+
+            <controls:MediaProgressBar
+                StartValue="180"
+                FinalValue="0"
+                StepValue="1"
+                StepInterval="00:00:01"
+                Animate="False"
+                TimeDisplayFormat="MmSs"
+                TimeLabelPosition="Left"
+                TimeHorizontalAlignment="Start"
+                TimeMargin="0,0,8,0"
+                FontFamily="MontserratSemiBold"
+                FontSize="16"
+                TextColor="#064E3B"
+                TrackColor="#D1FAE5"
+                ProgressColor="#16A34A"
+                ProgressBarHeight="10"
+                ProgressBarCornerRadius="999"
+                ContainerBackgroundColor="#ECFDF5"
+                ContainerBorderColor="#A7F3D0"
+                ContainerBorderThickness="1"
+                ContainerCornerRadius="20"
+                ContainerPadding="14"
+                ContainerUseShadow="True"
+                Spacing="12">
+                <controls:MediaProgressBar.ContainerShadow>
+                    <Shadow
+                        Brush="Black"
+                        Offset="2,4"
+                        Opacity="0.12"
+                        Radius="12" />
+                </controls:MediaProgressBar.ContainerShadow>
+            </controls:MediaProgressBar>
+
+            <!-- ===================================================== -->
+            <!-- PROGRESS VISUALS -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Progress visuals"
+                TextColor="Black" />
+
+            <controls:MediaProgressBar
+                StartValue="240"
+                FinalValue="0"
+                StepValue="1"
+                StepInterval="00:00:01"
+                Animate="False"
+                TimeDisplayFormat="MmSs"
+                TimeLabelPosition="Top"
+                TimeHorizontalAlignment="Center"
+                FontSize="16"
+                TextColor="Black"
+                TrackColor="#E5E7EB"
+                ProgressColor="#DC2626"
+                ProgressBarHeight="4"
+                ProgressBarCornerRadius="999"
+                Spacing="8" />
+
+            <controls:MediaProgressBar
+                StartValue="240"
+                FinalValue="0"
+                StepValue="1"
+                StepInterval="00:00:01"
+                Animate="False"
+                TimeDisplayFormat="MmSs"
+                TimeLabelPosition="Top"
+                TimeHorizontalAlignment="Center"
+                FontSize="16"
+                TextColor="Black"
+                TrackColor="#E5E7EB"
+                ProgressColor="#7C3AED"
+                ProgressBarHeight="18"
+                ProgressBarCornerRadius="999"
+                Spacing="8" />
+
+            <controls:MediaProgressBar
+                StartValue="240"
+                FinalValue="0"
+                StepValue="1"
+                StepInterval="00:00:01"
+                Animate="False"
+                TimeDisplayFormat="MmSs"
+                TimeLabelPosition="Top"
+                TimeHorizontalAlignment="Center"
+                FontSize="16"
+                TextColor="Black"
+                TrackColor="#E5E7EB"
+                ProgressColor="#0EA5E9"
+                ProgressBarHeight="14"
+                ProgressBarCornerRadius="2,12,2,12"
+                ProgressUseShadow="True"
+                Spacing="8">
+                <controls:MediaProgressBar.ProgressShadow>
+                    <Shadow
+                        Brush="#0EA5E9"
+                        Offset="0,2"
+                        Opacity="0.45"
+                        Radius="8" />
+                </controls:MediaProgressBar.ProgressShadow>
+            </controls:MediaProgressBar>
+
+            <!-- ===================================================== -->
+            <!-- DIRECTION -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Direction"
+                TextColor="Black" />
+
+            <controls:MediaProgressBar
+                x:Name="ClockwiseProgressBar"
+                StartValue="20"
+                FinalValue="0"
+                StepValue="1"
+                StepInterval="00:00:01"
+                Direction="Clockwise"
+                Animate="True"
+                AnimationDuration="300"
+                TimeDisplayFormat="MmSs"
+                TimeLabelPosition="Top"
+                TimeHorizontalAlignment="Center"
+                FontFamily="MontserratSemiBold"
+                FontSize="16"
+                TextColor="#111827"
+                TrackColor="#E5E7EB"
+                ProgressColor="#2563EB"
+                ProgressBarHeight="10"
+                ProgressBarCornerRadius="999"
+                Spacing="8"
+                CountdownCompleted="OnCountdownCompleted" />
+
+            <controls:MediaProgressBar
+                x:Name="ReverseProgressBar"
+                StartValue="20"
+                FinalValue="0"
+                StepValue="1"
+                StepInterval="00:00:01"
+                Direction="CounterClockwise"
+                Animate="True"
+                AnimationDuration="300"
+                TimeDisplayFormat="MmSs"
+                TimeLabelPosition="Top"
+                TimeHorizontalAlignment="Center"
+                FontFamily="MontserratSemiBold"
+                FontSize="16"
+                TextColor="#111827"
+                TrackColor="#E5E7EB"
+                ProgressColor="#F97316"
+                ProgressBarHeight="10"
+                ProgressBarCornerRadius="999"
+                Spacing="8"
+                CountdownCompleted="OnCountdownCompleted" />
+
+            <Grid
+                ColumnDefinitions="*,*"
+                ColumnSpacing="12">
+
+                <controls:MaterialButton
+                    Grid.Column="0"
+                    Style="{StaticResource PrimaryButton}"
+                    Text="Start both"
+                    Clicked="OnStartDirectionBarsClicked" />
+
+                <controls:MaterialButton
+                    Grid.Column="1"
+                    Style="{StaticResource SecondaryButton}"
+                    Text="Stop both"
+                    Clicked="OnStopDirectionBarsClicked" />
+
+            </Grid>
+
+            <!-- ===================================================== -->
+            <!-- CARD TEST -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Dentro FastBorder/Card"
+                TextColor="Black" />
+
+            <controls:FastBorder
+                BackgroundColor="#F3F4F6"
+                BorderColor="#E5E7EB"
+                BorderThickness="1"
+                CornerRadius="28"
+                Padding="18"
+                HorizontalOptions="Fill">
+                <controls:FastBorder.Shadow>
+                    <Shadow
+                        Brush="Black"
+                        Offset="2,4"
+                        Opacity="0.15"
+                        Radius="12" />
+                </controls:FastBorder.Shadow>
+
+                <VerticalStackLayout Spacing="14">
+
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        Text="Card audio/player"
+                        TextColor="Black" />
+
+                    <Label
+                        FontSize="13"
+                        Text="Test per verificare MediaProgressBar dentro un contenitore FastBorder con corner radius, padding e shadow."
+                        TextColor="#707070" />
+
+                    <controls:MediaProgressBar
+                        x:Name="CardProgressBar"
+                        StartValue="45"
+                        FinalValue="0"
+                        StepValue="1"
+                        StepInterval="00:00:01"
+                        Animate="True"
+                        AnimationDuration="300"
+                        TimeDisplayFormat="MmSs"
+                        TimeLabelPosition="Left"
+                        TimeMargin="0,0,6,0"
+                        FontFamily="MontserratSemiBold"
+                        FontSize="15"
+                        TextColor="#111827"
+                        TrackColor="#E5E7EB"
+                        ProgressColor="#16A34A"
+                        ProgressBarHeight="10"
+                        ProgressBarCornerRadius="999"
+                        Spacing="10" />
+
+                    <Grid
+                        ColumnDefinitions="*,*,*"
+                        ColumnSpacing="10">
+
+                        <controls:MaterialButton
+                            Grid.Column="0"
+                            Style="{StaticResource PrimaryButton}"
+                            Text="Start"
+                            Clicked="OnCardStartClicked" />
+
+                        <controls:MaterialButton
+                            Grid.Column="1"
+                            Style="{StaticResource SecondaryButton}"
+                            Text="Pause"
+                            Clicked="OnCardPauseClicked" />
+
+                        <controls:MaterialButton
+                            Grid.Column="2"
+                            Style="{StaticResource SecondaryButton}"
+                            Text="Stop"
+                            Clicked="OnCardStopClicked" />
+
+                    </Grid>
+
+                </VerticalStackLayout>
+            </controls:FastBorder>
+
+            <!-- ===================================================== -->
+            <!-- RESULT -->
+            <!-- ===================================================== -->
+
+            <controls:FastBorder
+                BackgroundColor="#EEF2FF"
+                BorderColor="#C7D2FE"
+                BorderThickness="1"
+                CornerRadius="18"
+                Padding="14"
+                HorizontalOptions="Fill">
+                <Label
+                    x:Name="ResultLabel"
+                    Text="Nessun evento ancora."
+                    TextColor="#1E1B4B"
+                    FontSize="14" />
+            </controls:FastBorder>
+
+            <BoxView HeightRequest="30" Opacity="0" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

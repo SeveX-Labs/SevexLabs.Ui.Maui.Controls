@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<controls:FastBorder
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SevexLabs.Ui.Maui.Controls"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    x:Class="SevexLabs.Ui.Maui.Controls.MaterialEditor"
+    x:Name="this" >
+
+    <Grid x:Name="RootGrid"
+          HorizontalOptions="Fill"
+          VerticalOptions="Fill"
+          IsClippedToBounds="False">
+
+        <!-- TAP CATCHER: cattura tap ovunque e forza focus -->
+        <BoxView x:Name="TapCatcher"
+                 BackgroundColor="Transparent"
+                 HorizontalOptions="Fill"
+                 VerticalOptions="Fill"
+                 InputTransparent="False">
+            <BoxView.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnTapCatcherTapped" />
+            </BoxView.GestureRecognizers>
+        </BoxView>
+
+        <!-- Floating placeholder -->
+        <Label x:Name="FloatingPlaceholderLabel"
+               InputTransparent="True"
+               VerticalOptions="Start"
+               HorizontalOptions="Start"
+               TextColor="LightGray"
+               TranslationY="0"
+               Scale="1"
+               IsVisible="False" />
+
+        <!-- Editor -->
+        <controls:BorderlessEditor x:Name="InnerEditor"
+                                   PlaceholderColor="LightGray"
+                                   TextColor="Black"
+                                   BackgroundColor="Transparent"
+                                   HorizontalOptions="Fill"
+                                   VerticalOptions="Fill"
+                                   AutoSize="Disabled"
+                                   TextChanged="OnInnerEditorTextChanged"
+                                   Focused="OnInnerEditorFocused"
+                                   Unfocused="OnInnerEditorUnfocused"
+                                   ios:Entry.CursorColor="#1E90FF" />
+
+        <!-- ReadOnly tap area -->
+        <BoxView x:Name="ReadOnlyTapArea"
+                 HorizontalOptions="Fill"
+                 VerticalOptions="Fill"
+                 BackgroundColor="Transparent"
+                 IsVisible="False">
+            <BoxView.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnReadOnlyTapped" />
+            </BoxView.GestureRecognizers>
+        </BoxView>
+
+    </Grid>
+</controls:FastBorder>

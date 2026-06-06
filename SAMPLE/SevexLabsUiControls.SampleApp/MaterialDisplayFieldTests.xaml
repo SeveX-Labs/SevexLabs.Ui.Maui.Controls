@@ -1,0 +1,782 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SevexLabsUiControls.SampleApp.MaterialDisplayFieldTests"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SevexLabs.Ui.Maui.Controls;assembly=SevexLabs.Ui.Maui.Controls"
+    BackgroundColor="#FFFFFF"
+    Title="MaterialDisplayField Tests">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="16"
+            Spacing="22">
+
+            <!-- Header -->
+            <Label
+                FontAttributes="Bold"
+                FontSize="26"
+                Text="MaterialDisplayField Tests"
+                TextColor="Black" />
+
+            <Label
+                FontSize="14"
+                Text="Pagina di test per verificare MaterialDisplayField, FastBorder, placeholder floating, testo, formatted text, tap, allineamenti, corner radius e stato HasError."
+                TextColor="#707070" />
+
+            <!-- ===================================================== -->
+            <!-- BASE -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Base"
+                TextColor="Black" />
+
+            <controls:MaterialDisplayField
+                HeightRequest="64"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="14,8"
+                Placeholder="Nome"
+                Text="Mario Rossi"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#6B7280" />
+
+            <controls:MaterialDisplayField
+                HeightRequest="64"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="14,8"
+                Placeholder="Campo vuoto"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#6B7280" />
+            
+            
+            
+            <!-- ===================================================== -->
+            <!-- DEFAULT STYLE -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="DefaultDisplayField style"
+                TextColor="Black" />
+
+            <Label
+                FontSize="13"
+                Text="Test dei MaterialDisplayField che usano direttamente lo style DefaultDisplayField definito in Styles.xaml."
+                TextColor="#707070" />
+
+            <controls:MaterialDisplayField
+                Style="{StaticResource DefaultDisplayField}"
+                Placeholder="Nome"
+                Text="Mario Rossi" />
+
+            <controls:MaterialDisplayField
+                Style="{StaticResource DefaultDisplayField}"
+                Placeholder="Codice paziente"
+                Text="PZ-000123" />
+
+            <controls:MaterialDisplayField
+                Style="{StaticResource DefaultDisplayField}"
+                Placeholder="Campo vuoto" />
+
+            <controls:MaterialDisplayField
+                Style="{StaticResource DefaultDisplayField}"
+                Padding="20, 0"
+                Placeholder="Valore lungo"
+                Text="Questo è un valore abbastanza lungo per verificare allineamento, indentazione e comportamento del testo nel campo display." />
+
+            <Grid
+                ColumnDefinitions="*,*"
+                ColumnSpacing="12">
+
+                <controls:MaterialDisplayField
+                    Grid.Column="0"
+                    Style="{StaticResource DefaultDisplayField}"
+                    Placeholder="Peso"
+                    Text="72 kg" />
+
+                <controls:MaterialDisplayField
+                    Grid.Column="1"
+                    Style="{StaticResource DefaultDisplayField}"
+                    Placeholder="Altezza"
+                    Text="178 cm" />
+            </Grid>
+
+            <Grid
+                ColumnDefinitions="*,*"
+                ColumnSpacing="12">
+
+                <controls:MaterialDisplayField
+                    Grid.Column="0"
+                    Style="{StaticResource DefaultDisplayField}"
+                    Placeholder="Normale"
+                    Text="Valido"
+                    HasError="False" />
+
+                <controls:MaterialDisplayField
+                    Grid.Column="1"
+                    Style="{StaticResource DefaultDisplayField}"
+                    Placeholder="Con errore"
+                    Text="Non valido"
+                    HasError="True"
+                    ErrorBorderThickness="2" />
+            </Grid>
+
+            <controls:MaterialDisplayField
+                x:Name="StyledToggleErrorField"
+                Style="{StaticResource DefaultDisplayField}"
+                Placeholder="Tap per errore con style"
+                Text="Toccami"
+                ErrorBorderThickness="2"
+                FieldTapped="OnStyledToggleErrorFieldTapped" />
+
+            <controls:MaterialDisplayField
+                Style="{StaticResource DefaultDisplayField}"
+                Placeholder="Disabled"
+                Text="Campo disabilitato"
+                IsEnabled="False" />
+
+            <controls:FastBorder
+                BackgroundColor="#F3F4F6"
+                BorderColor="#E5E7EB"
+                BorderThickness="1"
+                CornerRadius="28"
+                Padding="18"
+                HorizontalOptions="Fill">
+                <controls:FastBorder.Shadow>
+                    <Shadow
+                        Brush="Black"
+                        Offset="2,4"
+                        Opacity="0.15"
+                        Radius="12" />
+                </controls:FastBorder.Shadow>
+
+                <VerticalStackLayout Spacing="14">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        Text="DefaultDisplayField dentro card"
+                        TextColor="Black" />
+
+                    <controls:MaterialDisplayField
+                        Style="{StaticResource DefaultDisplayField}"
+                        Placeholder="Paziente"
+                        Text="Mario Rossi" />
+
+                    <controls:MaterialDisplayField
+                        Style="{StaticResource DefaultDisplayField}"
+                        Placeholder="Ultima visita"
+                        Text="24/04/2026" />
+
+                    <controls:MaterialDisplayField
+                        Style="{StaticResource DefaultDisplayField}"
+                        Placeholder="Stato"
+                        Text="Dato mancante"
+                        HasError="True"
+                        ErrorBorderThickness="2" />
+                </VerticalStackLayout>
+            </controls:FastBorder>
+            
+            
+
+            <!-- ===================================================== -->
+            <!-- HAS ERROR -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="HasError"
+                TextColor="Black" />
+
+            <controls:MaterialDisplayField
+                HeightRequest="64"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="14,8"
+                Placeholder="Codice fiscale"
+                Text="RSSMRA80A01H501U"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#6B7280"
+                HasError="True"
+                ErrorColor="#DC2626"
+                ErrorBorderThickness="2" />
+
+            <controls:MaterialDisplayField
+                HeightRequest="64"
+                BackgroundColor="#FEF2F2"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="14,8"
+                Placeholder="Email non valida"
+                Text="mario.rossi"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#991B1B"
+                HasError="True"
+                ErrorColor="#EF4444"
+                ErrorBorderThickness="3" />
+
+            <Grid
+                ColumnDefinitions="*,*"
+                ColumnSpacing="12">
+
+                <controls:MaterialDisplayField
+                    Grid.Column="0"
+                    HeightRequest="64"
+                    BackgroundColor="#FFFFFF"
+                    BorderColor="#D1D5DB"
+                    BorderThickness="1"
+                    CornerRadius="14"
+                    Padding="14,8"
+                    Placeholder="Normale"
+                    Text="OK"
+                    FontSize="16"
+                    TextColor="Black"
+                    PlaceholderColor="#6B7280"
+                    HasError="False" />
+
+                <controls:MaterialDisplayField
+                    Grid.Column="1"
+                    HeightRequest="64"
+                    BackgroundColor="#FFFFFF"
+                    BorderColor="#D1D5DB"
+                    BorderThickness="1"
+                    CornerRadius="14"
+                    Padding="14,8"
+                    Placeholder="Errore"
+                    Text="KO"
+                    FontSize="16"
+                    TextColor="Black"
+                    PlaceholderColor="#6B7280"
+                    HasError="True"
+                    ErrorColor="#DC2626"
+                    ErrorBorderThickness="2" />
+            </Grid>
+
+            <controls:MaterialDisplayField
+                x:Name="ToggleErrorField"
+                HeightRequest="64"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#2563EB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="14,8"
+                Placeholder="Tap per alternare HasError"
+                Text="Toccami"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#2563EB"
+                ErrorColor="#DC2626"
+                ErrorBorderThickness="3"
+                FieldTapped="OnToggleErrorFieldTapped" />
+            
+            
+            <!-- ===================================================== -->
+            <!-- HAS ERROR TOGGLE WITH BUTTON -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="HasError toggle con bottone"
+                TextColor="Black" />
+
+            <controls:FastBorder
+                BackgroundColor="#F8FAFC"
+                BorderColor="#E5E7EB"
+                BorderThickness="1"
+                CornerRadius="22"
+                Padding="14"
+                HorizontalOptions="Fill">
+
+                <VerticalStackLayout Spacing="12">
+
+                    <controls:MaterialDisplayField
+                        x:Name="ButtonToggleErrorDisplayField"
+                        Style="{StaticResource DefaultDisplayField}"
+                        Placeholder="DisplayField controllato da bottone"
+                        Text="Valore valido"
+                        ErrorBorderThickness="2" />
+
+                    <Grid
+                        ColumnDefinitions="*,*"
+                        ColumnSpacing="12">
+
+                        <controls:MaterialButton
+                            Grid.Column="0"
+                            Style="{StaticResource SecondaryButton}"
+                            Text="Toggle HasError"
+                            Clicked="OnToggleDisplayFieldErrorButtonClicked" />
+
+                        <controls:MaterialButton
+                            Grid.Column="1"
+                            Style="{StaticResource PrimaryButton}"
+                            Text="Reset"
+                            Clicked="OnResetDisplayFieldErrorButtonClicked" />
+
+                    </Grid>
+
+                </VerticalStackLayout>
+            </controls:FastBorder>
+            
+
+            <!-- ===================================================== -->
+            <!-- CORNER RADIUS -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="CornerRadius"
+                TextColor="Black" />
+
+            <controls:MaterialDisplayField
+                HeightRequest="64"
+                BackgroundColor="#F9FAFB"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="0"
+                Padding="14,8"
+                Placeholder="CornerRadius 0"
+                Text="Bordi quadrati"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#6B7280" />
+
+            <controls:MaterialDisplayField
+                HeightRequest="64"
+                BackgroundColor="#F9FAFB"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="24"
+                Padding="14,8"
+                Placeholder="CornerRadius 24"
+                Text="Raggio uniforme"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#6B7280" />
+
+            <controls:MaterialDisplayField
+                HeightRequest="64"
+                BackgroundColor="#F9FAFB"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="28,4,28,4"
+                Padding="14,8"
+                Placeholder="CornerRadius per angolo"
+                Text="28,4,28,4"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#6B7280" />
+
+            <controls:MaterialDisplayField
+                HeightRequest="64"
+                BackgroundColor="#F9FAFB"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="4,28,4,28"
+                Padding="14,8"
+                Placeholder="CornerRadius per angolo"
+                Text="4,28,4,28"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#6B7280" />
+
+            <!-- ===================================================== -->
+            <!-- TEXT INDENT -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="TextIndent"
+                TextColor="Black" />
+
+            <controls:MaterialDisplayField
+                HeightRequest="64"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="14,8"
+                Placeholder="TextIndent 0"
+                Text="Nessun indent"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#6B7280"
+                TextIndent="0" />
+
+            <controls:MaterialDisplayField
+                HeightRequest="64"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="14,8"
+                Placeholder="TextIndent 24"
+                Text="Testo spostato"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#6B7280"
+                TextIndent="24" />
+
+            <!-- ===================================================== -->
+            <!-- ALIGNMENT -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Allineamenti"
+                TextColor="Black" />
+
+            <controls:MaterialDisplayField
+                HeightRequest="64"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="14,8"
+                Placeholder="Start"
+                Text="TextAlignment Start"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#6B7280"
+                HorizontalTextAlignment="Start"
+                HorizontalPlaceholderAlignment="Start" />
+
+            <controls:MaterialDisplayField
+                HeightRequest="64"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="14,8"
+                Placeholder="Center"
+                Text="TextAlignment Center"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#6B7280"
+                HorizontalTextAlignment="Center"
+                HorizontalPlaceholderAlignment="Center" />
+
+            <controls:MaterialDisplayField
+                HeightRequest="64"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="14,8"
+                Placeholder="End"
+                Text="TextAlignment End"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#6B7280"
+                HorizontalTextAlignment="End"
+                HorizontalPlaceholderAlignment="End" />
+
+            <!-- ===================================================== -->
+            <!-- PLACEHOLDER OPTIONS -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Placeholder"
+                TextColor="Black" />
+
+            <controls:MaterialDisplayField
+                HeightRequest="74"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="14,8"
+                Placeholder="PlaceholderUpY -14 / ValueDownY 12"
+                Text="Valore"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#2563EB"
+                PlaceholderUpY="-14"
+                ValueDownY="12"
+                PlaceholderScale="0.82" />
+
+            <controls:MaterialDisplayField
+                HeightRequest="64"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="14,8"
+                Placeholder="Placeholder non floating"
+                Text="UseFloatingPlaceholder False"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#6B7280"
+                UseFloatingPlaceholder="False" />
+
+            <!-- ===================================================== -->
+            <!-- FORMATTED TEXT -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="FormattedText"
+                TextColor="Black" />
+
+            <controls:MaterialDisplayField
+                HeightRequest="70"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="14,8"
+                Placeholder="Totale"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#6B7280">
+                <controls:MaterialDisplayField.FormattedText>
+                    <FormattedString>
+                        <Span Text="€ " TextColor="#6B7280" />
+                        <Span Text="129,90" FontAttributes="Bold" TextColor="#111827" />
+                        <Span Text=" IVA inclusa" FontSize="12" TextColor="#6B7280" />
+                    </FormattedString>
+                </controls:MaterialDisplayField.FormattedText>
+            </controls:MaterialDisplayField>
+
+            <controls:MaterialDisplayField
+                HeightRequest="70"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="14,8"
+                Placeholder="Stato ordine"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#6B7280">
+                <controls:MaterialDisplayField.FormattedText>
+                    <FormattedString>
+                        <Span Text="Completato" FontAttributes="Bold" TextColor="#16A34A" />
+                        <Span Text=" · " TextColor="#6B7280" />
+                        <Span Text="spedito oggi" TextColor="#374151" />
+                    </FormattedString>
+                </controls:MaterialDisplayField.FormattedText>
+            </controls:MaterialDisplayField>
+
+            <!-- ===================================================== -->
+            <!-- TAP TEST -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Tap"
+                TextColor="Black" />
+
+            <controls:MaterialDisplayField
+                HeightRequest="64"
+                BackgroundColor="#EEF2FF"
+                BorderColor="#6366F1"
+                BorderThickness="1"
+                CornerRadius="14"
+                Padding="14,8"
+                Placeholder="Campo tappabile"
+                Text="Tap su qualunque punto"
+                FontSize="16"
+                TextColor="#1E1B4B"
+                PlaceholderColor="#6366F1"
+                FieldTapped="OnDisplayFieldTapped" />
+
+            <controls:FastBorder
+                BackgroundColor="#F8FAFC"
+                BorderColor="#E5E7EB"
+                BorderThickness="1"
+                CornerRadius="16"
+                Padding="12">
+                <Label
+                    x:Name="ResultLabel"
+                    Text="Nessun tap ancora."
+                    TextColor="#374151"
+                    FontSize="14" />
+            </controls:FastBorder>
+
+            <!-- ===================================================== -->
+            <!-- CARD TEST -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Dentro FastBorder/Card"
+                TextColor="Black" />
+
+            <controls:FastBorder
+                BackgroundColor="#F3F4F6"
+                BorderColor="#E5E7EB"
+                BorderThickness="1"
+                CornerRadius="28"
+                Padding="18"
+                HorizontalOptions="Fill">
+                <controls:FastBorder.Shadow>
+                    <Shadow
+                        Brush="Black"
+                        Offset="2,4"
+                        Opacity="0.15"
+                        Radius="12" />
+                </controls:FastBorder.Shadow>
+
+                <VerticalStackLayout Spacing="14">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        Text="Dati paziente"
+                        TextColor="Black" />
+
+                    <controls:MaterialDisplayField
+                        HeightRequest="64"
+                        BackgroundColor="#FFFFFF"
+                        BorderColor="#D1D5DB"
+                        BorderThickness="1"
+                        CornerRadius="14"
+                        Padding="14,8"
+                        Placeholder="Nome"
+                        Text="Mario Rossi"
+                        FontSize="16"
+                        TextColor="Black"
+                        PlaceholderColor="#6B7280" />
+
+                    <controls:MaterialDisplayField
+                        HeightRequest="64"
+                        BackgroundColor="#FFFFFF"
+                        BorderColor="#D1D5DB"
+                        BorderThickness="1"
+                        CornerRadius="14"
+                        Padding="14,8"
+                        Placeholder="Data nascita"
+                        Text="01/01/1980"
+                        FontSize="16"
+                        TextColor="Black"
+                        PlaceholderColor="#6B7280" />
+
+                    <controls:MaterialDisplayField
+                        HeightRequest="64"
+                        BackgroundColor="#FFFFFF"
+                        BorderColor="#D1D5DB"
+                        BorderThickness="1"
+                        CornerRadius="14"
+                        Padding="14,8"
+                        Placeholder="Telefono"
+                        Text="Mancante"
+                        FontSize="16"
+                        TextColor="Black"
+                        PlaceholderColor="#6B7280"
+                        HasError="True"
+                        ErrorColor="#DC2626"
+                        ErrorBorderThickness="2" />
+                </VerticalStackLayout>
+            </controls:FastBorder>
+
+            <!-- ===================================================== -->
+            <!-- GRID TEST -->
+            <!-- ===================================================== -->
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Grid layout"
+                TextColor="Black" />
+
+            <Grid
+                ColumnDefinitions="*,*"
+                ColumnSpacing="12"
+                RowDefinitions="Auto,Auto"
+                RowSpacing="12">
+
+                <controls:MaterialDisplayField
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    HeightRequest="64"
+                    BackgroundColor="#FFFFFF"
+                    BorderColor="#D1D5DB"
+                    BorderThickness="1"
+                    CornerRadius="14"
+                    Padding="12,8"
+                    Placeholder="Peso"
+                    Text="72 kg"
+                    FontSize="15"
+                    TextColor="Black"
+                    PlaceholderColor="#6B7280" />
+
+                <controls:MaterialDisplayField
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    HeightRequest="64"
+                    BackgroundColor="#FFFFFF"
+                    BorderColor="#D1D5DB"
+                    BorderThickness="1"
+                    CornerRadius="14"
+                    Padding="12,8"
+                    Placeholder="Altezza"
+                    Text="178 cm"
+                    FontSize="15"
+                    TextColor="Black"
+                    PlaceholderColor="#6B7280" />
+
+                <controls:MaterialDisplayField
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    HeightRequest="64"
+                    BackgroundColor="#FFFFFF"
+                    BorderColor="#D1D5DB"
+                    BorderThickness="1"
+                    CornerRadius="14"
+                    Padding="12,8"
+                    Placeholder="BMI"
+                    Text="22.7"
+                    FontSize="15"
+                    TextColor="Black"
+                    PlaceholderColor="#6B7280" />
+
+                <controls:MaterialDisplayField
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    HeightRequest="64"
+                    BackgroundColor="#FEF2F2"
+                    BorderColor="#D1D5DB"
+                    BorderThickness="1"
+                    CornerRadius="14"
+                    Padding="12,8"
+                    Placeholder="Valore critico"
+                    Text="Errore"
+                    FontSize="15"
+                    TextColor="Black"
+                    PlaceholderColor="#991B1B"
+                    HasError="True"
+                    ErrorColor="#DC2626"
+                    ErrorBorderThickness="2" />
+            </Grid>
+
+            <!-- Spacer -->
+            <BoxView HeightRequest="30" Opacity="0" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

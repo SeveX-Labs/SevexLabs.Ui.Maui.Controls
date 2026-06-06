@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SevexLabsUiControls.SampleApp.SlideStepsViewTests"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SevexLabs.Ui.Maui.Controls;assembly=SevexLabs.Ui.Maui.Controls"
+    BackgroundColor="#FFFFFF"
+    Title="SlideStepsView Tests">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="16"
+            Spacing="22">
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="26"
+                Text="SlideStepsView Tests"
+                TextColor="Black" />
+
+            <Label
+                FontSize="14"
+                Text="Pagina di test per verificare CurrentIndex iniziale, NextAsync, PreviousAsync, GoToAsync, binding CurrentIndex, contenuti di altezza diversa e animazione slide."
+                TextColor="#707070" />
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="{Binding CurrentStepText}"
+                TextColor="Black" />
+
+            <controls:FastBorder
+                BackgroundColor="#F8FAFC"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="22"
+                Padding="0"
+                HorizontalOptions="Fill">
+
+                <controls:SlideStepsView
+                    x:Name="StepsView"
+                    HeightRequest="280"
+                    AnimationDuration="420"
+                    CurrentIndex="{Binding CurrentIndex, Mode=TwoWay}"
+                    CurrentIndexChanged="OnCurrentIndexChanged">
+
+                    <Grid
+                        Padding="18"
+                        BackgroundColor="#EFF6FF"
+                        RowDefinitions="Auto,Auto,*"
+                        RowSpacing="12">
+
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="22"
+                            Text="Step 0"
+                            TextColor="#1D4ED8" />
+
+                        <Label
+                            Grid.Row="1"
+                            FontSize="15"
+                            Text="Contenuto breve per verificare lo stato iniziale con CurrentIndex=0."
+                            TextColor="#1F2937" />
+
+                        <controls:MaterialButton
+                            Grid.Row="2"
+                            VerticalOptions="End"
+                            Style="{StaticResource SecondaryButton}"
+                            Text="Azione step 0"
+                            Clicked="OnStepActionClicked" />
+
+                    </Grid>
+
+                    <Grid
+                        Padding="18"
+                        BackgroundColor="#F0FDF4"
+                        RowDefinitions="Auto,Auto,Auto,*"
+                        RowSpacing="12">
+
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="22"
+                            Text="Step 1"
+                            TextColor="#15803D" />
+
+                        <Label
+                            Grid.Row="1"
+                            FontSize="15"
+                            Text="Contenuto piu alto: prima riga di descrizione."
+                            TextColor="#1F2937" />
+
+                        <Label
+                            Grid.Row="2"
+                            FontSize="15"
+                            Text="Seconda riga, terza riga e wrapping per controllare il resize interno durante lo slide."
+                            TextColor="#1F2937" />
+
+                        <controls:MaterialButton
+                            Grid.Row="3"
+                            VerticalOptions="End"
+                            Style="{StaticResource SecondaryButton}"
+                            Text="Azione step 1"
+                            Clicked="OnStepActionClicked" />
+
+                    </Grid>
+
+                    <Grid
+                        Padding="18"
+                        BackgroundColor="#FFF7ED"
+                        RowDefinitions="Auto,Auto,Auto,Auto,*"
+                        RowSpacing="10">
+
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="22"
+                            Text="Step 2"
+                            TextColor="#C2410C" />
+
+                        <Label
+                            Grid.Row="1"
+                            FontSize="15"
+                            Text="Contenuto finale con lista visiva."
+                            TextColor="#1F2937" />
+
+                        <Label
+                            Grid.Row="2"
+                            FontSize="14"
+                            Text="1. Verifica animazione"
+                            TextColor="#374151" />
+
+                        <Label
+                            Grid.Row="3"
+                            FontSize="14"
+                            Text="2. Verifica CurrentIndexChanged"
+                            TextColor="#374151" />
+
+                        <Label
+                            Grid.Row="4"
+                            FontSize="14"
+                            Text="3. Verifica ritorno allo step precedente"
+                            TextColor="#374151" />
+
+                    </Grid>
+
+                </controls:SlideStepsView>
+            </controls:FastBorder>
+
+            <Grid
+                ColumnDefinitions="*,*"
+                ColumnSpacing="12">
+
+                <controls:MaterialButton
+                    Grid.Column="0"
+                    Style="{StaticResource SecondaryButton}"
+                    Text="PreviousAsync"
+                    Clicked="OnPreviousClicked" />
+
+                <controls:MaterialButton
+                    Grid.Column="1"
+                    Style="{StaticResource PrimaryButton}"
+                    Text="NextAsync"
+                    Clicked="OnNextClicked" />
+
+            </Grid>
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Set CurrentIndex runtime"
+                TextColor="Black" />
+
+            <Grid
+                ColumnDefinitions="*,*,*"
+                ColumnSpacing="10">
+
+                <controls:MaterialButton
+                    Grid.Column="0"
+                    Style="{StaticResource SecondaryButton}"
+                    Text="0"
+                    Clicked="OnSetIndexZeroClicked" />
+
+                <controls:MaterialButton
+                    Grid.Column="1"
+                    Style="{StaticResource SecondaryButton}"
+                    Text="1"
+                    Clicked="OnSetIndexOneClicked" />
+
+                <controls:MaterialButton
+                    Grid.Column="2"
+                    Style="{StaticResource SecondaryButton}"
+                    Text="2"
+                    Clicked="OnSetIndexTwoClicked" />
+
+            </Grid>
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                Text="Out-of-range via GoToAsync"
+                TextColor="Black" />
+
+            <Grid
+                ColumnDefinitions="*,*"
+                ColumnSpacing="12">
+
+                <controls:MaterialButton
+                    Grid.Column="0"
+                    Style="{StaticResource SecondaryButton}"
+                    Text="GoToAsync(-1)"
+                    Clicked="OnGoToMinusOneClicked" />
+
+                <controls:MaterialButton
+                    Grid.Column="1"
+                    Style="{StaticResource SecondaryButton}"
+                    Text="GoToAsync(99)"
+                    Clicked="OnGoToNinetyNineClicked" />
+
+            </Grid>
+
+            <controls:FastBorder
+                BackgroundColor="#F8FAFC"
+                BorderColor="#E5E7EB"
+                BorderThickness="1"
+                CornerRadius="22"
+                Padding="14"
+                HorizontalOptions="Fill">
+
+                <VerticalStackLayout Spacing="8">
+
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="14"
+                        Text="Log"
+                        TextColor="Black" />
+
+                    <Label
+                        x:Name="ResultLabel"
+                        FontSize="13"
+                        LineBreakMode="WordWrap"
+                        Text="CurrentIndex iniziale: 0."
+                        TextColor="#374151" />
+
+                </VerticalStackLayout>
+            </controls:FastBorder>
+
+            <BoxView
+                HeightRequest="30"
+                Opacity="0" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

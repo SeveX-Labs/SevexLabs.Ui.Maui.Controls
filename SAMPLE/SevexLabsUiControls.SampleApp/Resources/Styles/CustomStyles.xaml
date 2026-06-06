@@ -1,0 +1,83 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    xmlns:controls="clr-namespace:SevexLabs.Ui.Maui.Controls;assembly=SevexLabs.Ui.Maui.Controls">
+    
+    <Style x:Key="RangeSliderCurrentValueStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="10"></Setter>
+        <Setter Property="TextColor" Value="{StaticResource DarkPurple}"></Setter>
+        <Setter Property="FontFamily" Value="MontserratSemiBold"></Setter>
+    </Style>
+
+    <Style x:Key="NavigationBarTitleLabelStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="16"></Setter>
+        <Setter Property="TextColor" Value="{StaticResource White}"></Setter>
+        <Setter Property="FontFamily" Value="MontserratBold"></Setter>
+        <Setter Property="CharacterSpacing" Value="0.36"></Setter>
+    </Style>
+
+    <Style x:Key="DefaultFlexChips" TargetType="controls:MaterialFlexChips">
+        <Setter Property="Spacing" Value="0, 0, 10, 10"></Setter>
+    </Style>
+    
+    <Style x:Key="DefaultFlexChip" TargetType="controls:MaterialFlexChip">
+        <Setter Property="ChipHeight" Value="44" />
+        <Setter Property="ChipPadding" Value="14,0" />
+        <Setter Property="ChipRadius" Value="22" />
+        <Setter Property="FontFamily" Value="MontserratSemiBold" />
+        <Setter Property="FontSize" Value="14" />
+
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderColor" Value="{StaticResource Primary}" />
+        <Setter Property="ChipBackgroundColor" Value="Transparent" />
+        <Setter Property="TextColor" Value="{StaticResource Primary}" />
+
+        <Setter Property="SelectedBorderThickness" Value="1" />
+        <Setter Property="SelectedBorderColor" Value="{StaticResource Primary}" />
+        <Setter Property="SelectedChipBackgroundColor" Value="{StaticResource Primary}" />
+        <Setter Property="SelectedTextColor" Value="{StaticResource White}" />
+    </Style>
+    
+    <Style x:Key="DefaultSegmentedControl" TargetType="controls:MaterialSegmentedControl">
+        <Setter Property="HeightRequest" Value="56"></Setter>
+        <Setter Property="SegmentsWidthMode" Value="Equal"></Setter>
+        <Setter Property="BorderColor" Value="{StaticResource Primary}"></Setter>
+        <Setter Property="BorderThickness" Value="1"></Setter>
+        <Setter Property="CornerRadius" Value="20"></Setter>
+    </Style>
+    
+    <Style x:Key="DefaultSegmentOld" TargetType="controls:MaterialSegment">
+        <Setter Property="FontFamily" Value="MontserratSemiBold"></Setter>
+        <Setter Property="FontSize" Value="16"></Setter>
+        <Setter Property="SegmentRadius" Value="20"></Setter>
+        <Setter Property="SegmentPadding" Value="20, 0"></Setter>
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal">
+                        <VisualState.Setters>
+                            <Setter Property="SegmentBackgroundColor" Value="Transparent"></Setter>
+                            <Setter Property="TextColor" Value="{StaticResource Primary}"></Setter>
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="Selected">
+                        <VisualState.Setters>
+                            <Setter Property="SegmentBackgroundColor" Value="{StaticResource Primary}"></Setter>
+                            <Setter Property="TextColor" Value="{StaticResource White}"></Setter>
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+        <Style.Triggers>
+            <Trigger TargetType="controls:MaterialSegment" Property="IsSelected" Value="False">
+                <Setter Property="SegmentBackgroundColor" Value="Transparent" />
+                <Setter Property="TextColor" Value="{StaticResource Primary}" />
+            </Trigger>
+            <Trigger TargetType="controls:MaterialSegment" Property="IsSelected" Value="True">
+                <Setter Property="SegmentBackgroundColor" Value="{StaticResource Primary}" />
+                <Setter Property="TextColor" Value="{StaticResource White}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
+</ResourceDictionary>

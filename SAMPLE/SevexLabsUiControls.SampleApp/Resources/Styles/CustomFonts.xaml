@@ -1,0 +1,81 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    
+    <OnPlatform x:TypeArguments="x:String" x:Key="MontserratBlack">
+        <On Platform="iOS" Value="Montserrat-Black" />
+        <On Platform="Android" Value="Montserrat-Black.ttf#montserrat-black" />
+    </OnPlatform>
+    <OnPlatform x:TypeArguments="x:String" x:Key="MontserratBlackItalic">
+        <On Platform="iOS" Value="Montserrat-BlackItalic" />
+        <On Platform="Android" Value="Montserrat-BlackItalic.ttf#montserrat-blackitalic" />
+    </OnPlatform>
+    <OnPlatform x:TypeArguments="x:String" x:Key="MontserratBold">
+        <On Platform="iOS" Value="Montserrat-Bold" />
+        <On Platform="Android" Value="Montserrat-Bold.ttf#montserrat-bold" />
+    </OnPlatform>
+    <OnPlatform x:TypeArguments="x:String" x:Key="MontserratBoldItalic">
+        <On Platform="iOS" Value="Montserrat-BoldItalic" />
+        <On Platform="Android" Value="Montserrat-BoldItalic.ttf#montserrat-bolditalic" />
+    </OnPlatform>
+    <OnPlatform x:TypeArguments="x:String" x:Key="MontserratExtraBold">
+        <On Platform="iOS" Value="Montserrat-ExtraBold" />
+        <On Platform="Android" Value="Montserrat-ExtraBold.ttf#montserrat-extrabold" />
+    </OnPlatform>
+    <OnPlatform x:TypeArguments="x:String" x:Key="MontserratExtraBoldItalic">
+        <On Platform="iOS" Value="Montserrat-ExtraBoldItalic" />
+        <On Platform="Android" Value="Montserrat-ExtraBoldItalic.ttf#montserrat-extrabolditalic" />
+    </OnPlatform>
+    <OnPlatform x:TypeArguments="x:String" x:Key="MontserratExtraLight">
+        <On Platform="iOS" Value="Montserrat-ExtraLight" />
+        <On Platform="Android" Value="Montserrat-ExtraLight.ttf#montserrat-extralight" />
+    </OnPlatform>
+    <OnPlatform x:TypeArguments="x:String" x:Key="MontserratExtraLightItalic">
+        <On Platform="iOS" Value="Montserrat-ExtraLightItalic" />
+        <On Platform="Android" Value="Montserrat-ExtraLightItalic.ttf#montserrat-extralightitalic" />
+    </OnPlatform>
+    <OnPlatform x:TypeArguments="x:String" x:Key="MontserratLight">
+        <On Platform="iOS" Value="Montserrat-Light" />
+        <On Platform="Android" Value="Montserrat-Light.ttf#montserrat-light" />
+    </OnPlatform>
+    <OnPlatform x:TypeArguments="x:String" x:Key="MontserratLightItalic">
+        <On Platform="iOS" Value="Montserrat-LightItalic" />
+        <On Platform="Android" Value="Montserrat-LightItalic.ttf#montserrat-lightitalic" />
+    </OnPlatform>
+    <OnPlatform x:TypeArguments="x:String" x:Key="MontserratMedium">
+        <On Platform="iOS" Value="Montserrat-Medium" />
+        <On Platform="Android" Value="Montserrat-Medium.ttf#montserrat-medium" />
+    </OnPlatform>
+    <OnPlatform x:TypeArguments="x:String" x:Key="MontserratMediumItalic">
+        <On Platform="iOS" Value="Montserrat-MediumItalic" />
+        <On Platform="Android" Value="Montserrat-MediumItalic.ttf#montserrat-mediumitalic" />
+    </OnPlatform>
+    <OnPlatform x:TypeArguments="x:String" x:Key="MontserratRegular">
+        <On Platform="iOS" Value="Montserrat-Regular" />
+        <On Platform="Android" Value="Montserrat-Regular.ttf#montserrat-regular" />
+    </OnPlatform>
+    <OnPlatform x:TypeArguments="x:String" x:Key="MontserratItalic">
+        <On Platform="iOS" Value="Montserrat-Italic" />
+        <On Platform="Android" Value="Montserrat-Italic.ttf#montserrat-italic" />
+    </OnPlatform>
+    <OnPlatform x:TypeArguments="x:String" x:Key="MontserratSemiBold">
+        <On Platform="iOS" Value="Montserrat-SemiBold" />
+        <On Platform="Android" Value="Montserrat-SemiBold.ttf#montserrat-semibold" />
+    </OnPlatform>
+    <OnPlatform x:TypeArguments="x:String" x:Key="MontserratSemiBoldItalic">
+        <On Platform="iOS" Value="Montserrat-SemiBoldItalic" />
+        <On Platform="Android" Value="Montserrat-SemiBoldItalic.ttf#montserrat-semibolditalic" />
+    </OnPlatform>
+    <OnPlatform x:TypeArguments="x:String" x:Key="MontserratThin">
+        <On Platform="iOS" Value="Montserrat-Thin" />
+        <On Platform="Android" Value="Montserrat-Thin.ttf#montserrat-thin" />
+    </OnPlatform>
+    <OnPlatform x:TypeArguments="x:String" x:Key="MontserratThinItalic">
+        <On Platform="iOS" Value="Montserrat-ThinItalic" />
+        <On Platform="Android" Value="Montserrat-ThinItalic.ttf#montserrat-thinitalic" />
+    </OnPlatform>
+    <OnPlatform x:TypeArguments="x:String" x:Key="CustomIcon">
+        <On Platform="iOS" Value="icomoon" />
+        <On Platform="Android" Value="icomoon.ttf#icomoon" />
+    </OnPlatform>
+    
+</ResourceDictionary>

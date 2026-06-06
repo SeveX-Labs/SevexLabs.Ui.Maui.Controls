@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentView
+    x:Class="SevexLabs.Ui.Maui.Controls.MaterialSegment"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SevexLabs.Ui.Maui.Controls"
+    x:Name="Self">
+
+    <controls:FastBorder
+        x:Name="RootBorder"
+        BorderColor="Transparent"
+        BorderThickness="0"
+        HorizontalOptions="Fill"
+        VerticalOptions="Fill">
+
+        <Label
+            x:Name="TitleLabel"
+            Padding="5,0"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            HorizontalTextAlignment="Center"
+            VerticalTextAlignment="Center"
+            LineBreakMode="TailTruncation"
+            MaxLines="1" />
+
+    </controls:FastBorder>
+
+</ContentView>

@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:SevexLabs.Ui.Maui.Controls;assembly=SevexLabs.Ui.Maui.Controls"
+             x:Class="SevexLabsUiControls.SampleApp.SettingsPage">
+    
+    <ContentPage.Content>
+
+        <AbsoluteLayout x:Name="SuperRoot" HorizontalOptions="Fill" VerticalOptions="Fill">
+            
+            <ScrollView AbsoluteLayout.LayoutFlags="All"
+                        AbsoluteLayout.LayoutBounds="0, 0, 1, 0.86942"
+                        ZIndex="2">
+
+                <Grid ColumnSpacing="0" RowSpacing="20"
+                      Padding="20">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Row="0" Text="&#xe907;"
+                           FontFamily="{StaticResource CustomIcon}" FontSize="28"
+                           Padding="0, 0, 20, 20"
+                           TextColor="{StaticResource Primary}"
+                           ZIndex="3">
+                        
+                    </Label>
+
+                    <controls:FastBorder Grid.Row="1" HorizontalOptions="Fill"
+                                         BorderColor="{StaticResource Primary}" BorderThickness="1"
+                                         CornerRadius="20">
+
+                        <Grid HorizontalOptions="Fill">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Row="0" Grid.Column="0"
+                                   x:Name="SelectedPrinterSectionTitle" Text="*Selected printer"
+                                   FontFamily="MontserratBold" FontSize="24" TextColor="{StaticResource Primary}"
+                                   VerticalOptions="Center"
+                                   Margin="15, 0, 0, 0">
+                            </Label>
+
+                            <controls:MaterialButton Grid.Row="0" Grid.Column="1" x:Name="SearchButton"
+                                                     Style="{StaticResource PrimaryButton}"
+                                                     HorizontalOptions="Center"
+                                                     Text="*Find printers"
+                                                     CornerRadius="0, 20, 20, 0"
+                                                     TranslationY="-1" TranslationX="1">
+                            </controls:MaterialButton>
+
+                            <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                                   x:Name="NoPrinterSelectedMessage"
+                                   Text="*No printer selected."
+                                   FontFamily="MontserratLight" FontSize="18" TextColor="{StaticResource Primary}"
+                                   VerticalOptions="Center"
+                                   Margin="15, 5, 15, 15">
+                            </Label>
+
+                            <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                                  ColumnSpacing="10" RowSpacing="8" HorizontalOptions="Fill"
+                                  Margin="15, 10, 15, 15">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <Label x:Name="AddressLabel" Grid.Row="0" Grid.Column="0"
+                                       Text="*IP Address"
+                                       FontFamily="MontserratLight" FontSize="18" TextColor="{StaticResource Primary}">
+                                </Label>
+                                <Label x:Name="NicknameLabel" Grid.Row="1" Grid.Column="0"
+                                       Text="*Printer name"
+                                       FontFamily="MontserratLight" FontSize="18" TextColor="{StaticResource Primary}">
+                                </Label>
+
+                                <Label x:Name="AddressValue" Grid.Row="0" Grid.Column="1"
+                                       FontFamily="MontserratSemiBold" FontSize="18" TextColor="{StaticResource Primary}">
+                                </Label>
+                                <Label x:Name="NicknameValue" Grid.Row="1" Grid.Column="1"
+                                       FontFamily="MontserratSemiBold" FontSize="18" TextColor="{StaticResource Primary}">
+                                </Label>
+
+                                <VerticalStackLayout x:Name="PrinterStatusContainer"
+                                                     Grid.Row="0" Grid.RowSpan="2" Grid.Column="2"
+                                                     Spacing="4" VerticalOptions="Start" Margin="0, 4, 0, 0">
+                                    <BoxView x:Name="PrinterStatusSemaphore"
+                                             Color="LightGray"
+                                             BackgroundColor="Transparent"
+                                             WidthRequest="30" HeightRequest="30"
+                                             HorizontalOptions="Center"
+                                             CornerRadius="30">
+                                    </BoxView>
+
+                                    <Label x:Name="PrinterStatusLabel" Text="****" HorizontalOptions="Center"
+                                           FontFamily="MontserratSemiBold" FontSize="12"
+                                           TextColor="{StaticResource Primary}">
+                                    </Label>
+
+                                </VerticalStackLayout>
+
+                                <ActivityIndicator x:Name="PrinterStatusLoader" Grid.Row="0" Grid.RowSpan="2"
+                                                   Grid.Column="2"
+                                                   IsRunning="False" 
+                                                   VerticalOptions="Start" Margin="0, 10, 0, 0"
+                                                   Color="{StaticResource Primary}">
+                                </ActivityIndicator>
+
+                                <Label Grid.Row="0" Grid.RowSpan="2" Grid.Column="3"
+                                       Text="&#xe90d;" HorizontalOptions="End" VerticalOptions="Center"
+                                       FontFamily="{StaticResource CustomIcon}" FontSize="30"
+                                       TextColor="{StaticResource ProgressPaletteGreen}">
+                                </Label>
+                                
+                            </Grid>
+
+                            <controls:MaterialButton x:Name="ReconnectButton" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                                                     Text="*Reconnect"
+                                                     Style="{StaticResource PrimaryButton}"
+                                                     Padding="30, 10" 
+                                                     Margin="15, 0, 0, 15"
+                                                     HorizontalOptions="Start">
+                            </controls:MaterialButton>
+                        </Grid>
+                    </controls:FastBorder>
+
+                    <controls:FastBorder Grid.Row="2" HorizontalOptions="Fill"
+                                         BorderColor="{StaticResource Primary}" BorderThickness="1"
+                                         CornerRadius="20">
+
+                        <Grid HorizontalOptions="Fill">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Row="0" Grid.Column="0"
+                                   x:Name="UnitSystemSectionTitle" Text="*Unit system"
+                                   FontFamily="MontserratBold" FontSize="24" TextColor="{StaticResource Primary}"
+                                   VerticalOptions="Center"
+                                   Margin="15, 0, 0, 0"
+                                   Padding="0, 12, 0, 0">
+                            </Label>
+
+                            <controls:MaterialSegmentedControl
+                                x:Name="SideSegmentControl"
+                                Grid.Row="1" Grid.Column="0"
+                                VerticalOptions="Center" HorizontalOptions="Fill"
+                                Style="{StaticResource DefaultSegmentedControl}"
+                                SegmentStyle="{StaticResource DefaultSegment}"
+                                AllowEmptySelection="False"
+                                Margin="15, 10, 15, 15" />
+
+                        </Grid>
+                    </controls:FastBorder>
+
+                    <controls:FastBorder Grid.Row="3" HorizontalOptions="Fill"
+                                         BorderColor="{StaticResource Primary}" BorderThickness="1"
+                                         CornerRadius="20">
+
+                        <Grid HorizontalOptions="Fill">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Row="0" Grid.Column="0"
+                                   x:Name="LotsSectionTitle" Text="*Lots"
+                                   FontFamily="MontserratBold" FontSize="24" TextColor="{StaticResource Primary}"
+                                   VerticalOptions="Center"
+                                   Margin="15, 0, 0, 0"
+                                   Padding="0, 12, 0, 0">
+                            </Label>
+
+                            <controls:MaterialEntry x:Name="FilamentLot" Grid.Row="1" Grid.Column="0"
+                                                    Style="{StaticResource DefaultEntry}"
+                                                    Placeholder="*Filament lot" HorizontalOptions="Fill"
+                                                    Margin="15, 10">
+                            </controls:MaterialEntry>
+
+                            <controls:MaterialEntry x:Name="LiningLot" Grid.Row="2" Grid.Column="0"
+                                                    Style="{StaticResource DefaultEntry}"
+                                                    Placeholder="*Lining lot" HorizontalOptions="Fill"
+                                                    Margin="15, 0, 15, 15">
+                            </controls:MaterialEntry>
+                        </Grid>
+                    </controls:FastBorder>
+
+                    <controls:MaterialButton x:Name="InsoleSizeGuideButton" Grid.Row="4" HorizontalOptions="Fill"
+                                             Style="{StaticResource PrimaryButton}"
+                                             Text="*Insole sizing guide">
+                    </controls:MaterialButton>
+
+                    <controls:FastBorder Grid.Row="5" HorizontalOptions="Fill"
+                                         BorderColor="{StaticResource Primary}" BorderThickness="1"
+                                         CornerRadius="20">
+
+                        <Grid HorizontalOptions="Fill" Padding="15" RowSpacing="15">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+                            <VerticalStackLayout Grid.Row="0" Grid.Column="0" Spacing="4">
+                                <Label x:Name="DeveloperModeTitle"
+                                       Text="*Developer mode"
+                                       FontFamily="MontserratBold"
+                                       FontSize="24"
+                                       TextColor="{StaticResource Primary}">
+                                </Label>
+
+                                <Label x:Name="DeveloperModeDescription"
+                                       Text="*Enable advanced printer detection settings."
+                                       FontFamily="MontserratLight"
+                                       FontSize="14"
+                                       TextColor="{StaticResource Primary}">
+                                </Label>
+                            </VerticalStackLayout>
+
+                            <Switch Grid.Row="0" Grid.Column="1"
+                                    x:Name="DeveloperModeSwitch"
+                                    IsToggled="True"
+                                    VerticalOptions="Center">
+                            </Switch>
+
+                            <VerticalStackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                                                 x:Name="DeveloperDetectionSettingsContainer"
+                                                 Spacing="12">
+
+                                <Label x:Name="DetectionSettingsTitle"
+                                       Text="*Detection settings"
+                                       FontFamily="MontserratBold"
+                                       FontSize="20"
+                                       TextColor="{StaticResource Primary}"
+                                       Margin="0, 10, 0, 0">
+                                </Label>
+
+                                <controls:MaterialEntry x:Name="PiocreatMoonrakerPortEntry"
+                                                        Style="{StaticResource DefaultEntry}"
+                                                        Placeholder="*Moonraker port"
+                                                        Keyboard="Numeric">
+                                </controls:MaterialEntry>
+
+                                <controls:MaterialEntry x:Name="PiocreatDetectionTcpTimeoutMillisecondsEntry"
+                                                        Style="{StaticResource DefaultEntry}"
+                                                        Placeholder="*Continuous TCP timeout milliseconds"
+                                                        Keyboard="Numeric">
+                                </controls:MaterialEntry>
+
+                                <controls:MaterialEntry x:Name="PiocreatDetectionSemaphoreLimitEntry"
+                                                        Style="{StaticResource DefaultEntry}"
+                                                        Placeholder="*Continuous semaphore limit"
+                                                        Keyboard="Numeric">
+                                </controls:MaterialEntry>
+
+                                <controls:MaterialEntry x:Name="PiocreatDetectionHttpRequestTimeoutMillisecondsEntry"
+                                                        Style="{StaticResource DefaultEntry}"
+                                                        Placeholder="*HTTP request timeout milliseconds"
+                                                        Keyboard="Numeric">
+                                </controls:MaterialEntry>
+
+                                <controls:MaterialEntry x:Name="PiocreatDetectionDelayBetweenCyclesMillisecondsEntry"
+                                                        Style="{StaticResource DefaultEntry}"
+                                                        Placeholder="*Delay between cycles milliseconds"
+                                                        Keyboard="Numeric">
+                                </controls:MaterialEntry>
+
+                                <controls:MaterialEntry x:Name="PiocreatDetectionPhase1TcpTimeoutMillisecondsEntry"
+                                                        Style="{StaticResource DefaultEntry}"
+                                                        Placeholder="*Phase 1 TCP timeout milliseconds"
+                                                        Keyboard="Numeric">
+                                </controls:MaterialEntry>
+
+                                <controls:MaterialEntry x:Name="PiocreatDetectionPhase1SemaphoreLimitEntry"
+                                                        Style="{StaticResource DefaultEntry}"
+                                                        Placeholder="*Phase 1 semaphore limit"
+                                                        Keyboard="Numeric">
+                                </controls:MaterialEntry>
+
+                                <controls:MaterialEntry x:Name="PiocreatDetectionPhase2TcpTimeoutMillisecondsEntry"
+                                                        Style="{StaticResource DefaultEntry}"
+                                                        Placeholder="*Phase 2 TCP timeout milliseconds"
+                                                        Keyboard="Numeric">
+                                </controls:MaterialEntry>
+
+                                <controls:MaterialEntry x:Name="PiocreatDetectionPhase2SemaphoreLimitEntry"
+                                                        Style="{StaticResource DefaultEntry}"
+                                                        Placeholder="*Phase 2 semaphore limit"
+                                                        Keyboard="Numeric">
+                                </controls:MaterialEntry>
+
+                                <Grid ColumnSpacing="10" Margin="0, 10, 0, 0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <controls:MaterialButton x:Name="RestoreDetectionDefaultsButton"
+                                                             Grid.Column="0"
+                                                             Style="{StaticResource PrimaryButton}"
+                                                             Text="*Restore defaults">
+                                    </controls:MaterialButton>
+
+                                    <controls:MaterialButton x:Name="SaveDetectionSettingsButton"
+                                                             Grid.Column="1"
+                                                             Style="{StaticResource PrimaryButton}"
+                                                             Text="*Save">
+                                    </controls:MaterialButton>
+                                </Grid>
+                            </VerticalStackLayout>
+                        </Grid>
+                    </controls:FastBorder>
+
+                </Grid>
+            </ScrollView>
+
+        </AbsoluteLayout>
+
+    </ContentPage.Content>
+    
+</ContentPage>

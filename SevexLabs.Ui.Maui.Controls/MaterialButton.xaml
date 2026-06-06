@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<controls:FastBorder
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SevexLabs.Ui.Maui.Controls"
+    x:Class="SevexLabs.Ui.Maui.Controls.MaterialButton"
+    HorizontalOptions="Fill"
+    VerticalOptions="Fill">
+
+    <Grid HorizontalOptions="Center">
+
+        <Grid x:Name="ContentGrid"
+              ColumnSpacing="0"
+              RowSpacing="0"
+              HorizontalOptions="Center"
+              VerticalOptions="Center">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Image x:Name="IconView"
+                   Grid.Column="0"
+                   WidthRequest="18"
+                   HeightRequest="18"
+                   IsVisible="False"
+                   Aspect="AspectFit"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center" />
+
+            <Label x:Name="TextView"
+                   Grid.Column="1"
+                   Text=""
+                   FontSize="16"
+                   TextColor="White"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center" />
+        </Grid>
+
+        <ActivityIndicator x:Name="LoadingView"
+                           IsVisible="False"
+                           IsRunning="False"
+                           Color="White"
+                           WidthRequest="18"
+                           HeightRequest="18"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center" />
+    </Grid>
+
+    <controls:FastBorder.GestureRecognizers>
+        <TapGestureRecognizer Tapped="OnTapped" />
+    </controls:FastBorder.GestureRecognizers>
+</controls:FastBorder>
