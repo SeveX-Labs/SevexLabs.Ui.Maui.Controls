@@ -45,7 +45,7 @@ namespace SevexLabs.Ui.Maui.Controls.Handlers
 
         #region overrides
 
-        protected override AppCompatEditText CreatePlatformView()
+        protected override MauiAppCompatEditText CreatePlatformView()
         {
             var platformView = base.CreatePlatformView();
 
@@ -73,7 +73,7 @@ namespace SevexLabs.Ui.Maui.Controls.Handlers
             return platformView;
         }
 
-        protected override void ConnectHandler(AppCompatEditText platformView)
+        protected override void ConnectHandler(MauiAppCompatEditText platformView)
         {
             base.ConnectHandler(platformView);
 
@@ -85,7 +85,7 @@ namespace SevexLabs.Ui.Maui.Controls.Handlers
             UpdatePlaceholder(platformView, VirtualView);
         }
 
-        protected override void DisconnectHandler(AppCompatEditText platformView)
+        protected override void DisconnectHandler(MauiAppCompatEditText platformView)
         {
             platformView.Parent?.RequestDisallowInterceptTouchEvent(false);
 
