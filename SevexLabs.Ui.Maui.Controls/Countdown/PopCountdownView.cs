@@ -109,6 +109,10 @@ namespace SevexLabs.Ui.Maui.Controls
 
         public PopCountdownView()
         {
+            var fullBleedSafeArea = new SafeAreaEdges(SafeAreaRegions.None);
+
+            SafeAreaEdges = fullBleedSafeArea;
+            Margin = Thickness.Zero;
             base.BackgroundColor = Colors.Transparent;
 
             _solidBackgroundView = new BoxView
@@ -117,6 +121,7 @@ namespace SevexLabs.Ui.Maui.Controls
                 InputTransparent = true,
                 Color = Colors.Transparent,
                 BackgroundColor = Colors.Transparent,
+                Margin = Thickness.Zero,
                 HorizontalOptions = LayoutOptions.Fill,
                 VerticalOptions = LayoutOptions.Fill
             };
@@ -130,6 +135,7 @@ namespace SevexLabs.Ui.Maui.Controls
                 BackgroundColor = Colors.Transparent,
                 AnchorX = 0d,
                 AnchorY = 0d,
+                Margin = Thickness.Zero,
                 Scale = 1d,
                 TranslationX = 0d,
                 TranslationY = 0d,
@@ -144,6 +150,9 @@ namespace SevexLabs.Ui.Maui.Controls
             {
                 InputTransparent = true,
                 BackgroundColor = Colors.Transparent,
+                SafeAreaEdges = fullBleedSafeArea,
+                Margin = Thickness.Zero,
+                Padding = Thickness.Zero,
                 HorizontalOptions = LayoutOptions.Fill,
                 VerticalOptions = LayoutOptions.Fill
             };
