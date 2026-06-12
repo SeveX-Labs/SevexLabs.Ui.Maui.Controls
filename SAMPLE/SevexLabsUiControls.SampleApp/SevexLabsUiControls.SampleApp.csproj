@@ -2,6 +2,11 @@
 
 	<PropertyGroup>
 		<TargetFrameworks>net10.0-ios;net10.0-android36.0</TargetFrameworks>
+		<!--
+		<TargetFrameworks Condition="'$(BuildingSolutionFile)' == 'true' and '$(TargetFramework)' == ''">net10.0-android</TargetFrameworks>
+		<TargetFrameworks Condition="'$(TargetFrameworks)' == ''">net10.0-android;net10.0-ios</TargetFrameworks>
+		<TargetFrameworks Condition="'$(BuildingSolutionFile)' != 'true' and $([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net10.0-windows10.0.19041.0</TargetFrameworks>
+		-->
 		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
 
 		<!-- Note for MacCatalyst:
@@ -17,6 +22,8 @@
 		<SingleProject>true</SingleProject>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
+		<UseSharedCompilation>false</UseSharedCompilation>
+		<BuildInParallel>false</BuildInParallel>
 
 		<!-- Display name -->
 		<ApplicationTitle>SevexLabsUiControls.SampleApp</ApplicationTitle>
@@ -39,9 +46,9 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>-->
 	</PropertyGroup>
 
-	<PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-	  <CodesignKey>iPhone Developer: Alessandro Severa (5W2P73G22F)</CodesignKey>
-	  <CodesignProvision>Wildcard Sevex iOS App Development</CodesignProvision>
+	<PropertyGroup Condition="'$(Configuration)' == 'Release' and $([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">
+		<PublishTrimmed>false</PublishTrimmed>
+		<RunAOTCompilation>false</RunAOTCompilation>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -68,7 +75,17 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\SevexLabs.Ui.Maui.Controls\SevexLabs.Ui.Maui.Controls.csproj" />
+	  <!--<ProjectReference Include="..\..\SevexLabs.Ui.Maui.Controls\SevexLabs.Ui.Maui.Controls.csproj"/>-->
+
+		<ProjectReference
+				Include="..\..\SevexLabs.Ui.Maui.Controls\SevexLabs.Ui.Maui.Controls.csproj"
+				AdditionalProperties="UseAsProjectReference=true" />
+
+		<!--
+		<ProjectReference
+				Include="..\..\SevexLabs.Ui.Maui.Controls\SevexLabs.Ui.Maui.Controls.csproj"
+				AdditionalProperties="UseAsProjectReference=true;OverrideAndroidSpecificVersion=36.0" />
+		-->
 	</ItemGroup>
 
 	<ItemGroup>
