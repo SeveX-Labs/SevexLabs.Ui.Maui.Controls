@@ -15,8 +15,8 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<PackageId>SevexLabs.Ui.Maui.Controls</PackageId>
-		<Version>1.0.2</Version>
-		<PackageVersion>1.0.2</PackageVersion>
+		<Version>1.0.3</Version>
+		<PackageVersion>1.0.3</PackageVersion>
 		<Title>SevexLabs.Ui.Maui.Controls</Title>
 		<Description>Reusable .NET MAUI UI controls, including FastBorder, Material-style inputs, buttons, pickers, shimmer, countdown and utility controls for mobile apps.</Description>
 		<Authors>Alessandro Severa</Authors>
