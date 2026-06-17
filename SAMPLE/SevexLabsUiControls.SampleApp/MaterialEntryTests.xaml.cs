@@ -7,6 +7,8 @@ public partial class MaterialEntryTests : ContentPage
     private int _textChangedCount;
     private int _focusEventCount;
     private int _readOnlyTapCount;
+    private bool _passwordEyeFocusEditorFocused;
+    private bool _passwordEyeFocusEntryFocused;
 
     public MaterialEntryTests()
     {
@@ -34,6 +36,33 @@ public partial class MaterialEntryTests : ContentPage
         _readOnlyTapCount++;
 
         ResultLabel.Text = $"ReadOnlyTapped #{_readOnlyTapCount}";
+    }
+
+    private void OnPasswordEyeFocusEditorFocused(object? sender, FocusEventArgs e)
+    {
+        _passwordEyeFocusEditorFocused = true;
+        UpdatePasswordEyeFocusStatus();
+    }
+
+    private void OnPasswordEyeFocusEditorUnfocused(object? sender, FocusEventArgs e)
+    {
+        _passwordEyeFocusEditorFocused = false;
+        UpdatePasswordEyeFocusStatus();
+    }
+
+    private void OnPasswordEyeFocusEntryFocused(object? sender, FocusEventArgs e)
+    {
+        _passwordEyeFocusEntryFocused = e.IsFocused;
+        UpdatePasswordEyeFocusStatus();
+        OnEntryFocused(sender, e);
+    }
+
+    private void UpdatePasswordEyeFocusStatus()
+    {
+        PasswordEyeFocusStatusLabel.Text =
+            _passwordEyeFocusEntryFocused ? "Focus: MaterialEntry password" :
+            _passwordEyeFocusEditorFocused ? "Focus: Editor" :
+            "Focus: nessun controllo tracciato";
     }
 
     private void OnToggleErrorEntryTapped(object? sender, TappedEventArgs e)

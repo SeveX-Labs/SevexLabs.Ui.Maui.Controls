@@ -329,7 +329,7 @@ public partial class MaterialEditor : FastBorder
     /// </summary>
     /// <remarks>
     /// The overlay does not overwrite the normal <see cref="FastBorder.BorderColor"/> or
-    /// <see cref="FastBorder.BorderThickness"/>.
+    /// <see cref="FastBorder.BorderThickness="/>.
     /// </remarks>
     public bool HasError
     {

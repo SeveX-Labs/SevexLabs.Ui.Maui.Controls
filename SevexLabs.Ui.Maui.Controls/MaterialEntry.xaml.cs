@@ -377,7 +377,7 @@ public partial class MaterialEntry : FastBorder
     /// </summary>
     /// <remarks>
     /// The overlay does not overwrite the normal <see cref="FastBorder.BorderColor"/> or
-    /// <see cref="FastBorder.BorderThickness"/>.
+    /// <see cref="FastBorder.BorderThickness="/>.
     /// </remarks>
     public bool HasError
     {
@@ -903,7 +903,6 @@ public partial class MaterialEntry : FastBorder
 
         _eyeOpen = !_eyeOpen;
         ApplyPasswordState();
-        InnerEntry.Focus();
     }
 
     private void OnReadOnlyTapped(object? sender, TappedEventArgs e)

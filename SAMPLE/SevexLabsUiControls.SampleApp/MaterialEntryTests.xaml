@@ -356,6 +356,51 @@
                 TextChanged="OnEntryTextChanged"
                 EntryFocused="OnEntryFocused" />
 
+            <Label
+                FontAttributes="Bold"
+                FontSize="15"
+                Text="Focus conservativo occhio password"
+                TextColor="#111827" />
+
+            <Editor
+                x:Name="PasswordEyeFocusEditor"
+                HeightRequest="96"
+                BackgroundColor="#FFFFFF"
+                Placeholder="Editor per test focus"
+                Text="Metti il focus qui, poi tocca l'occhio della password sotto."
+                TextColor="Black"
+                PlaceholderColor="#6B7280"
+                Focused="OnPasswordEyeFocusEditorFocused"
+                Unfocused="OnPasswordEyeFocusEditorUnfocused" />
+
+            <controls:MaterialEntry
+                x:Name="PasswordEyeFocusEntry"
+                HeightRequest="56"
+                BackgroundColor="#FFFFFF"
+                BorderColor="#D1D5DB"
+                BorderThickness="1"
+                CornerRadius="20"
+                Padding="14,0"
+                Placeholder="Password focus-neutral"
+                Text="password123"
+                UseFloatingPlaceholder="True"
+                PlaceholderUpY="-10"
+                PlaceholderScale="0.9"
+                EntryDownY="10"
+                FontSize="16"
+                TextColor="Black"
+                PlaceholderColor="#6B7280"
+                IsPassword="True"
+                ShowEye="True"
+                TextChanged="OnEntryTextChanged"
+                EntryFocused="OnPasswordEyeFocusEntryFocused" />
+
+            <Label
+                x:Name="PasswordEyeFocusStatusLabel"
+                FontSize="13"
+                Text="Focus: nessun controllo tracciato"
+                TextColor="#374151" />
+
             <!-- ===================================================== -->
             <!-- READ ONLY -->
             <!-- ===================================================== -->

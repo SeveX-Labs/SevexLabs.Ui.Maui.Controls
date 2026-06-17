@@ -301,7 +301,7 @@ public partial class MaterialNumericEntry : FastBorder
     /// </summary>
     /// <remarks>
     /// The overlay is drawn separately from the normal <see cref="FastBorder.BorderColor"/> and
-    /// <see cref="FastBorder.BorderThickness"/>.
+    /// <see cref="FastBorder.BorderThickness="/>.
     /// </remarks>
     public bool HasError
     {
