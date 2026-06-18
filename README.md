@@ -104,6 +104,8 @@ Do not use MAUI `Border` properties such as `Stroke`, `StrokeThickness`, or
 - `SlideStepsView`
 - `Countdown controls`
 
+`MaterialEntry` includes packaged default password eye icons. Set `EyeOpenSource` and `EyeClosedSource` only when you want to replace those defaults with app-provided images.
+
 ## Local development with ProjectReference
 
 This library is intended to be consumed primarily as a NuGet package.

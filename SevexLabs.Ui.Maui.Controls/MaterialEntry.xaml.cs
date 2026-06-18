@@ -8,8 +8,8 @@ public partial class MaterialEntry : FastBorder
     private const string PlaceholderAnimName = "MEntry_Placeholder";
 
     private const double DefaultEyePadding = 15d;
-    private static readonly Lazy<ImageSource> EyeOpen = new(() => ImageSource.FromFile("eye_no"));
-    private static readonly Lazy<ImageSource> EyeClosed = new(() => ImageSource.FromFile("eye_yes"));
+    private static readonly Lazy<ImageSource> EyeOpen = new(() => ImageSource.FromFile("sevexlabs_material_entry_default_eye_open.png"));
+    private static readonly Lazy<ImageSource> EyeClosed = new(() => ImageSource.FromFile("sevexlabs_material_entry_default_eye_closed.png"));
 
     private bool _eyeOpen;
     private bool _loaded;
@@ -329,6 +329,34 @@ public partial class MaterialEntry : FastBorder
         set => SetValue(ShowEyeProperty, value);
     }
 
+    public static readonly BindableProperty EyeOpenSourceProperty =
+        BindableProperty.Create(
+            nameof(EyeOpenSource),
+            typeof(ImageSource),
+            typeof(MaterialEntry),
+            defaultValue: null,
+            propertyChanged: (b, _, __) => ((MaterialEntry)b).ApplyPasswordState());
+
+    public ImageSource? EyeOpenSource
+    {
+        get => (ImageSource?)GetValue(EyeOpenSourceProperty);
+        set => SetValue(EyeOpenSourceProperty, value);
+    }
+
+    public static readonly BindableProperty EyeClosedSourceProperty =
+        BindableProperty.Create(
+            nameof(EyeClosedSource),
+            typeof(ImageSource),
+            typeof(MaterialEntry),
+            defaultValue: null,
+            propertyChanged: (b, _, __) => ((MaterialEntry)b).ApplyPasswordState());
+
+    public ImageSource? EyeClosedSource
+    {
+        get => (ImageSource?)GetValue(EyeClosedSourceProperty);
+        set => SetValue(EyeClosedSourceProperty, value);
+    }
+
     // --- Border layer (FastBorder) ---
     public static readonly BindableProperty ErrorColorProperty =
         BindableProperty.Create(
@@ -609,7 +637,9 @@ public partial class MaterialEntry : FastBorder
         }
 
         InnerEntry.IsPassword = !_eyeOpen;
-        EyeImage.Source = _eyeOpen ? EyeOpen.Value : EyeClosed.Value;
+        EyeImage.Source = _eyeOpen
+            ? EyeOpenSource ?? EyeOpen.Value
+            : EyeClosedSource ?? EyeClosed.Value;
     }
 
     private void ApplyTextIndent()

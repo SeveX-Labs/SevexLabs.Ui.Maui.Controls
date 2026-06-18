@@ -15,8 +15,8 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<PackageId>SevexLabs.Ui.Maui.Controls</PackageId>
-		<Version>1.0.3</Version>
-		<PackageVersion>1.0.3</PackageVersion>
+		<Version>1.1.0</Version>
+		<PackageVersion>1.1.0</PackageVersion>
 		<Title>SevexLabs.Ui.Maui.Controls</Title>
 		<Description>Reusable .NET MAUI UI controls, including FastBorder, Material-style inputs, buttons, pickers, shimmer, countdown and utility controls for mobile apps.</Description>
 		<Authors>Alessandro Severa</Authors>
@@ -80,6 +80,14 @@
 	<ItemGroup>
 	  <None Include="..\README.md" Pack="true" PackagePath="README.md" />
 	  <None Include="..\docs\images\*.png" Pack="true" PackagePath="docs/images/" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiImage Include="Resources\Images\sevexlabs_material_entry_default_eye_open.svg" />
+	  <MauiImage Include="Resources\Images\sevexlabs_material_entry_default_eye_closed.svg" />
+	  <None Include="buildTransitive\SevexLabs.Ui.Maui.Controls.targets" Pack="true" PackagePath="buildTransitive\" />
+	  <None Include="Resources\Images\sevexlabs_material_entry_default_eye_open.svg" Pack="true" PackagePath="buildTransitive\Resources\Images\" />
+	  <None Include="Resources\Images\sevexlabs_material_entry_default_eye_closed.svg" Pack="true" PackagePath="buildTransitive\Resources\Images\" />
 	</ItemGroup>
 
 </Project>

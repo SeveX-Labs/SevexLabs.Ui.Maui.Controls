@@ -1,0 +1,8 @@
+<Project>
+  <ItemGroup Condition="'$(UseMaui)' == 'true'">
+    <MauiImage Include="$(MSBuildThisFileDirectory)Resources\Images\sevexlabs_material_entry_default_eye_open.svg"
+               Link="Resources\Images\sevexlabs_material_entry_default_eye_open.svg" />
+    <MauiImage Include="$(MSBuildThisFileDirectory)Resources\Images\sevexlabs_material_entry_default_eye_closed.svg"
+               Link="Resources\Images\sevexlabs_material_entry_default_eye_closed.svg" />
+  </ItemGroup>
+</Project>
